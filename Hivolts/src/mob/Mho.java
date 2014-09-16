@@ -1,6 +1,5 @@
 package mob;
 
-public class Mho
-{
+public class Mho {
 
 }

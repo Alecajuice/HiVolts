@@ -1,6 +1,5 @@
 package main;
 
-public class Main
-{
+public class Main {
 
 }
