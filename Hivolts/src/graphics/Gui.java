@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 public class Gui extends JFrame 
 {
 
+
 	public Gui(int width, int height) 
 	{
 		super("Hivolts");
