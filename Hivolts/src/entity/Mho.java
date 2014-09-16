@@ -1,4 +1,4 @@
-package mob;
+package entity;
 
 public class Mho {
 
