@@ -1,6 +1,6 @@
 package entity.mob;
 
-public class Player
+public class Player extends Mob
 {
 
 }
