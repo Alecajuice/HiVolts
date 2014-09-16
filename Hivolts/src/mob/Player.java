@@ -1,5 +1,6 @@
 package mob;
 
-public class Player {
+public class Player
+{
 
 }

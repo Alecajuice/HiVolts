@@ -2,6 +2,7 @@ package graphics;
 
 //Main Gui class
 
-public class Gui {
+public class Gui
+{
 
 }
