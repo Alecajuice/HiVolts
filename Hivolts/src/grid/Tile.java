@@ -2,11 +2,13 @@ package grid;
 
 import java.awt.Graphics;
 
-abstract class Tile
+public class Tile
 {
 	public Tile() {
 		
 	}
 	
-	abstract void draw(Graphics g);
+	public void draw(Graphics g) {
+		
+	}
 }
