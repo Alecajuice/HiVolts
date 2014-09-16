@@ -9,7 +9,7 @@ public class GridPanel extends JPanel {
 	private int height;
 	private int width;
 
-	public GridPanel(int height, int width) {
+	public GridPanel(int width, int height) {
 		this.height = height;
 		this.width = width;
 		
