@@ -1,6 +1,12 @@
 package grid;
 
-public class Tile
-{
+import java.awt.Graphics;
 
+abstract class Tile
+{
+	public Tile() {
+		
+	}
+	
+	abstract void draw(Graphics g);
 }
