@@ -21,20 +21,24 @@ public class Gui extends JFrame implements KeyListener
 	public void keyTyped(KeyEvent e)
 	{
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void keyPressed(KeyEvent e)
 	{
-		// TODO Auto-generated method stub
-		
+		int c = e.getKeyCode();
+		switch (c)
+		{
+		case KeyEvent.VK_W:
+			
+		}
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e)
 	{
 		// TODO Auto-generated method stub
-		
+
 	}
 }
