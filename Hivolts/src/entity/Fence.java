@@ -1,6 +1,8 @@
 package entity;
 
-public class Fence
+import grid.Tile;
+
+public class Fence extends Tile
 {
 
 }

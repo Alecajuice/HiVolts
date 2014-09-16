@@ -12,6 +12,8 @@ public class Gui extends JFrame
 	{
 		super("Hivolts");
 		setSize(width, height);
+		GridPanel grid = new GridPanel();
+		add(grid);
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}

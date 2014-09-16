@@ -1,6 +1,8 @@
 package entity;
 
-public class Mho
+import grid.Tile;
+
+public class Mho extends Tile
 {
 
 }

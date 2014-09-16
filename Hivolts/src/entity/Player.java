@@ -1,6 +1,8 @@
 package entity;
 
-public class Player
+import grid.Tile;
+
+public class Player extends Tile
 {
 
 }
