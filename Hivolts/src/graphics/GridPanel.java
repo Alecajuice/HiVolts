@@ -1,6 +1,6 @@
 package graphics;
 
-import grid.Tile;
+import entity.Cell;
 
 import java.awt.*;
 
@@ -12,7 +12,7 @@ public class GridPanel extends JPanel
 
 	private int height;
 	private int width;
-	private Tile[][] grid = new Tile[12][12];
+	private Cell[][] grid = new Cell[12][12];
 
 	public GridPanel(int width, int height)
 	{
