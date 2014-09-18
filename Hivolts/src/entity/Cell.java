@@ -1,14 +1,19 @@
 package entity;
 
-import grid.Tile;
+import java.awt.Graphics;
 
-public class Cell extends Tile
+public class Cell
 {
+	private int x, y;
 
 	public Cell(int x, int y)
 	{
-		super(x, y);
-		// TODO Auto-generated constructor stub
+		this.x = x;
+		this.y = y;
 	}
 
+	public void draw(Graphics g)
+	{
+
+	}
 }

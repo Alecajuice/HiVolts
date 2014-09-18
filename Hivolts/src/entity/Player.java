@@ -1,8 +1,6 @@
 package entity;
 
-import grid.Tile;
-
-public class Player extends Tile
+public class Player extends Cell
 {
 
 	public Player(int x, int y)
