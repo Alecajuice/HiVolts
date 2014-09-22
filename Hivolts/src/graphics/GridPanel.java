@@ -32,4 +32,8 @@ public class GridPanel extends JPanel {
 		System.err.println("Player not found.");
 		return null;
 	}
+
+	public void nextTurn() {
+
+	}
 }
