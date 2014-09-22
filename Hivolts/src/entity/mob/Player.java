@@ -19,4 +19,7 @@ public class Player extends Mob {
 		
 	}
 
+	public void jump() {
+		
+	}
 }
