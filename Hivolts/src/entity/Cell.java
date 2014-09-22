@@ -13,4 +13,12 @@ public class Cell {
 	public void draw(Graphics g) {
 
 	}
+	
+	public int getX() {
+		return this.x;
+	}
+	
+	public int getY() {
+		return this.y;
+	}
 }

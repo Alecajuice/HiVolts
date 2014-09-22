@@ -13,4 +13,10 @@ public class Player extends Mob {
 
 	}
 
+	@Override
+	public void destroy() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
