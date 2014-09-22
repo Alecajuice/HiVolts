@@ -11,11 +11,12 @@ public class Gui extends JFrame implements KeyListener
 {
 	private static final int WIDTH = 500;
 	private static final int HEIGHT = 500;
+	private GridPanel grid;
 	public Gui()
 	{
 		super("Hivolts");
 		setSize(WIDTH, HEIGHT);
-		GridPanel grid = new GridPanel(WIDTH, HEIGHT);
+		grid = new GridPanel(WIDTH, HEIGHT);
 		add(grid);
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
