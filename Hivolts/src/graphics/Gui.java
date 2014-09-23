@@ -22,44 +22,52 @@ public class Gui extends JFrame implements KeyListener {
 		this.addKeyListener(this);
 	}
 
+	//Unused
 	@Override
-	public void keyTyped(KeyEvent e) {
-		// TODO Auto-generated method stub
-	}
+	public void keyTyped(KeyEvent e) {}
 
 	@Override
 	public void keyPressed(KeyEvent e) {
 		int c = e.getKeyCode();
 		switch (c) {
 		case KeyEvent.VK_Q:
-
+			grid.findPlayer().move(-1, 1);
+			grid.nextTurn();
 			break;
 		case KeyEvent.VK_W:
-
+			grid.findPlayer().move(0, 1);
+			grid.nextTurn();
 			break;
 		case KeyEvent.VK_E:
-
+			grid.findPlayer().move(1, 1);
+			grid.nextTurn();
 			break;
 		case KeyEvent.VK_A:
-
+			grid.findPlayer().move(-1, 0);
+			grid.nextTurn();
 			break;
 		case KeyEvent.VK_S:
-
+			grid.nextTurn();
 			break;
 		case KeyEvent.VK_D:
-
+			grid.findPlayer().move(1, 0);
+			grid.nextTurn();
 			break;
 		case KeyEvent.VK_Z:
-
+			grid.findPlayer().move(-1, -1);
+			grid.nextTurn();
 			break;
 		case KeyEvent.VK_X:
-
+			grid.findPlayer().move(0, -1);
+			grid.nextTurn();
 			break;
 		case KeyEvent.VK_C:
-
+			grid.findPlayer().move(1, -1);
+			grid.nextTurn();
 			break;
 		case KeyEvent.VK_J:
-
+			grid.findPlayer().jump();
+			grid.nextTurn();
 			break;
 		}
 	}
