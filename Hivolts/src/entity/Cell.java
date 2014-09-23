@@ -10,42 +10,46 @@ public class Cell {
 	protected Color color = Color.black;
 	private Mob occupant = null;
 	private GridPanel grid;
-		public GridPanel getGrid() {return grid;}
+
+	public GridPanel getGrid() {
+		return grid;
+	}
 
 	public Cell(int x, int y) {
 		this.x = x;
 		this.y = y;
 	}
-	
+
+	public Mob getOccupant() {
+		return this.occupant;
+	}
+
 	/**
 	 * Makes the cell contain a mob
-	 * @param tenant a Player or Mho or null
+	 * 
+	 * @param tenant
+	 *            a Player or Mho or null
 	 */
 	public void occupy(Mob<? extends Mob> tenant) {
 		occupant = tenant;
 	}
 
 	public <T> boolean isOccupiedBy(Class<T> c) {
-		if(c.isInstance(this.occupant)) {
+		if (c.isInstance(this.occupant)) {
 			return true;
 		}
 		return false;
 	}
-	
+
 	public void draw(Graphics g) {
-		
+
 	}
 
 	public int getX() {
 		return this.x;
 	}
+
 	public int getY() {
 		return this.y;
-	}
-	public void setX(int x) {
-		this.x = x;
-	}
-	public void setY(int y) {
-		this.y = y;
 	}
 }

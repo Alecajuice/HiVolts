@@ -20,8 +20,8 @@ public class Mho extends Mob {
 	}
 
 	public void ai() {
-		int x = grid.findPlayer().getX();
-		int y = grid.findPlayer().getY();
+		int x = this.landlord.getGrid().findPlayer().x;
+		int y = this.landlord.getGrid().findPlayer().y;
 		if(x > this.x) {
 			move(1,0);
 		}

@@ -21,7 +21,11 @@ public class Gui extends JFrame implements KeyListener {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.addKeyListener(this);
 	}
-
+	
+	public GridPanel getGrid() {
+		return grid;
+	}
+	
 	//Unused
 	@Override
 	public void keyTyped(KeyEvent e) {}
