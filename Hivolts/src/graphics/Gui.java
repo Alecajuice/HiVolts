@@ -8,8 +8,8 @@ import javax.swing.JFrame;
 //Main Gui class
 
 public class Gui extends JFrame implements KeyListener {
-	private static final int WIDTH = 500;
-	private static final int HEIGHT = 500;
+	private static final int WIDTH = 700;
+	private static final int HEIGHT = 700;
 	private GridPanel grid;
 
 	public Gui() {

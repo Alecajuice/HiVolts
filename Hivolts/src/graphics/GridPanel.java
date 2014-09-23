@@ -26,12 +26,17 @@ public class GridPanel extends JPanel {
 	}
 	
 	public void initAllCells() {
+		initCells();
 		initBorders();
 		initInsideFences();
 		initEnemies();
 		initPlayer();
 	}
 	
+	public void paintComponent(Graphics g) {
+		drawCells(g);
+	}
+
 	public void initCells() {
 		for(int i = 0; i < 12; i++) {
 			for(int j = 0; j < 12; j++) {
@@ -91,6 +96,16 @@ public class GridPanel extends JPanel {
 			grid[player.getX()][player.getY()].occupy(player);
 		else
 			initPlayer();
+	}
+	
+	public void drawCells(Graphics g) {
+		g.setColor(Color.black);
+		for (int row = 0; row < 12; row++) {
+			for (int col = 0; col < 12; col++) {
+				grid[row][col].draw(25, 25, 50,
+						50, g);
+			}
+		}
 	}
 
 	public Player findPlayer() {
