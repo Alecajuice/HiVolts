@@ -8,6 +8,12 @@ public class Mho extends Mob {
 	}
 
 	@Override
+	public void move(int dx, int dy) {
+		this.x += dx;
+		this.y += dy;
+	}
+
+	@Override
 	public void destroy() {
 		// TODO Auto-generated method stub
 

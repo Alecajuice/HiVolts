@@ -15,6 +15,7 @@ public class GridPanel extends JPanel {
 	private int height;
 	private int width;
 	private Cell[][] grid = new Cell[12][12];
+		public Cell[][] getGrid() {return grid;}
 
 	public GridPanel(int width, int height) {
 		this.height = height;
