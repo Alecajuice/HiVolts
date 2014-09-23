@@ -1,5 +1,7 @@
 package entity.mob;
 
+import entity.Cell;
+
 public class Mho extends Mob {
 
 	public Mho(int x, int y) {
@@ -9,13 +11,16 @@ public class Mho extends Mob {
 
 	@Override
 	public void move(int dx, int dy) {
+		Cell destination = this.landlord.getGrid().getGrid()[this.x + dx][this.y + dy];
+		if (destination.isOccupiedBy(Player.class)) {
+			destination.getOccupant().destroy();
+		}
 		super.move(dx, dy);
 	}
 
 	@Override
 	public void destroy() {
-		// TODO Auto-generated method stub
-
+		super.destroy();
 	}
 
 	public void ai() {
