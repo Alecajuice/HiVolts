@@ -57,9 +57,29 @@ public class GridPanel extends JPanel {
 		return new Fence((int)x, (int)y);
 	}
 	public void initEnemies() {
+		for(int i = 0; i < 12; i++) {
+			Mho newEnemie = initRandMho();
+			if(!(grid[newEnemie.getX()][newEnemie.getY()] instanceof Fence) && !(grid[newEnemie.getX()][newEnemie.getY()] instanceof Mho)) {
+				grid[newEnemie.getX()][newEnemie.getY()] = newEnemie;
+			}
+			else{
+				i--;
+			}
+		}
+	}
+	public Mho initRandMho() {
+		double y = Math.random()*10+1;
+		double x =  Math.random()*10+1;
+
+		return new Mho((int)x, (int)y);
 	}
 	public void initPlayer() {
-		
+		double y = Math.random()*10+1;
+		double x =  Math.random()*10+1;
+
+		Player playa = new Player((int)x, (int)y);
+		if(!(grid[playa.getX()][playa.getY()] instanceof Fence) && !(grid[playa.getX()][playa.getY()] instanceof Mho))grid[playa.getX()][playa.getY()] = playa;
+		else initPlayer();
 	}
 
 	public Player findPlayer() {
