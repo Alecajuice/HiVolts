@@ -86,20 +86,12 @@ public class GridPanel extends JPanel {
 	public void initPlayer() {
 		double y = Math.random()*10+1;
 		double x =  Math.random()*10+1;
-
-<<<<<<< HEAD
-		Player player = new Player((int)x, (int)y);
-		if(!(grid[player.getX()][player.getY()] instanceof Fence) && !(grid[player.getX()][player.getY()].isOccupiedBy(Mho.class)))grid[player.getX()][player.getY()].occupy(player);
-		else initPlayer();
-	}
-=======
 		Player player = new Player((int) x, (int) y);
 		if (!(grid[player.getX()][player.getY()] instanceof Fence) && !(grid[player.getX()][player.getY()].isOccupiedBy(Mho.class)))
 			grid[player.getX()][player.getY()].occupy(player);
 		else
 			initPlayer();
 	}
->>>>>>> branch 'master' of https://github.com/alecajuice/Hivolts.git
 
 	public Player findPlayer() {
 		for (Cell[] c : grid) {
