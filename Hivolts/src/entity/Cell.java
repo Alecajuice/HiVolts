@@ -3,7 +3,7 @@ package entity;
 import java.awt.*;
 
 public class Cell {
-	protected int x, y;
+	protected final int x, y;
 	protected Color color = Color.black;
 
 	public Cell(int x, int y) {
