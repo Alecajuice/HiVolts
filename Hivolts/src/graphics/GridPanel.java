@@ -1,11 +1,9 @@
 package graphics;
 
 import entity.Cell;
-<<<<<<< HEAD
 import entity.Fence;
-=======
+import entity.mob.Mho;
 import entity.mob.Player;
->>>>>>> branch 'master' of https://github.com/alecajuice/HiVolts
 
 import java.awt.*;
 
@@ -77,6 +75,12 @@ public class GridPanel extends JPanel {
 	}
 
 	public void nextTurn() {
-
+		for (Cell[] c : grid) {
+			for (Cell cell : c) {
+				if (cell instanceof Mho) {
+					((Mho) cell).ai();
+				}
+			}
+		}
 	}
 }
