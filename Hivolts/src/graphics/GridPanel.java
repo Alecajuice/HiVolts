@@ -26,6 +26,11 @@ public class GridPanel extends JPanel {
 	}
 	
 	public void initAllCells() {
+		for(int i = 0; i < 12; i++) {
+			for(int j = 0; j < 12; j++) {
+				grid[i][j] = new Cell(i, j);
+			}
+		}
 		initBorders();
 		initInsideFences();
 		initEnemies();
