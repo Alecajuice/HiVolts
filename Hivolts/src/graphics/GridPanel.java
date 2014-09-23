@@ -22,6 +22,7 @@ public class GridPanel extends JPanel {
 		this.width = width;
 
 		this.setSize(width, height);
+		initAllCells();
 	}
 	
 	public void initAllCells() {
