@@ -8,19 +8,13 @@ public class Mho extends Mob {
 	}
 
 	@Override
-	public void move(int dx, int dy) {
-		this.x += dx;
-		this.y += dy;
-	}
-
-	@Override
 	public void destroy() {
 		// TODO Auto-generated method stub
 
 	}
 
 	public void ai() {
-		int x = grid.findPlayer().getX();
+		int x = getLandLord().grid.findPlayer().getX();
 		int y = grid.findPlayer().getY();
 		if(x > getX()) {
 			move(1,0);

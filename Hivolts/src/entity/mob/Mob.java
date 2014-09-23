@@ -16,8 +16,11 @@ public abstract class Mob<T> {
 	 * @param change in y coordinate
 	 */
 	public void move(int dx, int dy) {
-		this.x += dx;
-		this.y += dy;
+		landlord.setX(landlord.getX()+dx);
+		landlord.setY(landlord.getY()+dy);
 	}
 	public abstract void destroy();
+	public Cell getLandLord() {
+		return landlord;
+	}
 }
