@@ -1,5 +1,10 @@
 package entity.mob;
 
+import java.awt.Color;
+import java.awt.Graphics;
+
+
+
 import entity.Cell;
 
 public class Mho extends Mob {
@@ -49,4 +54,5 @@ public class Mho extends Mob {
 		
 		
 	}
+
 }

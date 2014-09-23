@@ -30,8 +30,8 @@ public class GridPanel extends JPanel {
 		initCells();
 		initBorders();
 		initInsideFences();
-		initEnemies();
-		initPlayer();
+		//initEnemies();
+		//initPlayer();
 	}
 	
 	public void paintComponent(Graphics g) {
@@ -48,11 +48,12 @@ public class GridPanel extends JPanel {
 	public void initBorders() {
 		for(int i = 0; i < 12; i++) {
 			grid[0][i] = new Fence(0,i);
-			grid[11][i] = new Fence(0,i);
+			grid[11][i] = new Fence(11,i);
+			
 		}
 		for(int i = 1; i <11; i++) {
-			grid[1][i] = new Fence(1,i);
-			grid[11][i] = new Fence(11,i);
+			grid[i][0] = new Fence(i,0);
+			grid[i][11] = new Fence(i,11);
 		}
 	}
 	public void initInsideFences() {
@@ -100,9 +101,10 @@ public class GridPanel extends JPanel {
 	}
 	
 	public void drawCells(Graphics g) {
-		g.setColor(Color.black);
+
 		for (int row = 0; row < 12; row++) {
 			for (int col = 0; col < 12; col++) {
+				g.setColor(Color.black);
 				grid[row][col].draw(25, 25, 50,
 						50, g);
 			}
