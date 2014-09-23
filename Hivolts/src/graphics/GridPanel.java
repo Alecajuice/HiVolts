@@ -1,22 +1,24 @@
 package graphics;
 
 import entity.Cell;
+<<<<<<< HEAD
 import entity.Fence;
+=======
+import entity.mob.Player;
+>>>>>>> branch 'master' of https://github.com/alecajuice/HiVolts
 
 import java.awt.*;
 
 import javax.swing.*;
 
 //One game grid
-public class GridPanel extends JPanel
-{
+public class GridPanel extends JPanel {
 
 	private int height;
 	private int width;
 	private Cell[][] grid = new Cell[12][12];
 
-	public GridPanel(int width, int height)
-	{
+	public GridPanel(int width, int height) {
 		this.height = height;
 		this.width = width;
 
@@ -57,11 +59,24 @@ public class GridPanel extends JPanel
 		return new Fence((int)x, (int)y);
 	}
 	public void initEnemies() {
-		for(int i = 0; i < 12; i++)
 	}
 	public void initPlayer() {
 		
 	}
 
-	
+	public Player findPlayer() {
+		for (Cell[] c : grid) {
+			for (Cell cell : c) {
+				if (cell instanceof Player) {
+					return (Player) cell;
+				}
+			}
+		}
+		System.err.println("Player not found.");
+		return null;
+	}
+
+	public void nextTurn() {
+
+	}
 }
