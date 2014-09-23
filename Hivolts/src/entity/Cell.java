@@ -9,7 +9,8 @@ public class Cell {
 	protected int x, y;
 	protected Color color = Color.black;
 	private Mob occupant = null;
-	protected GridPanel grid;
+	private GridPanel grid;
+		public GridPanel getGrid() {return grid;}
 
 	public Cell(int x, int y) {
 		this.x = x;
@@ -24,6 +25,13 @@ public class Cell {
 		occupant = tenant;
 	}
 
+	public <T> boolean isOccupiedBy(Class<T> c) {
+		if(c.isInstance(this.occupant)) {
+			return true;
+		}
+		return false;
+	}
+	
 	public void draw(Graphics g) {
 		
 	}

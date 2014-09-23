@@ -3,11 +3,12 @@ package entity.mob;
 import entity.*;
 
 public abstract class Mob<T> {
-	private Cell landlord;
+	protected Cell landlord;
+	protected int x, y;
 	
 	protected Mob(int x, int y) {
-		
-		// TODO Auto-generated constructor stub
+		this.x = x;
+		this.y = y;
 	}
 	
 	/**
