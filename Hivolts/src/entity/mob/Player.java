@@ -9,7 +9,7 @@ public class Player extends Mob {
 		super(x, y);
 		// TODO Auto-generated constructor stub
 	}
-
+	
 	@Override
 	public void move(int dx, int dy) {
 		Cell destination = this.landlord.getGrid().getGrid()[this.x + dx][this.y + dy];
@@ -26,13 +26,13 @@ public class Player extends Mob {
 	@Override
 	public void destroy() {
 		// TODO Auto-generated method stub
-
+		
 	}
-
+	
 	/**
 	 * Jump to a random position
 	 */
 	public void jump() {
-
+		
 	}
 }

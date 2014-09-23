@@ -32,7 +32,12 @@ public class Cell {
 	public void occupy(Mob<? extends Mob> tenant) {
 		occupant = tenant;
 	}
-
+	
+	/**
+	 * Lets you see if the cell contains a certain object
+	 * @param c class to be compared
+	 * @return true if occupant class matches passed class
+	 */
 	public <T> boolean isOccupiedBy(Class<T> c) {
 		if (c.isInstance(this.occupant)) {
 			return true;
