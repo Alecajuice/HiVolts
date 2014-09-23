@@ -20,6 +20,19 @@ public class Mho extends Mob {
 	}
 
 	public void ai() {
-		
+		int x = grid.findPlayer().getX();
+		int y = grid.findPlayer().getY();
+		if(x > getX()) {
+			move(1,0);
+		}
+		else if(x < getX()) {
+			move(-1,0);
+		}
+		if(y > getY()) {
+			move(0,1);
+		}
+		if(y < getY()) {
+			move(0,-1);
+		}
 	}
 }

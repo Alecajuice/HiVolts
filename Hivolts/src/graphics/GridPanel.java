@@ -105,4 +105,8 @@ public class GridPanel extends JPanel {
 			}
 		}
 	}
+	
+	public Cell getCell(int x, int y) {
+		return grid[x][y];
+	}
 }
