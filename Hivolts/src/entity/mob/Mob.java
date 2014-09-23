@@ -1,10 +1,12 @@
 package entity.mob;
 
-import entity.Cell;
+import entity.*;
 
-public abstract class Mob extends Cell {
+public abstract class Mob<T> {
+	private Cell landlord;
+	
 	protected Mob(int x, int y) {
-		super(x, y);
+		
 		// TODO Auto-generated constructor stub
 	}
 	
