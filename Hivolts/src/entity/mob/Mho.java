@@ -30,23 +30,23 @@ public class Mho extends Mob {
 		
 		//Directly horizontal
 		if(this.y == playerY) {
-			if(this.getX() < playerX) {
-				move(1,0);
+			if(this.x < playerX) {
+				move(1, 0);
 			}
 			else {
 				move(-1, 0);
 			}
 		}
 		//Directly vertical
-		else if(playerX < this.x) {
-			move(-1,0);
+		else if(this.x == playerX) {
+			if(this.y < playerY) {
+				move(0, 1);
+			}
+			else {
+				move(0, -1);
+			}
 		}
 		
-		if(playerY > this.y) {
-			move(0,1);
-		}
-		if(playerY < this.y) {
-			move(0,-1);
-		}
+		
 	}
 }
