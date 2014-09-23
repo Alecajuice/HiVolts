@@ -1,10 +1,13 @@
 package entity;
 
+import graphics.GridPanel;
+
 import java.awt.*;
 
 public class Cell {
 	protected int x, y;
 	protected Color color = Color.black;
+	protected GridPanel grid;
 
 	public Cell(int x, int y) {
 		this.x = x;
