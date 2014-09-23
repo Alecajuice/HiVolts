@@ -3,7 +3,7 @@ package entity.mob;
 import entity.Cell;
 
 public abstract class Mob extends Cell {
-	public Mob(int x, int y) {
+	protected Mob(int x, int y) {
 		super(x, y);
 		// TODO Auto-generated constructor stub
 	}
@@ -13,6 +13,9 @@ public abstract class Mob extends Cell {
 	 * @param change in x coordinate
 	 * @param change in y coordinate
 	 */
-	public abstract void move(int dx, int dy);
+	public void move(int dx, int dy) {
+		this.x += dx;
+		this.y += dy;
+	}
 	public abstract void destroy();
 }
