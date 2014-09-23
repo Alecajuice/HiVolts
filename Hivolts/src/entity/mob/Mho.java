@@ -1,5 +1,7 @@
 package entity.mob;
 
+import entity.Cell;
+
 public class Mho extends Mob {
 
 	public Mho(int x, int y) {
@@ -9,13 +11,16 @@ public class Mho extends Mob {
 
 	@Override
 	public void move(int dx, int dy) {
+		Cell destination = this.landlord.getGrid().getGrid()[this.x + dx][this.y + dy];
+		if (destination.isOccupiedBy(Player.class)) {
+			destination.getOccupant().destroy();
+		}
 		super.move(dx, dy);
 	}
 
 	@Override
 	public void destroy() {
-		// TODO Auto-generated method stub
-
+		super.destroy();
 	}
 
 	public void ai() {
@@ -25,23 +30,23 @@ public class Mho extends Mob {
 		
 		//Directly horizontal
 		if(this.y == playerY) {
-			if(this.getX() < playerX) {
-				move(1,0);
+			if(this.x < playerX) {
+				move(1, 0);
 			}
 			else {
 				move(-1, 0);
 			}
 		}
 		//Directly vertical
-		else if(playerX < this.x) {
-			move(-1,0);
+		else if(this.x == playerX) {
+			if(this.y < playerY) {
+				move(0, 1);
+			}
+			else {
+				move(0, -1);
+			}
 		}
 		
-		if(playerY > this.y) {
-			move(0,1);
-		}
-		if(playerY < this.y) {
-			move(0,-1);
-		}
+		
 	}
 }
