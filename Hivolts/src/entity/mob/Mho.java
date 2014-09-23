@@ -22,17 +22,16 @@ public class Mho extends Mob {
 	public void ai() {
 		int x = this.landlord.getGrid().findPlayer().x;
 		int y = this.landlord.getGrid().findPlayer().y;
-		if(x > this.x) {
-			move(1,0);
+		if (x > this.x) {
+			move(1, 0);
+		} else if (x < this.x) {
+			move(-1, 0);
 		}
-		else if(x < this.x) {
-			move(-1,0);
+		if (y > this.y) {
+			move(0, 1);
 		}
-		if(y > this.y) {
-			move(0,1);
-		}
-		if(y < this.y) {
-			move(0,-1);
+		if (y < this.y) {
+			move(0, -1);
 		}
 	}
 }
