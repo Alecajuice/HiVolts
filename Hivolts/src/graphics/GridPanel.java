@@ -26,25 +26,18 @@ public class GridPanel extends JPanel {
 	}
 	
 	public void initAllCells() {
-<<<<<<< HEAD
-		initBorders();
-		initInsideFences();
-		initEnemies();
-		initPlayer();
-=======
-
 		initBorders();
 		initInsideFences();
 		initEnemies();
 		initPlayer();
 	}
+	
 	public void initCells() {
 		for(int i = 0; i < 12; i++) {
 			for(int j = 0; j < 12; j++) {
 				grid[i][j] = new Cell(i, j);
 			}
 		}
->>>>>>> branch 'master' of https://github.com/alecajuice/Hivolts.git
 	}
 	public void initBorders() {
 		for(int i = 0; i < 12; i++) {
