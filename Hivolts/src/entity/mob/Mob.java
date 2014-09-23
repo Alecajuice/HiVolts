@@ -9,10 +9,10 @@ public abstract class Mob extends Cell {
 	}
 	
 	/**
-	 * Moves entity to specified cell
-	 * @param x coordinate to move to
-	 * @param y coordinate to move to
+	 * Moves entity based on params
+	 * @param change in x coordinate
+	 * @param change in y coordinate
 	 */
-	public abstract void move(int x, int y);
+	public abstract void move(int dx, int dy);
 	public abstract void destroy();
 }
