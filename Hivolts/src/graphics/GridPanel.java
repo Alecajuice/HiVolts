@@ -1,6 +1,7 @@
 package graphics;
 
 import entity.Cell;
+import entity.mob.Mho;
 import entity.mob.Player;
 
 import java.awt.*;
@@ -34,6 +35,12 @@ public class GridPanel extends JPanel {
 	}
 
 	public void nextTurn() {
-
+		for (Cell[] c : grid) {
+			for (Cell cell : c) {
+				if (cell instanceof Mho) {
+					((Mho) cell).ai();
+				}
+			}
+		}
 	}
 }
