@@ -51,8 +51,6 @@ public class Mho extends Mob {
 				move(0, -1);
 			}
 		}
-		
-		
 	}
 
 }
