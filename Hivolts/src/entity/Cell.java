@@ -47,7 +47,12 @@ public class Cell {
 	}
 
 	public void draw(Graphics g) {
-
+		int height = grid.getHeight();
+		int width = grid.getWidth();
+		g.setColor(Color.white);
+		g.fillRect(getX()*(width/12), getY()*(width/12), width/12, height/12);
+		g.setColor(Color.black);
+		g.drawRect(getX()*(width/12), getY()*(width/12), width/12, height/12);
 	}
 
 	public int getX() {
