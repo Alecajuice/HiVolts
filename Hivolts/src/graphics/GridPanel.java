@@ -30,6 +30,7 @@ public class GridPanel extends JPanel {
 
 	public void initAllCells() {
 
+		initCells();
 		initBorders();
 		initInsideFences();
 		initEnemies();
