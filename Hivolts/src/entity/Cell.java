@@ -27,8 +27,7 @@ public class Cell {
 	/**
 	 * Makes the cell contain a mob
 	 * 
-	 * @param tenant
-	 *            a Player or Mho or null
+	 * @param tenant - a Player or Mho or null
 	 */
 	public void occupy(Mob<? extends Mob> tenant) {
 		occupant = tenant;

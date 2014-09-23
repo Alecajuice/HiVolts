@@ -13,11 +13,8 @@ public abstract class Mob<T> {
 
 	/**
 	 * Moves entity based on params
-	 * 
-	 * @param change
-	 *            in x coordinate
-	 * @param change
-	 *            in y coordinate
+	 * @param dx - change in x coordinate
+	 * @param dy - change in y coordinate
 	 */
 	public void move(int dx, int dy) {
 		int x = landlord.getX() + dx;

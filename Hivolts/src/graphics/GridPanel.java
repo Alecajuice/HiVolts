@@ -94,8 +94,7 @@ public class GridPanel extends JPanel {
 		double x = Math.random() * 10 + 1;
 
 		Player player = new Player((int) x, (int) y);
-		if (!(grid[player.getX()][player.getY()] instanceof Fence)
-				&& !(grid[player.getX()][player.getY()].isOccupiedBy(Mho.class)))
+		if (!(grid[player.getX()][player.getY()] instanceof Fence) && !(grid[player.getX()][player.getY()].isOccupiedBy(Mho.class)))
 			grid[player.getX()][player.getY()].occupy(player);
 		else
 			initPlayer();

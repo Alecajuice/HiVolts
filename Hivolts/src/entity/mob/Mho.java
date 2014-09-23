@@ -9,8 +9,7 @@ public class Mho extends Mob {
 
 	@Override
 	public void move(int dx, int dy) {
-		this.x += dx;
-		this.y += dy;
+		super.move(dx, dy);
 	}
 
 	@Override
