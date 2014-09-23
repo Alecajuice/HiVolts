@@ -10,6 +10,7 @@ public class Cell {
 	protected Color color = Color.black;
 	private Mob occupant = null;
 	private GridPanel grid;
+		public GridPanel getGrid() {return grid;}
 
 	public Cell(int x, int y) {
 		this.x = x;
@@ -46,8 +47,5 @@ public class Cell {
 	}
 	public void setY(int y) {
 		this.y = y;
-	}
-	public GridPanel getGrid() {
-		return grid;
 	}
 }

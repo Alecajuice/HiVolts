@@ -13,7 +13,7 @@ public class Player extends Mob {
 	@Override
 	public void move(int dx, int dy) {
 		Cell destination = this.landlord.getGrid().getGrid()[this.x+dx][this.y+dy];
-		if(destination instanceof Fence || destination instanceof Mho)
+		if(destination instanceof Fence || destination.isOccupiedBy(Mho.class))
 		{
 			this.destroy();
 			return;
