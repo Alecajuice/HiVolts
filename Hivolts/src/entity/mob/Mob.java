@@ -1,5 +1,8 @@
 package entity.mob;
 
+import java.awt.Color;
+import java.awt.Graphics;
+
 import entity.*;
 
 public abstract class Mob<T> {

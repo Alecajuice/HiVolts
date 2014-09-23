@@ -45,16 +45,6 @@ public class Cell {
 		}
 		return false;
 	}
-
-	public void draw(Graphics g) {
-		int height = grid.getHeight();
-		int width = grid.getWidth();
-		g.setColor(Color.white);
-		g.fillRect(getX()*(width/12), getY()*(width/12), width/12, height/12);
-		g.setColor(Color.black);
-		g.drawRect(getX()*(width/12), getY()*(width/12), width/12, height/12);
-	}
-
 	public int getX() {
 		return this.x;
 	}
@@ -67,11 +57,7 @@ public class Cell {
 			Graphics g) {
 		// I leave this understanding to the reader
 		int xleft = x_offset + 1 + (x * (width + 1));
-		int xright = x_offset + width + (x * (width + 1));
 		int ytop = y_offset + 1 + (y * (height + 1));
-		int ybottom = y_offset + height + (y * (height + 1));
-		Color temp = g.getColor();
-		g.setColor(color);
 		g.fillRect(xleft, ytop, width, height);
 	}
 }

@@ -9,15 +9,9 @@ public class Fence extends Cell {
 		super(x, y);
 		// TODO Auto-generated constructor stub
 	}
-	
-	public void draw(Graphics g) {
-		int height = getGrid().getHeight();
-		int width = getGrid().getWidth();
-		
-		g.setColor(Color.yellow);
-		g.fillRect(getX()*(width/12), getY()*(width/12), width/12, height/12);
-		g.setColor(Color.black);
-		g.drawRect(getX()*(width/12), getY()*(width/12), width/12, height/12);
+	public void draw(int x_offset, int y_offset, int width, int height,Graphics g) {
+		g.setColor(Color.blue);
+		super.draw(x_offset, y_offset, width, height, g);
 	}
-
+	
 }
