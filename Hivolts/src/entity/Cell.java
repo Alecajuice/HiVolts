@@ -3,6 +3,7 @@ package entity;
 import graphics.GridPanel;
 
 import java.awt.*;
+
 import entity.mob.*;
 
 public class Cell {
@@ -27,13 +28,17 @@ public class Cell {
 	/**
 	 * Makes the cell contain a mob
 	 * 
-	 * @param tenant
-	 *            a Player or Mho or null
+	 * @param tenant - a Player or Mho or null
 	 */
 	public void occupy(Mob<? extends Mob> tenant) {
 		occupant = tenant;
 	}
-
+	
+	/**
+	 * Lets you see if the cell contains a certain object
+	 * @param c class to be compared
+	 * @return true if occupant class matches passed class
+	 */
 	public <T> boolean isOccupiedBy(Class<T> c) {
 		if (c.isInstance(this.occupant)) {
 			return true;
@@ -42,7 +47,12 @@ public class Cell {
 	}
 
 	public void draw(Graphics g) {
-
+		int height = grid.getHeight();
+		int width = grid.getWidth();
+		g.setColor(Color.white);
+		g.fillRect(getX()*(width/12), getY()*(width/12), width/12, height/12);
+		g.setColor(Color.black);
+		g.drawRect(getX()*(width/12), getY()*(width/12), width/12, height/12);
 	}
 
 	public int getX() {
