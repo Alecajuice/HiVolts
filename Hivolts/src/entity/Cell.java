@@ -12,7 +12,7 @@ public class Cell {
 	}
 
 	public void draw(Graphics g) {
-		System.out.println("hi");
+		
 	}
 
 	public int getX() {
