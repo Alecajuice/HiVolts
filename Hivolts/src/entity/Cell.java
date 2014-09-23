@@ -5,7 +5,7 @@ import graphics.GridPanel;
 import java.awt.*;
 
 public class Cell {
-	protected final int x, y;
+	protected int x, y;
 	protected Color color = Color.black;
 	protected GridPanel grid;
 
@@ -15,7 +15,7 @@ public class Cell {
 	}
 
 	public void draw(Graphics g) {
-
+		System.out.println("hi");
 	}
 
 	public int getX() {
