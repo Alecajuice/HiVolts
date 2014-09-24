@@ -1,5 +1,6 @@
 package entity.mob;
 
+import java.awt.Color;
 import java.awt.Graphics;
 
 import entity.Cell;
@@ -37,8 +38,11 @@ public class Player extends Mob {
 	public void jump() {
 		
 	}
-	public void draw(Graphics g) {
-		
+	public void draw(int x_offset, int y_offset, int width, int height, Graphics g) {
+		g.setColor(Color.white);
+		int xleft = x_offset + (x * (width + 1));
+		int ytop = y_offset + (y * (height + 1));
+		g.fillOval(xleft, ytop, width, height);
 	}
 	
 }
