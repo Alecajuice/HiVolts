@@ -16,7 +16,7 @@ public class Mho extends Mob {
 
 	@Override
 	public void move(int dx, int dy) {
-		Cell destination = this.landlord.getGrid().getGrid()[this.x + dx][this.y + dy];
+		Cell destination = this.landlord.getGridPanel().getGrid()[this.x + dx][this.y + dy];
 		if (destination.isOccupiedBy(Player.class)) {
 			destination.getOccupant().destroy();
 		}
@@ -30,8 +30,8 @@ public class Mho extends Mob {
 
 	public void ai() {
 		
-		int playerX = this.landlord.getGrid().findPlayer().x;
-		int playerY = this.landlord.getGrid().findPlayer().y;
+		int playerX = this.landlord.getGridPanel().findPlayer().x;
+		int playerY = this.landlord.getGridPanel().findPlayer().y;
 		
 		//Directly horizontal
 		if(this.y == playerY) {

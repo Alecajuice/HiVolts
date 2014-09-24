@@ -12,7 +12,7 @@ public class Cell {
 	private Mob occupant = null;
 	private GridPanel grid;
 
-	public GridPanel getGrid() {
+	public GridPanel getGridPanel() {
 		return grid;
 	}
 

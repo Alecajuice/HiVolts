@@ -103,7 +103,8 @@ public class GridPanel extends JPanel {
 	public void drawCells(Graphics g) {
 		for (int row = 0; row < 12; row++) {
 			for (int col = 0; col < 12; col++) {
-				grid[row][col].draw(25, 25, 50, 50, g);
+					grid[row][col].draw(25, 25, 50, 50, g);
+				
 			}
 		}
 	}
