@@ -5,6 +5,7 @@ import java.awt.Graphics;
 
 import entity.Cell;
 import entity.Fence;
+import graphics.GridPanel;
 
 public class Player extends Mob {
 
@@ -35,14 +36,15 @@ public class Player extends Mob {
 	 */
 	@Override
 	public void destroy() {
-		System.exit(0);
+		// TODO Auto-generated method stub
+		
 	}
 	
 	/**
 	 * Jump to a random position
 	 */
 	public void jump() {
-		
+		GridPanel panel = this.landlord.getGridPanel();
 	}
 	public void draw(int x_offset, int y_offset, int width, int height, Graphics g) {
 		g.setColor(Color.white);

@@ -35,7 +35,7 @@ public class Mho extends Mob {
 	}
 
 	public void ai() {
-		
+		Cell[][] grid = this.landlord.getGridPanel().getGrid();
 		int playerX = this.landlord.getGridPanel().findPlayer().x;
 		int playerY = this.landlord.getGridPanel().findPlayer().y;
 		
@@ -55,6 +55,14 @@ public class Mho extends Mob {
 			}
 			else {
 				move(0, -1);
+			}
+		}
+		else {
+			if(this.x < playerX) {
+				
+			}
+			if(Math.abs(this.x-playerX) < Math.abs(this.y-playerY)) {
+				
 			}
 		}
 	}
