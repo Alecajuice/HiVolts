@@ -8,13 +8,21 @@ import entity.Fence;
 
 public class Player extends Mob {
 
-	public Player(int x, int y) {
-		super(x, y);
+	public Player(int x, int y, Cell landlord) {
+		super(x, y, landlord);
 		// TODO Auto-generated constructor stub
 	}
 	
 	@Override
 	public void move(int dx, int dy) {
+		if((this.x == 0 && dx < 0) || (this.x == this.landlord.getGridPanel().getGrid().length - 1 && dx > 0)) {
+			dx = 0;
+			System.out.println("James is dumb");
+		}
+		if((this.y == 0 && dy < 0) || (this.y == this.landlord.getGridPanel().getGrid()[0].length - 1 && dy > 0)) {
+			dy = 0;
+		}
+		System.out.println(x);
 		Cell destination = this.landlord.getGridPanel().getGrid()[this.x + dx][this.y + dy];
 		if (destination.isOccupiedBy(Mho.class)) {
 			this.destroy();
@@ -28,8 +36,7 @@ public class Player extends Mob {
 	 */
 	@Override
 	public void destroy() {
-		// TODO Auto-generated method stub
-		
+		System.exit(0);
 	}
 	
 	/**

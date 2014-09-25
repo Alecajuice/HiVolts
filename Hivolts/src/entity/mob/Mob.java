@@ -9,9 +9,10 @@ public abstract class Mob<T> {
 	protected Cell landlord;
 	int x, y;
 	
-	protected Mob(int x, int y) {
+	protected Mob(int x, int y, Cell landlord) {
 		this.x = x;
 		this.y = y;
+		this.landlord = landlord;
 	}
 	
 	/**
@@ -25,9 +26,9 @@ public abstract class Mob<T> {
 			this.destroy();
 			return;
 		}
-		int x = landlord.getX() + dx;
-		int y = landlord.getY() + dy;
-		this.landlord = landlord.getGridPanel().getCell(x, y);
+		this.x = landlord.getX() + dx;
+		this.y = landlord.getY() + dy;
+		this.landlord = landlord.getGridPanel().getCell(this.x, this.y);
 	}
 	public void destroy() {
 		this.landlord.occupy(null);

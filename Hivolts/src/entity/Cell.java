@@ -16,9 +16,10 @@ public class Cell {
 		return grid;
 	}
 
-	public Cell(int x, int y) {
+	public Cell(int x, int y, GridPanel grid) {
 		this.x = x;
 		this.y = y;
+		this.grid = grid;
 	}
 
 	public Mob getOccupant() {
