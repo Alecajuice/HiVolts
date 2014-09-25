@@ -12,15 +12,18 @@ import javax.swing.*;
 //One game grid
 public class GridPanel extends JPanel {
 
+	private Gui gui;
+		public Gui getGui() {return gui;}
 	private int height;
 	private int width;
 	private Cell[][] grid = new Cell[12][12];
 		public Cell[][] getGrid() {return grid;}
 
-	public GridPanel(int width, int height) {
+	public GridPanel(int width, int height, Gui gui) {
 		this.height = height;
 		this.width = width;
-
+		this.gui = gui;
+		
 		this.setSize(width, height);
 		initAllCells();
 	}
@@ -125,12 +128,17 @@ public class GridPanel extends JPanel {
 	}
 
 	public void nextTurn() {
+		boolean notAllDead = false;
 		for (Cell[] c : grid) {
 			for (Cell cell : c) {
 				if (cell.isOccupiedBy(Mho.class)) {
 					((Mho)cell.getOccupant()).ai();
+					notAllDead = true;
 				}
 			}
+		}
+		if(!notAllDead) {
+			this.gui.win();
 		}
 	}
 	

@@ -4,6 +4,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 
 //Main Gui class
 
@@ -15,20 +16,21 @@ public class Gui extends JFrame implements KeyListener {
 	public Gui() {
 		super("Hivolts");
 		setSize(WIDTH, HEIGHT);
-		grid = new GridPanel(WIDTH, HEIGHT);
+		grid = new GridPanel(WIDTH, HEIGHT, this);
 		add(grid);
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.addKeyListener(this);
 	}
-	
+
 	public GridPanel getGrid() {
 		return grid;
 	}
-	
-	//Unused
+
+	// Unused
 	@Override
-	public void keyTyped(KeyEvent e) {}
+	public void keyTyped(KeyEvent e) {
+	}
 
 	@Override
 	public void keyPressed(KeyEvent e) {
@@ -81,5 +83,21 @@ public class Gui extends JFrame implements KeyListener {
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
 
+	}
+
+	public void gameOver() {
+		JFrame overFrame = new JFrame();
+		overFrame.setSize(200, 100);
+		overFrame.setVisible(true);
+		overFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		overFrame.add(new JLabel("Game over fgt"));
+	}
+	
+	public void win() {
+		JFrame overFrame = new JFrame();
+		overFrame.setSize(200, 100);
+		overFrame.setVisible(true);
+		overFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		overFrame.add(new JLabel("u win fgt #420blzeit"));
 	}
 }
