@@ -5,7 +5,7 @@ import java.awt.Graphics;
 
 
 
-import entity.Cell;
+import entity.*;
 
 public class Mho extends Mob {
 
@@ -15,7 +15,7 @@ public class Mho extends Mob {
 	}
 
 	@Override
-	public void move(int dx, int dy) {
+	public boolean move(int dx, int dy){
 		if((this.x == 0 && dx < 0) || (this.x == this.landlord.getGridPanel().getGrid().length - 1 && dx > 0)) {
 			dx = 0;
 		}
@@ -26,7 +26,11 @@ public class Mho extends Mob {
 		if (destination.isOccupiedBy(Player.class)) {
 			destination.getOccupant().destroy();
 		}
+		if(destination.isOccupiedBy(Mho.class)) {
+			return false;
+		}
 		super.move(dx, dy);
+		return true;
 	}
 
 	@Override
@@ -58,11 +62,23 @@ public class Mho extends Mob {
 			}
 		}
 		else {
-			if(this.x < playerX) {
-				
+			int dx = (this.x < playerX) ? 1 : -1;
+			int dy = (this.y < playerY) ? 1 : -1;
+			
+			//Is moving diagonally safe?
+			if(!(grid[this.x+dx][this.y+dy] instanceof Fence)) {
+				move(dx, dy);
 			}
-			if(Math.abs(this.x-playerX) < Math.abs(this.y-playerY)) {
-				
+			//If the y distance is greater, 
+			else if(Math.abs(this.x - playerX) < Math.abs(this.y - playerY)) {
+				if((!(grid[this.x][this.y+dy] instanceof Fence))) {
+					move(0, dy);
+				}
+			}
+			else {
+				if((!(grid[this.x+dx][this.y] instanceof Fence))) {
+					move(dx, 0);
+				}
 			}
 		}
 	}

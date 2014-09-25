@@ -15,7 +15,7 @@ public class Player extends Mob {
 	}
 	
 	@Override
-	public void move(int dx, int dy) {
+	public boolean move(int dx, int dy) {
 		if((this.x == 0 && dx < 0) || (this.x == this.landlord.getGridPanel().getGrid().length - 1 && dx > 0)) {
 			dx = 0;
 		}
@@ -26,9 +26,10 @@ public class Player extends Mob {
 		Cell destination = this.landlord.getGridPanel().getGrid()[this.x + dx][this.y + dy];
 		if (destination.isOccupiedBy(Mho.class)) {
 			this.destroy();
-			return;
+			return true;
 		}
 		super.move(dx, dy);
+		return true;
 	}
 
 	/**
