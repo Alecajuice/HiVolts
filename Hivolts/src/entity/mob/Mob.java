@@ -20,17 +20,18 @@ public abstract class Mob<T> {
 	 * @param dx - change in x coordinate
 	 * @param dy - change in y coordinate
 	 */
-	public void move(int dx, int dy) {
+	public boolean move(int dx, int dy) {
 		Cell destination = this.landlord.getGridPanel().getGrid()[this.x + dx][this.y + dy];
 		if (destination instanceof Fence) {
 			this.destroy();
-			return;
+			return true;
 		}
 		this.x = landlord.getX() + dx;
 		this.y = landlord.getY() + dy;
 		destination.occupy((Mob<? extends Mob>) this);
 		this.landlord.occupy(null);
 		this.landlord = landlord.getGridPanel().getCell(this.x, this.y);
+		return true;
 	}
 	public void destroy() {
 		this.landlord.getGridPanel().getGrid()[this.x][this.y].occupy(null);
