@@ -51,6 +51,9 @@ public class Mho extends Mob {
 				move(0, -1);
 			}
 		}
+		else {
+			
+		}
 	}
 	public void draw(int x_offset, int y_offset, int width, int height, Graphics g) {
 		g.setColor(Color.yellow);
