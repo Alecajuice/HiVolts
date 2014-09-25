@@ -41,19 +41,19 @@ public class GridPanel extends JPanel {
 	public void initCells() {
 		for(int i = 0; i < 12; i++) {
 			for(int j = 0; j < 12; j++) {
-				grid[i][j] = new Cell(i, j);
+				grid[i][j] = new Cell(i, j, this);
 			}
 		}
 	}
 	public void initBorders() {
 		for(int i = 0; i < 12; i++) {
-			grid[0][i] = new Fence(0,i);
-			grid[11][i] = new Fence(11,i);
+			grid[0][i] = new Fence(0, i, this);
+			grid[11][i] = new Fence(11, i, this);
 			
 		}
 		for(int i = 1; i <11; i++) {
-			grid[i][0] = new Fence(i,0);
-			grid[i][11] = new Fence(i,11);
+			grid[i][0] = new Fence(i, 0, this);
+			grid[i][11] = new Fence(i, 11, this);
 		}
 	}
 	public void initInsideFences() {
@@ -68,10 +68,10 @@ public class GridPanel extends JPanel {
 		}
 	}
 	public Fence initRandFence() {
-		double y = Math.random()*10+1;
-		double x =  Math.random()*10+1;
+		int y = (int) (Math.random()*10+1);
+		int x =  (int) (Math.random()*10+1);
 
-		return new Fence((int)x, (int)y);
+		return new Fence(x, y, this);
 	}
 	public void initEnemies() {
 		for(int i = 0; i < 12; i++) {
@@ -85,15 +85,15 @@ public class GridPanel extends JPanel {
 		}
 	}
 	public Mho initRandMho() {
-		double y = Math.random()*10+1;
-		double x =  Math.random()*10+1;
+		int y = (int) (Math.random()*10+1);
+		int x =  (int) (Math.random()*10+1);
 
-		return new Mho((int)x, (int)y);
+		return new Mho(x, y, grid[x][y]);
 	}
 	public void initPlayer() {
-		double y = Math.random()*10+1;
-		double x =  Math.random()*10+1;
-		Player player = new Player((int) x, (int) y);
+		int y = (int) (Math.random()*10+1);
+		int x =  (int) (Math.random()*10+1);
+		Player player = new Player(x, y, grid[x][y]);
 		if (!(grid[player.getX()][player.getY()] instanceof Fence) && !(grid[player.getX()][player.getY()].isOccupiedBy(Mho.class)))
 			grid[player.getX()][player.getY()].occupy(player);
 		else
@@ -113,11 +113,14 @@ public class GridPanel extends JPanel {
 		for (Cell[] c : grid) {
 			for (Cell cell : c) {
 				if (cell.isOccupiedBy(Player.class)) {
-					return (Player)cell.getOccupant();
+					try {
+						return (Player)cell.getOccupant();
+					} catch (Exception e) {
+						System.err.println("Player not found.");
+					}
 				}
 			}
 		}
-		System.err.println("Player not found.");
 		return null;
 	}
 

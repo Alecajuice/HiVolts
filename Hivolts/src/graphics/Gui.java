@@ -35,15 +35,15 @@ public class Gui extends JFrame implements KeyListener {
 		int c = e.getKeyCode();
 		switch (c) {
 		case KeyEvent.VK_Q:
-			grid.findPlayer().move(-1, 1);
+			grid.findPlayer().move(-1, -1);
 			grid.nextTurn();
 			break;
 		case KeyEvent.VK_W:
-			grid.findPlayer().move(0, 1);
+			grid.findPlayer().move(0, -1);
 			grid.nextTurn();
 			break;
 		case KeyEvent.VK_E:
-			grid.findPlayer().move(1, 1);
+			grid.findPlayer().move(1, -1);
 			grid.nextTurn();
 			break;
 		case KeyEvent.VK_A:
@@ -58,15 +58,15 @@ public class Gui extends JFrame implements KeyListener {
 			grid.nextTurn();
 			break;
 		case KeyEvent.VK_Z:
-			grid.findPlayer().move(-1, -1);
+			grid.findPlayer().move(-1, 1);
 			grid.nextTurn();
 			break;
 		case KeyEvent.VK_X:
-			grid.findPlayer().move(0, -1);
+			grid.findPlayer().move(0, 1);
 			grid.nextTurn();
 			break;
 		case KeyEvent.VK_C:
-			grid.findPlayer().move(1, -1);
+			grid.findPlayer().move(1, 1);
 			grid.nextTurn();
 			break;
 		case KeyEvent.VK_J:
@@ -74,6 +74,7 @@ public class Gui extends JFrame implements KeyListener {
 			grid.nextTurn();
 			break;
 		}
+		grid.repaint();
 	}
 
 	@Override

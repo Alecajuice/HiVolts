@@ -9,13 +9,19 @@ import entity.Cell;
 
 public class Mho extends Mob {
 
-	public Mho(int x, int y) {
-		super(x, y);
+	public Mho(int x, int y, Cell landlord) {
+		super(x, y, landlord);
 		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public void move(int dx, int dy) {
+		if((this.x == 0 && dx < 0) || (this.x == this.landlord.getGridPanel().getGrid().length - 1 && dx > 0)) {
+			dx = 0;
+		}
+		if((this.y == 0 && dy < 0) || (this.y == this.landlord.getGridPanel().getGrid()[0].length - 1 && dy > 0)) {
+			dy = 0;
+		}
 		Cell destination = this.landlord.getGridPanel().getGrid()[this.x + dx][this.y + dy];
 		if (destination.isOccupiedBy(Player.class)) {
 			destination.getOccupant().destroy();

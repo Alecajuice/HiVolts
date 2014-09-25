@@ -1,12 +1,14 @@
 package entity;
 
+import graphics.GridPanel;
+
 import java.awt.Color;
 import java.awt.Graphics;
 
 public class Fence extends Cell {
 
-	public Fence(int x, int y) {
-		super(x, y);
+	public Fence(int x, int y, GridPanel grid) {
+		super(x, y, grid);
 		// TODO Auto-generated constructor stub
 	}
 	public void draw(int x_offset, int y_offset, int width, int height,Graphics g) {
