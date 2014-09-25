@@ -28,10 +28,12 @@ public abstract class Mob<T> {
 		}
 		this.x = landlord.getX() + dx;
 		this.y = landlord.getY() + dy;
+		destination.occupy((Mob<? extends Mob>) this);
+		this.landlord.occupy(null);
 		this.landlord = landlord.getGridPanel().getCell(this.x, this.y);
 	}
 	public void destroy() {
-		this.landlord.occupy(null);
+		this.landlord.getGridPanel().getGrid()[this.x][this.y].occupy(null);
 	}
 	
 	public int getX() {
