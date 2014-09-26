@@ -24,7 +24,7 @@ public class Player extends Mob {
 		}
 		System.out.println(x);
 		Cell destination = this.landlord.getGridPanel().getGrid()[this.x + dx][this.y + dy];
-		if (destination.isOccupiedBy(Mho.class)) {
+		if (destination.contains(Mho.class)) {
 			this.destroy();
 			return true;
 		}

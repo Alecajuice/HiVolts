@@ -23,10 +23,10 @@ public class Mho extends Mob {
 			dy = 0;
 		}
 		Cell destination = this.landlord.getGridPanel().getGrid()[this.x + dx][this.y + dy];
-		if (destination.isOccupiedBy(Player.class)) {
+		if (destination.contains(Player.class)) {
 			destination.getOccupant().destroy();
 		}
-		if(destination.isOccupiedBy(Mho.class)) {
+		if(destination.contains(Mho.class)) {
 			return false;
 		}
 		super.move(dx, dy);
@@ -39,48 +39,56 @@ public class Mho extends Mob {
 	}
 
 	public void ai() {
+		//Finds external data
 		Cell[][] grid = this.landlord.getGridPanel().getGrid();
 		int playerX = this.landlord.getGridPanel().findPlayer().x;
 		int playerY = this.landlord.getGridPanel().findPlayer().y;
 		
-		//Directly horizontal
-		if(this.y == playerY) {
-			if(this.x < playerX) {
-				move(1, 0);
-			}
-			else {
-				move(-1, 0);
-			}
+		//Find the relative positions to travel 
+		int dx = (this.x < playerX) ? 1:-1;
+		int dy = (this.y < playerY) ? 1:-1;
+		
+		//Finds the 3 potential destination cells to check for obstacles
+		Cell horiz = grid[this.x+dx][this.y];
+		Cell verti = grid[this.x][this.y+dy];
+		//Equivalent of nested if/else, checks relative x then relative y
+		Cell diag = grid[this.x+dx][this.y+dy];
+		
+		//Forced to move directly horizontally/vertically if Player is in line of sight
+		if(this.x==playerX && !verti.contains(Mho.class)) {
+			move(0,dy);
+			return;
 		}
-		//Directly vertical
-		else if(this.x == playerX) {
-			if(this.y < playerY) {
-				move(0, 1);
-			}
-			else {
-				move(0, -1);
-			}
+		else if(this.y==playerY && !verti.contains(Mho.class)) {
+			move(dx, 0);
+			return;
 		}
+		//Try moving diagonally
+		else if(!diag.contains(Mho.class) && !diag.contains(Fence.class)) {
+			move(dx, dy);
+			return;
+		}
+		//If horizontal distance is larger, try moving that way
+		else if(Math.abs(this.x-playerX) >= Math.abs(this.y-playerY)) {
+			if(!horiz.contains(Mho.class) && !horiz.contains(Fence.class)) {
+				move(dx, 0);
+			}
+			return;
+		}
+		//Last case, try moving vertically
 		else {
-			int dx = (this.x < playerX) ? 1 : -1;
-			int dy = (this.y < playerY) ? 1 : -1;
-			
-			//Is moving diagonally safe?
-			if(!(grid[this.x+dx][this.y+dy] instanceof Fence)) {
-				move(dx, dy);
-			}
-			//If the y distance is greater, 
-			else if(Math.abs(this.x - playerX) < Math.abs(this.y - playerY)) {
-				if((!(grid[this.x][this.y+dy] instanceof Fence))) {
-					move(0, dy);
-				}
-			}
-			else {
-				if((!(grid[this.x+dx][this.y] instanceof Fence))) {
-					move(dx, 0);
-				}
+			if(!verti.contains(Mho.class) && !verti.contains(Fence.class)) {
+				move(0, dy);
+				return;
 			}
 		}
+		
+		//If you could potentially move onto an electric fence, do so
+		if(horiz.contains(Fence.class) || verti.contains(Fence.class) || diag.contains(Fence.class)) {
+			this.destroy();
+			return;
+		}
+		return;
 	}
 	public void draw(int x_offset, int y_offset, int width, int height, Graphics g) {
 		g.setColor(Color.yellow);

@@ -79,7 +79,7 @@ public class GridPanel extends JPanel {
 	public void initEnemies() {
 		for(int i = 0; i < 12; i++) {
 			Mho newEnemy = initRandMho();
-			if(!(grid[newEnemy.getX()][newEnemy.getY()] instanceof Fence) && !(grid[newEnemy.getX()][newEnemy.getY()].isOccupiedBy(Mho.class))) {
+			if(!(grid[newEnemy.getX()][newEnemy.getY()] instanceof Fence) && !(grid[newEnemy.getX()][newEnemy.getY()].contains(Mho.class))) {
 				grid[newEnemy.getX()][newEnemy.getY()].occupy(newEnemy);
 			}
 			else{
@@ -97,7 +97,7 @@ public class GridPanel extends JPanel {
 		int y = (int) (Math.random()*10+1);
 		int x =  (int) (Math.random()*10+1);
 		Player player = new Player(x, y, grid[x][y]);
-		if (!(grid[player.getX()][player.getY()] instanceof Fence) && !(grid[player.getX()][player.getY()].isOccupiedBy(Mho.class)))
+		if (!(grid[player.getX()][player.getY()] instanceof Fence) && !(grid[player.getX()][player.getY()].contains(Mho.class)))
 			grid[player.getX()][player.getY()].occupy(player);
 		else
 			initPlayer();
@@ -115,7 +115,7 @@ public class GridPanel extends JPanel {
 	public Player findPlayer() {
 		for (Cell[] c : grid) {
 			for (Cell cell : c) {
-				if (cell.isOccupiedBy(Player.class)) {
+				if (cell.contains(Player.class)) {
 					try {
 						return (Player)cell.getOccupant();
 					} catch (Exception e) {
@@ -131,7 +131,7 @@ public class GridPanel extends JPanel {
 		boolean notAllDead = false;
 		for (Cell[] c : grid) {
 			for (Cell cell : c) {
-				if (cell.isOccupiedBy(Mho.class)) {
+				if (cell.contains(Mho.class)) {
 					((Mho)cell.getOccupant()).ai();
 					notAllDead = true;
 				}
