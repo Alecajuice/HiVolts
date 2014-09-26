@@ -13,7 +13,6 @@ import javax.swing.*;
 public class GridPanel extends JPanel {
 
 	private Gui gui;
-		public Gui getGui() {return gui;}
 	private int height;
 	private int width;
 	private Cell[][] grid = new Cell[12][12];
@@ -28,8 +27,11 @@ public class GridPanel extends JPanel {
 		initAllCells();
 	}
 
+	public Gui getGui() {
+		return this.gui;
+	}
+	
 	public void initAllCells() {
-
 		initCells();
 		initBorders();
 		initInsideFences();
