@@ -41,25 +41,25 @@ public class GridPanel extends JPanel {
 		drawCells(g);
 	}
 
-	public void initCells() {
-		for(int i = 0; i < 12; i++) {
-			for(int j = 0; j < 12; j++) {
+	private void initCells() {
+		for(int i = 0; i < width; i++) {
+			for(int j = 0; j < height; j++) {
 				grid[i][j] = new Cell(i, j, this);
 			}
 		}
 	}
-	public void initBorders() {
-		for(int i = 0; i < 12; i++) {
+	private void initBorders() {
+		for(int i = 0; i < height; i++) {
 			grid[0][i] = new Fence(0, i, this);
-			grid[11][i] = new Fence(11, i, this);
+			grid[width-1][i] = new Fence(11, i, this);
 			
 		}
-		for(int i = 1; i <11; i++) {
+		for(int i = 1; i < width; i++) {
 			grid[i][0] = new Fence(i, 0, this);
-			grid[i][11] = new Fence(i, 11, this);
+			grid[i][height-1] = new Fence(i, 11, this);
 		}
 	}
-	public void initInsideFences() {
+	private void initInsideFences() {
 		for(int i = 0; i < 20; i++) {
 			Fence newFence = initRandFence();
 			if(!(grid[newFence.getX()][newFence.getY()] instanceof Fence)) {
@@ -70,13 +70,13 @@ public class GridPanel extends JPanel {
 			}
 		}
 	}
-	public Fence initRandFence() {
+	private Fence initRandFence() {
 		int y = (int) (Math.random()*10+1);
 		int x =  (int) (Math.random()*10+1);
 
 		return new Fence(x, y, this);
 	}
-	public void initEnemies() {
+	private void initEnemies() {
 		for(int i = 0; i < 12; i++) {
 			Mho newEnemy = initRandMho();
 			if(!(grid[newEnemy.getX()][newEnemy.getY()] instanceof Fence) && !(grid[newEnemy.getX()][newEnemy.getY()].contains(Mho.class))) {
@@ -87,15 +87,15 @@ public class GridPanel extends JPanel {
 			}
 		}
 	}
-	public Mho initRandMho() {
+	private Mho initRandMho() {
 		int y = (int) (Math.random()*10+1);
 		int x =  (int) (Math.random()*10+1);
 
 		return new Mho(x, y, grid[x][y]);
 	}
-	public void initPlayer() {
-		int y = (int) (Math.random()*10+1);
-		int x =  (int) (Math.random()*10+1);
+	private void initPlayer() {
+		int x =  (int) (Math.random()*(width-1));
+		int y = (int) (Math.random()*(height-1));
 		Player player = new Player(x, y, grid[x][y]);
 		if (!(grid[player.getX()][player.getY()] instanceof Fence) && !(grid[player.getX()][player.getY()].contains(Mho.class)))
 			grid[player.getX()][player.getY()].occupy(player);
@@ -128,16 +128,16 @@ public class GridPanel extends JPanel {
 	}
 
 	public void nextTurn() {
-		boolean notAllDead = false;
+		boolean allDead = true;
 		for (Cell[] c : grid) {
 			for (Cell cell : c) {
 				if (cell.contains(Mho.class)) {
-					((Mho)cell.getOccupant()).ai();
-					notAllDead = true;
+					((Mho) cell.getOccupant()).ai();
+					allDead = false;
 				}
 			}
 		}
-		if(!notAllDead) {
+		if(allDead) {
 			this.gui.win();
 		}
 	}

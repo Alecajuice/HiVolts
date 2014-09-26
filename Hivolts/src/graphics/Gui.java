@@ -13,10 +13,10 @@ public class Gui extends JFrame implements KeyListener {
 	private static final int HEIGHT = 700;
 	private GridPanel grid;
 
-	public Gui() {
+	public Gui(int x, int y) {
 		super("Hivolts");
 		setSize(WIDTH, HEIGHT);
-		grid = new GridPanel(WIDTH, HEIGHT, this);
+		grid = new GridPanel(x, y, this);
 		add(grid);
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -90,7 +90,7 @@ public class Gui extends JFrame implements KeyListener {
 		overFrame.setSize(200, 100);
 		overFrame.setVisible(true);
 		overFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		overFrame.add(new JLabel("Game over fgt"));
+		overFrame.add(new JLabel("Game over."));
 	}
 	
 	public void win() {
@@ -98,6 +98,6 @@ public class Gui extends JFrame implements KeyListener {
 		overFrame.setSize(200, 100);
 		overFrame.setVisible(true);
 		overFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		overFrame.add(new JLabel("u win fgt #420blzeit"));
+		overFrame.add(new JLabel("You won!"));
 	}
 }
