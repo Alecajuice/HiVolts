@@ -40,7 +40,7 @@ public class Cell {
 	 * @param c class to be compared
 	 * @return true if occupant class matches passed class
 	 */
-	public <T> boolean isOccupiedBy(Class<T> c) {
+	public <T> boolean contains(Class<T> c) {
 		if (c.isInstance(this.occupant)) {
 			return true;
 		}
@@ -61,10 +61,10 @@ public class Cell {
 		int xleft = x_offset + 1 + (x * (width + 1));
 		int ytop = y_offset + 1 + (y * (height + 1));
 		g.fillRect(xleft, ytop, width, height);
-		if(isOccupiedBy(Mho.class)) {
+		if(contains(Mho.class)) {
 			((Mho)occupant).draw(x_offset, y_offset, width, height, g);
 		}
-		else if(isOccupiedBy(Player.class)) {
+		else if(contains(Player.class)) {
 			((Player)occupant).draw(x_offset, y_offset, width, height, g);
 		}
 	}
