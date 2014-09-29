@@ -135,7 +135,6 @@ public class GridPanel extends JPanel {
 			for (Cell cell : c) {
 				if (cell.contains(Mho.class)) {
 					((Mho) cell.getOccupant()).ai();
-					allDead = false;
 				}
 			}
 		}
@@ -143,6 +142,7 @@ public class GridPanel extends JPanel {
 			for (Cell cell : c) {
 				if (cell.contains(Mho.class)) {
 					((Mho) cell.getOccupant()).moved = false;
+					allDead = false;
 				}
 			}
 		}

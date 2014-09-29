@@ -35,7 +35,6 @@ public class Gui extends JFrame implements KeyListener {
 	@Override
 	public void keyPressed(KeyEvent e) {
 		int c = e.getKeyCode();
-		System.out.println("keypressed");
 		//Uses switch case falling to do the same thing for different inputs
 		switch (c) {
 		case KeyEvent.VK_Q:

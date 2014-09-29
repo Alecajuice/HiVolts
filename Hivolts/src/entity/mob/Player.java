@@ -22,7 +22,6 @@ public class Player extends Mob {
 		if((this.y == 0 && dy < 0) || (this.y == this.landlord.getGridPanel().getGrid()[0].length - 1 && dy > 0)) {
 			dy = 0;
 		}
-		System.out.println(x);
 		Cell destination = this.landlord.getGridPanel().getGrid()[this.x + dx][this.y + dy];
 		if (destination.contains(Mho.class)) {
 			this.destroy();
