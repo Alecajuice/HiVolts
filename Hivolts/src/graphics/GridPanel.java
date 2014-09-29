@@ -139,6 +139,13 @@ public class GridPanel extends JPanel {
 				}
 			}
 		}
+		for (Cell[] c : grid) {
+			for (Cell cell : c) {
+				if (cell.contains(Mho.class)) {
+					((Mho) cell.getOccupant()).moved = false;
+				}
+			}
+		}
 		if(allDead) {
 			this.gui.win();
 		}

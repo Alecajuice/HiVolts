@@ -9,11 +9,10 @@ import entity.*;
 
 public class Mho extends Mob {
 
-	private int number;
+	public boolean moved;
 	
 	public Mho(int x, int y, Cell landlord, int number) {
 		super(x, y, landlord);
-		this.number = number;
 		// TODO Auto-generated constructor stub
 	}
 
@@ -27,7 +26,6 @@ public class Mho extends Mob {
 		}
 		Cell destination = this.landlord.getGridPanel().getGrid()[this.x + dx][this.y + dy];
 		if (destination.contains(Player.class)) {
-			System.out.println(number);
 			destination.getOccupant().destroy();
 		}
 		if(destination.contains(Mho.class)) {
@@ -43,66 +41,67 @@ public class Mho extends Mob {
 	}
 
 	public void ai() {
-		try {
-		//Finds external data
-		Cell[][] grid = this.landlord.getGridPanel().getGrid();
-		int playerX = this.landlord.getGridPanel().findPlayer().x;
-		int playerY = this.landlord.getGridPanel().findPlayer().y;
-		
-		//Find the relative positions to travel 
-		int dx = (this.x < playerX) ? 1:-1;
-		int dy = (this.y < playerY) ? 1:-1;
-		System.out.println(number +": " + dx + ", " + dy + "; " + x + ", " + y);
-		//Finds the 3 potential destination cells to check for obstacles
-		Cell horiz = grid[this.x+dx][this.y];
-		Cell verti = grid[this.x][this.y+dy];
-		//Equivalent of nested if/else, checks relative x then relative y
-		Cell diag = grid[this.x+dx][this.y+dy];
-		
-		//Forced to move directly horizontally/vertically if Player is in line of sight
-		if(this.x==playerX && !verti.contains(Mho.class)) {
-			move(0,dy);
-			return;
+		if (!moved) {
+			try {
+				//Finds external data
+				Cell[][] grid = this.landlord.getGridPanel().getGrid();
+				int playerX = this.landlord.getGridPanel().findPlayer().x;
+				int playerY = this.landlord.getGridPanel().findPlayer().y;
+				
+				//Mho will have moved
+				moved = true;
+				
+				//Find the relative positions to travel 
+				int dx = (this.x < playerX) ? 1:-1;
+				int dy = (this.y < playerY) ? 1:-1;
+				//Finds the 3 potential destination cells to check for obstacles
+				Cell horiz = grid[this.x+dx][this.y];
+				Cell verti = grid[this.x][this.y+dy];
+				//Equivalent of nested if/else, checks relative x then relative y
+				Cell diag = grid[this.x+dx][this.y+dy];
+				
+				//Forced to move directly horizontally/vertically if Player is in line of sight
+				if(this.x==playerX && !verti.contains(Mho.class)) {
+					move(0,dy);
+					return;
+				}
+				else if(this.y==playerY && !verti.contains(Mho.class)) {
+					move(dx, 0);
+					return;
+				}
+				//Try moving diagonally
+				else if(!diag.contains(Mho.class) && !diag.contains(Fence.class)) {
+					move(dx, dy);
+					return;
+				}
+				//If horizontal distance is larger, try moving that way
+				else if(Math.abs(this.x-playerX) >= Math.abs(this.y-playerY)) {
+					if(!horiz.contains(Mho.class) && !horiz.contains(Fence.class)) {
+						move(dx, 0);
+					}
+					return;
+				}
+				//Last case, try moving vertically
+				else {
+					if(!verti.contains(Mho.class) && !verti.contains(Fence.class)) {
+						move(0, dy);
+						return;
+					}
+				}
+				
+				//If you could potentially move onto an electric fence, do so
+				if(horiz.contains(Fence.class) || verti.contains(Fence.class) || diag.contains(Fence.class)) {
+					this.destroy();
+					return;
+				}
+			} catch (NullPointerException e) {}
 		}
-		else if(this.y==playerY && !verti.contains(Mho.class)) {
-			move(dx, 0);
-			return;
-		}
-		//Try moving diagonally
-		else if(!diag.contains(Mho.class) && !diag.contains(Fence.class)) {
-			move(dx, dy);
-			return;
-		}
-		//If horizontal distance is larger, try moving that way
-		else if(Math.abs(this.x-playerX) >= Math.abs(this.y-playerY)) {
-			if(!horiz.contains(Mho.class) && !horiz.contains(Fence.class)) {
-				move(dx, 0);
-			}
-			return;
-		}
-		//Last case, try moving vertically
-		else {
-			if(!verti.contains(Mho.class) && !verti.contains(Fence.class)) {
-				move(0, dy);
-				return;
-			}
-		}
-		
-		//If you could potentially move onto an electric fence, do so
-		if(horiz.contains(Fence.class) || verti.contains(Fence.class) || diag.contains(Fence.class)) {
-			this.destroy();
-			return;
-		}
-		} catch (NullPointerException e) {}
 		return;
-		
 	}
 	public void draw(int x_offset, int y_offset, int width, int height, Graphics g) {
 		g.setColor(Color.yellow);
 		int xleft = x_offset + (x * (width + 1));
 		int ytop = y_offset + (y * (height + 1));
 		g.fillOval(xleft, ytop, width, height);
-		g.setColor(Color.WHITE);
-		g.drawString(Integer.toString(number), (int)(x * (width + 1) + 0.5 * width), (int)(y * (height + 1) + 0.5 * height));
 	}
 }
