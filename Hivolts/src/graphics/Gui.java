@@ -35,39 +35,54 @@ public class Gui extends JFrame implements KeyListener {
 	@Override
 	public void keyPressed(KeyEvent e) {
 		int c = e.getKeyCode();
+		
+		//Uses switch case falling to do the same thing for different inputs
 		switch (c) {
 		case KeyEvent.VK_Q:
+		case KeyEvent.VK_7:
 			grid.findPlayer().move(-1, -1);
 			grid.nextTurn();
 			break;
 		case KeyEvent.VK_W:
+		case KeyEvent.VK_8:
+		case KeyEvent.VK_UP:
 			grid.findPlayer().move(0, -1);
 			grid.nextTurn();
 			break;
 		case KeyEvent.VK_E:
+		case KeyEvent.VK_9:
 			grid.findPlayer().move(1, -1);
 			grid.nextTurn();
 			break;
 		case KeyEvent.VK_A:
+		case KeyEvent.VK_4:
+		case KeyEvent.VK_LEFT:
 			grid.findPlayer().move(-1, 0);
 			grid.nextTurn();
 			break;
 		case KeyEvent.VK_S:
+		case KeyEvent.VK_5:
 			grid.nextTurn();
 			break;
 		case KeyEvent.VK_D:
+		case KeyEvent.VK_6:
+		case KeyEvent.VK_RIGHT:
 			grid.findPlayer().move(1, 0);
 			grid.nextTurn();
 			break;
 		case KeyEvent.VK_Z:
+		case KeyEvent.VK_1:
 			grid.findPlayer().move(-1, 1);
 			grid.nextTurn();
 			break;
 		case KeyEvent.VK_X:
+		case KeyEvent.VK_2:
+		case KeyEvent.VK_DOWN:
 			grid.findPlayer().move(0, 1);
 			grid.nextTurn();
 			break;
 		case KeyEvent.VK_C:
+		case KeyEvent.VK_3:
 			grid.findPlayer().move(1, 1);
 			grid.nextTurn();
 			break;

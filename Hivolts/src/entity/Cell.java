@@ -56,7 +56,6 @@ public class Cell {
 	}
 	
 	public void draw(int x_offset, int y_offset, int width, int height, Graphics g) {
-		
 		g.setColor(Color.black);
 		int xleft = x_offset + 1 + (x * (width + 1));
 		int ytop = y_offset + 1 + (y * (height + 1));
