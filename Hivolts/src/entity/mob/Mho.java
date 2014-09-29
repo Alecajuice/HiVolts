@@ -26,7 +26,7 @@ public class Mho extends Mob {
 		}
 		Cell destination = this.landlord.getGridPanel().getGrid()[this.x + dx][this.y + dy];
 		if (destination.contains(Player.class)) {
-			destination.getOccupant().destroy();
+			destination.getOccupant().destroy(dx, dy);
 		}
 		if(destination.contains(Mho.class)) {
 			return false;
@@ -36,8 +36,8 @@ public class Mho extends Mob {
 	}
 
 	@Override
-	public void destroy() {
-		super.destroy();
+	public void destroy(int dx, int dy) {
+		super.destroy(dx, dy);
 	}
 
 	public void ai() {
@@ -91,7 +91,7 @@ public class Mho extends Mob {
 				
 				//If you could potentially move onto an electric fence, do so
 				if(horiz.contains(Fence.class) || verti.contains(Fence.class) || diag.contains(Fence.class)) {
-					this.destroy();
+					this.destroy(dx, dy);
 					return;
 				}
 			} catch (NullPointerException e) {}

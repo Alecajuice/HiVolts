@@ -24,7 +24,7 @@ public class Player extends Mob {
 		}
 		Cell destination = this.landlord.getGridPanel().getGrid()[this.x + dx][this.y + dy];
 		if (destination.contains(Mho.class)) {
-			this.destroy();
+			this.destroy(dx, dy);
 			return true;
 		}
 		super.move(dx, dy);
@@ -35,8 +35,11 @@ public class Player extends Mob {
 	 * Deletes this entity
 	 */
 	@Override
-	public void destroy() {
+	public void destroy(int dx, int dy) {
+		this.x = landlord.getX() + dx;
+		this.y = landlord.getY() + dy;
 		this.landlord.getGridPanel().getGui().gameOver();
+		super.destroy(dx, dy);
 	}
 	
 	/**

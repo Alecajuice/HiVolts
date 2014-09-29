@@ -23,7 +23,7 @@ public abstract class Mob<T> {
 	public boolean move(int dx, int dy) {
 		Cell destination = this.landlord.getGridPanel().getGrid()[this.x + dx][this.y + dy];
 		if (destination instanceof Fence) {
-			this.destroy();
+			this.destroy(dx, dy);
 			return true;
 		}
 		this.x = landlord.getX() + dx;
@@ -33,7 +33,7 @@ public abstract class Mob<T> {
 		this.landlord = landlord.getGridPanel().getCell(this.x, this.y);
 		return true;
 	}
-	public void destroy() {
+	public void destroy(int dx, int dy) {
 		this.landlord.getGridPanel().getGrid()[this.x][this.y].occupy(null);
 	}
 	
