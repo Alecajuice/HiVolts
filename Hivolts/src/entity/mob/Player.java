@@ -45,7 +45,15 @@ public class Player extends Mob {
 	 * Jump to a random position
 	 */
 	public void jump() {
-		GridPanel panel = this.landlord.getGridPanel();
+		Cell[][] panel = this.landlord.getGridPanel().getGrid();
+		int y = (int) (Math.random()*10+1);
+		int x =  (int) (Math.random()*10+1);
+		if(panel[x][y].getOccupant() instanceof Player || panel[x][y] instanceof Fence) {
+			jump();
+		}
+		else {
+			move(x-getX(), y-getY()); 
+		}
 	}
 	public void draw(int x_offset, int y_offset, int width, int height, Graphics g) {
 		g.setColor(Color.white);
