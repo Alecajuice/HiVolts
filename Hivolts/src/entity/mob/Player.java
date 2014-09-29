@@ -8,7 +8,6 @@ import entity.Fence;
 import graphics.GridPanel;
 
 public class Player extends Mob {
-
 	public Player(int x, int y, Cell landlord) {
 		super(x, y, landlord);
 		// TODO Auto-generated constructor stub
@@ -50,7 +49,7 @@ public class Player extends Mob {
 			jump();
 		}
 		else {
-			move(x-getX(), y-getY()); 
+			move(x-getX(), y-getY());
 		}
 	}
 	public void draw(int x_offset, int y_offset, int width, int height, Graphics g) {
