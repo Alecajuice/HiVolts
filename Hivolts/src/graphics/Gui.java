@@ -99,7 +99,6 @@ public class Gui extends JFrame implements KeyListener {
 		case KeyEvent.VK_0:
 		case KeyEvent.VK_NUMPAD0:
 			grid.findPlayer().jump();
-			grid.nextTurn();
 			break;
 		}
 		grid.repaint();
