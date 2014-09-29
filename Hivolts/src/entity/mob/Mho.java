@@ -9,8 +9,11 @@ import entity.*;
 
 public class Mho extends Mob {
 
-	public Mho(int x, int y, Cell landlord) {
+	private int number;
+	
+	public Mho(int x, int y, Cell landlord, int number) {
 		super(x, y, landlord);
+		this.number = number;
 		// TODO Auto-generated constructor stub
 	}
 
@@ -24,6 +27,7 @@ public class Mho extends Mob {
 		}
 		Cell destination = this.landlord.getGridPanel().getGrid()[this.x + dx][this.y + dy];
 		if (destination.contains(Player.class)) {
+			System.out.println(number);
 			destination.getOccupant().destroy();
 		}
 		if(destination.contains(Mho.class)) {
@@ -39,6 +43,7 @@ public class Mho extends Mob {
 	}
 
 	public void ai() {
+		try {
 		//Finds external data
 		Cell[][] grid = this.landlord.getGridPanel().getGrid();
 		int playerX = this.landlord.getGridPanel().findPlayer().x;
@@ -47,7 +52,7 @@ public class Mho extends Mob {
 		//Find the relative positions to travel 
 		int dx = (this.x < playerX) ? 1:-1;
 		int dy = (this.y < playerY) ? 1:-1;
-		
+		System.out.println(number +": " + dx + ", " + dy + "; " + x + ", " + y);
 		//Finds the 3 potential destination cells to check for obstacles
 		Cell horiz = grid[this.x+dx][this.y];
 		Cell verti = grid[this.x][this.y+dy];
@@ -88,12 +93,16 @@ public class Mho extends Mob {
 			this.destroy();
 			return;
 		}
+		} catch (NullPointerException e) {}
 		return;
+		
 	}
 	public void draw(int x_offset, int y_offset, int width, int height, Graphics g) {
 		g.setColor(Color.yellow);
 		int xleft = x_offset + (x * (width + 1));
 		int ytop = y_offset + (y * (height + 1));
 		g.fillOval(xleft, ytop, width, height);
+		g.setColor(Color.WHITE);
+		g.drawString(Integer.toString(number), (int)(x * (width + 1) + 0.5 * width), (int)(y * (height + 1) + 0.5 * height));
 	}
 }

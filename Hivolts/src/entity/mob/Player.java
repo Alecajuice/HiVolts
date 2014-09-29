@@ -38,7 +38,6 @@ public class Player extends Mob {
 	@Override
 	public void destroy() {
 		this.landlord.getGridPanel().getGui().gameOver();
-		
 	}
 	
 	/**
