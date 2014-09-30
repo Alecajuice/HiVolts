@@ -47,8 +47,8 @@ public class Player extends Mob {
 	public void jump() {
 		Cell[][] grid = this.landlord.getGridPanel().getGrid();
 		//-2 because of fences on the sides
-		int width = this.landlord.getGridPanel().getWidth() - 2;
-		int height = this.landlord.getGridPanel().getHeight() - 2;
+		int width = this.landlord.getGridPanel().getW();
+		int height = this.landlord.getGridPanel().getH();
 		
 		//+1 because of the fence on the side
 		int x =  (int) (Math.random()*width+1);
