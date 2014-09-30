@@ -28,7 +28,9 @@ public class GridPanel extends JPanel {
 		this.width = width;
 		this.gui = gui;
 		
-		this.setSize(width, height);
+		this.h = height-2;
+		this.w = width-2;
+		this.setSize(super.WIDTH, super.HEIGHT);
 		initAllCells();
 	}
 
@@ -52,14 +54,21 @@ public class GridPanel extends JPanel {
 			g.drawString("GAME OVER", 25 + (this.width*50 - g.getFontMetrics().stringWidth("GAME OVER"))/2, 25 + (int) ((this.height*50 - g.getFontMetrics().getStringBounds("GAME OVER", g).getHeight())/2));
 		}
 	}
+	/**
+	 * 
+	 * @return Returns height of game board excluding fence border
+	 */
+	public int getH() {
+		return this.h;
+	}
 	
-//	public int getHeight() {
-//		return this.height;
-//	}
-//	
-//	public int getWidth() {
-//		return this.width;
-//	}
+	/**
+	 * 
+	 * @return Returns widht of game board excluding fence border
+	 */
+	public int getW() {
+		return this.w;
+	}
 	
 	private void initCells() {
 		for(int i = 0; i < width; i++) {
