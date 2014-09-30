@@ -134,7 +134,7 @@ public class Gui extends JFrame implements KeyListener {
 	
 	private void drawButton() {
 		restart = new RestartButton();
-		restart.setBounds(300, 650, 100, 36);
+		restart.setBounds(WIDTH/2, HEIGHT-50, 100, 36);
 		add(restart);
 		restart.setVisible(true);
 		restart.repaint();
