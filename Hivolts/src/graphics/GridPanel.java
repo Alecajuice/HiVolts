@@ -49,7 +49,7 @@ public class GridPanel extends JPanel {
 		if(rekt) {
 			g.setFont(g.getFont().deriveFont(100f).deriveFont(Font.BOLD));
 			g.setColor(Color.RED);
-			g.drawString("GAME OVER", (this.getWidth() - g.getFontMetrics().stringWidth("GAME OVER"))/2, (int) ((this.getHeight() - g.getFontMetrics().getStringBounds("GAME OVER", g).getHeight())/2));
+			g.drawString("GAME OVER", 25 + (this.width*50 - g.getFontMetrics().stringWidth("GAME OVER"))/2, 25 + (int) ((this.height*50 - g.getFontMetrics().getStringBounds("GAME OVER", g).getHeight())/2));
 		}
 	}
 	
