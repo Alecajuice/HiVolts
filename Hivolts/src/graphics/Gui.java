@@ -16,6 +16,8 @@ public class Gui extends JFrame implements KeyListener {
 	private static final int HEIGHT = 750;
 	private GridPanel grid;
 	private RestartButton restart;
+	private boolean rekt = false;
+		public boolean getRekt() {return rekt;}
 
 	public Gui(int x, int y) {
 		super("Hivolts");
@@ -39,74 +41,76 @@ public class Gui extends JFrame implements KeyListener {
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		int c = e.getKeyCode();
-		//Uses switch case falling to do the same thing for different inputs
-		switch (c) {
-		case KeyEvent.VK_Q:
-		case KeyEvent.VK_7:
-		case KeyEvent.VK_NUMPAD7:
-			grid.findPlayer().move(-1, -1);
-			grid.nextTurn();
-			break;
-		case KeyEvent.VK_W:
-		case KeyEvent.VK_8:
-		case KeyEvent.VK_NUMPAD8:
-		case KeyEvent.VK_UP:
-			grid.findPlayer().move(0, -1);
-			grid.nextTurn();
-			break;
-		case KeyEvent.VK_E:
-		case KeyEvent.VK_9:
-		case KeyEvent.VK_NUMPAD9:
-			grid.findPlayer().move(1, -1);
-			grid.nextTurn();
-			break;
-		case KeyEvent.VK_A:
-		case KeyEvent.VK_4:
-		case KeyEvent.VK_NUMPAD4:
-		case KeyEvent.VK_LEFT:
-			grid.findPlayer().move(-1, 0);
-			grid.nextTurn();
-			break;
-		case KeyEvent.VK_S:
-		case KeyEvent.VK_5:
-		case KeyEvent.VK_NUMPAD5:
-			grid.nextTurn();
-			break;
-		case KeyEvent.VK_D:
-		case KeyEvent.VK_6:
-		case KeyEvent.VK_NUMPAD6:
-		case KeyEvent.VK_RIGHT:
-			grid.findPlayer().move(1, 0);
-			grid.nextTurn();
-			break;
-		case KeyEvent.VK_Z:
-		case KeyEvent.VK_1:
-		case KeyEvent.VK_NUMPAD1:
-			grid.findPlayer().move(-1, 1);
-			grid.nextTurn();
-			break;
-		case KeyEvent.VK_X:
-		case KeyEvent.VK_2:
-		case KeyEvent.VK_NUMPAD2:
-		case KeyEvent.VK_DOWN:
-			grid.findPlayer().move(0, 1);
-			grid.nextTurn();
-			break;
-		case KeyEvent.VK_C:
-		case KeyEvent.VK_3:
-		case KeyEvent.VK_NUMPAD3:
-			grid.findPlayer().move(1, 1);
-			grid.nextTurn();
-			break;
-		case KeyEvent.VK_J:
-		case KeyEvent.VK_0:
-		case KeyEvent.VK_NUMPAD0:
-		case KeyEvent.VK_SPACE:
-			grid.findPlayer().jump();
-			break;
+		if (!rekt) {
+			int c = e.getKeyCode();
+			//Uses switch case falling to do the same thing for different inputs
+			switch (c) {
+			case KeyEvent.VK_Q:
+			case KeyEvent.VK_7:
+			case KeyEvent.VK_NUMPAD7:
+				grid.findPlayer().move(-1, -1);
+				grid.nextTurn();
+				break;
+			case KeyEvent.VK_W:
+			case KeyEvent.VK_8:
+			case KeyEvent.VK_NUMPAD8:
+			case KeyEvent.VK_UP:
+				grid.findPlayer().move(0, -1);
+				grid.nextTurn();
+				break;
+			case KeyEvent.VK_E:
+			case KeyEvent.VK_9:
+			case KeyEvent.VK_NUMPAD9:
+				grid.findPlayer().move(1, -1);
+				grid.nextTurn();
+				break;
+			case KeyEvent.VK_A:
+			case KeyEvent.VK_4:
+			case KeyEvent.VK_NUMPAD4:
+			case KeyEvent.VK_LEFT:
+				grid.findPlayer().move(-1, 0);
+				grid.nextTurn();
+				break;
+			case KeyEvent.VK_S:
+			case KeyEvent.VK_5:
+			case KeyEvent.VK_NUMPAD5:
+				grid.nextTurn();
+				break;
+			case KeyEvent.VK_D:
+			case KeyEvent.VK_6:
+			case KeyEvent.VK_NUMPAD6:
+			case KeyEvent.VK_RIGHT:
+				grid.findPlayer().move(1, 0);
+				grid.nextTurn();
+				break;
+			case KeyEvent.VK_Z:
+			case KeyEvent.VK_1:
+			case KeyEvent.VK_NUMPAD1:
+				grid.findPlayer().move(-1, 1);
+				grid.nextTurn();
+				break;
+			case KeyEvent.VK_X:
+			case KeyEvent.VK_2:
+			case KeyEvent.VK_NUMPAD2:
+			case KeyEvent.VK_DOWN:
+				grid.findPlayer().move(0, 1);
+				grid.nextTurn();
+				break;
+			case KeyEvent.VK_C:
+			case KeyEvent.VK_3:
+			case KeyEvent.VK_NUMPAD3:
+				grid.findPlayer().move(1, 1);
+				grid.nextTurn();
+				break;
+			case KeyEvent.VK_J:
+			case KeyEvent.VK_0:
+			case KeyEvent.VK_NUMPAD0:
+			case KeyEvent.VK_SPACE:
+				grid.findPlayer().jump();
+				break;
+			}
+			grid.repaint();
 		}
-		grid.repaint();
 	}
 
 	@Override
@@ -116,7 +120,8 @@ public class Gui extends JFrame implements KeyListener {
 	}
 
 	public void gameOver() {
-		grid.getRekt();
+		this.rekt = true;
+		grid.repaint();
 //		JFrame overFrame = new JFrame();
 //		overFrame.setSize(200, 100);
 //		overFrame.setVisible(true);
@@ -150,6 +155,7 @@ public class Gui extends JFrame implements KeyListener {
 
 		public void actionPerformed(ActionEvent arg0) {
 			grid.initAllCells();
+			rekt = false;
 		}
 	}
 }

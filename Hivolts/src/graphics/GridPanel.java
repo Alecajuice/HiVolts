@@ -21,7 +21,6 @@ public class GridPanel extends JPanel {
 	private int w;
 	private Cell[][] grid = new Cell[12][12];
 		public Cell[][] getGrid() {return grid;}
-	private boolean rekt = false;
 
 	public GridPanel(int width, int height, Gui gui) {
 		this.height = height;
@@ -48,7 +47,7 @@ public class GridPanel extends JPanel {
 	
 	public void paintComponent(Graphics g) {
 		drawCells(g);
-		if(rekt) {
+		if(gui.getRekt()) {
 			g.setFont(g.getFont().deriveFont(100f).deriveFont(Font.BOLD));
 			g.setColor(Color.RED);
 			g.drawString("GAME OVER", 25 + (this.width*50 - g.getFontMetrics().stringWidth("GAME OVER"))/2, 25 + (int) ((this.height*50 - g.getFontMetrics().getStringBounds("GAME OVER", g).getHeight())/2));
@@ -180,10 +179,5 @@ public class GridPanel extends JPanel {
 	
 	public Cell getCell(int x, int y) {
 		return grid[x][y];
-	}
-	
-	public void getRekt() {
-		rekt = true;
-		this.repaint();
 	}
 }
