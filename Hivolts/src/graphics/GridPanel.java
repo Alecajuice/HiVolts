@@ -15,6 +15,10 @@ public class GridPanel extends JPanel {
 	private Gui gui;
 	private int height;
 	private int width;
+	
+	//height and width -2, compensates for fence boundaries
+	private int h;
+	private int w;
 	private Cell[][] grid = new Cell[12][12];
 		public Cell[][] getGrid() {return grid;}
 	private boolean rekt = false;
@@ -92,8 +96,8 @@ public class GridPanel extends JPanel {
 		}
 	}
 	private Fence initRandFence() {
-		int y = (int) (Math.random()*10+1);
-		int x =  (int) (Math.random()*10+1);
+		int x =  (int) (Math.random()*w+1);
+		int y = (int) (Math.random()*h+1);
 
 		return new Fence(x, y, this);
 	}
@@ -109,8 +113,8 @@ public class GridPanel extends JPanel {
 		}
 	}
 	private Mho initRandMho(int i) {
-		int y = (int) (Math.random()*10+1);
-		int x =  (int) (Math.random()*10+1);
+		int x =  (int) (Math.random()*w+1);
+		int y = (int) (Math.random()*h+1);
 
 		return new Mho(x, y, grid[x][y], i);
 	}

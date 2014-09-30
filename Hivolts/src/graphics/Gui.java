@@ -102,6 +102,7 @@ public class Gui extends JFrame implements KeyListener {
 		case KeyEvent.VK_J:
 		case KeyEvent.VK_0:
 		case KeyEvent.VK_NUMPAD0:
+		case KeyEvent.VK_SPACE:
 			grid.findPlayer().jump();
 			break;
 		}
@@ -133,7 +134,7 @@ public class Gui extends JFrame implements KeyListener {
 		drawButton();
 	}
 	
-	public void drawButton() {
+	private void drawButton() {
 		restart = new RestartButton();
 		restart.setBounds(300, 650, 100, 36);
 		add(restart);
@@ -148,7 +149,7 @@ public class Gui extends JFrame implements KeyListener {
 		}
 
 		public void actionPerformed(ActionEvent arg0) {
-			Gui gui = new Gui(12, 12);
+			grid.initAllCells();
 		}
 	}
 }
