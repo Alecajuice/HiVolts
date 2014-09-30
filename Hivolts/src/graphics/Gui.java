@@ -133,7 +133,7 @@ public class Gui extends JFrame implements KeyListener {
 		drawButton();
 	}
 	
-	public void drawButton() {
+	private void drawButton() {
 		restart = new RestartButton();
 		restart.setBounds(300, 650, 100, 36);
 		add(restart);
@@ -148,7 +148,7 @@ public class Gui extends JFrame implements KeyListener {
 		}
 
 		public void actionPerformed(ActionEvent arg0) {
-			Gui gui = new Gui(12, 12);
+			grid.initAllCells();
 		}
 	}
 }
