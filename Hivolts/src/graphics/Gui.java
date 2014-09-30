@@ -1,8 +1,11 @@
 package graphics;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
@@ -10,8 +13,9 @@ import javax.swing.JLabel;
 
 public class Gui extends JFrame implements KeyListener {
 	private static final int WIDTH = 700;
-	private static final int HEIGHT = 700;
+	private static final int HEIGHT = 750;
 	private GridPanel grid;
+	private RestartButton restart;
 
 	public Gui(int x, int y) {
 		super("Hivolts");
@@ -20,6 +24,7 @@ public class Gui extends JFrame implements KeyListener {
 		add(grid);
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
 		this.addKeyListener(this);
 	}
 
@@ -115,6 +120,7 @@ public class Gui extends JFrame implements KeyListener {
 		overFrame.setVisible(true);
 		overFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		overFrame.add(new JLabel("Game over."));
+		drawButton();
 	}
 	
 	public void win() {
@@ -123,5 +129,25 @@ public class Gui extends JFrame implements KeyListener {
 		overFrame.setVisible(true);
 		overFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		overFrame.add(new JLabel("You won!"));
+		drawButton();
+	}
+	
+	public void drawButton() {
+		restart = new RestartButton();
+		restart.setBounds(300, 650, 100, 36);
+		add(restart);
+		restart.setVisible(true);
+		restart.repaint();
+	}
+	
+	private class RestartButton extends JButton implements ActionListener {
+		RestartButton() {
+			super("Restart");
+			addActionListener(this);
+		}
+
+		public void actionPerformed(ActionEvent arg0) {
+			Gui gui = new Gui(12, 12);
+		}
 	}
 }
