@@ -39,7 +39,6 @@ public class GridPanel extends JPanel {
 	}
 	
 	public void initAllCells() {
-		grid = new Cell[12][12];
 		initCells();
 		initBorders();
 		initInsideFences();
