@@ -46,16 +46,11 @@ public class GridPanel extends JPanel {
 	
 	public void paintComponent(Graphics g) {
 		drawCells(g);
-//		if(rekt) {
-//			g.setFont(g.getFont().deriveFont(30).deriveFont(Font.BOLD));
-//			g.setColor(Color.RED);
-//			g.drawString("GAME OVER", (this.width - g.getFontMetrics().stringWidth("GAME OVER"))/2, (int) ((this.height - g.getFontMetrics().getStringBounds("GAME OVER", g).getHeight())/2));
-//		}
-		g.setFont(g.getFont().deriveFont(100f).deriveFont(Font.BOLD));
-		g.setColor(Color.RED);
-		g.drawString("GAME OVER", (this.getWidth() - g.getFontMetrics().stringWidth("GAME OVER"))/2, (int) ((this.getHeight() - g.getFontMetrics().getStringBounds("GAME OVER", g).getHeight())/2));
-		System.out.println(g.getFontMetrics().getStringBounds("GAME OVER", g) + ", " + this.getWidth() + ", " + this.getHeight());
-		System.out.println((this.getWidth() - g.getFontMetrics().stringWidth("GAME OVER"))/2 + ", " + (int) ((this.getHeight() - g.getFontMetrics().getStringBounds("GAME OVER", g).getHeight())/2));
+		if(rekt) {
+			g.setFont(g.getFont().deriveFont(100f).deriveFont(Font.BOLD));
+			g.setColor(Color.RED);
+			g.drawString("GAME OVER", (this.getWidth() - g.getFontMetrics().stringWidth("GAME OVER"))/2, (int) ((this.getHeight() - g.getFontMetrics().getStringBounds("GAME OVER", g).getHeight())/2));
+		}
 	}
 	
 //	public int getHeight() {
