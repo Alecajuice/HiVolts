@@ -39,6 +39,7 @@ public class GridPanel extends JPanel {
 	}
 	
 	public void initAllCells() {
+		grid = new Cell[12][12];
 		initCells();
 		initBorders();
 		initInsideFences();
@@ -52,6 +53,11 @@ public class GridPanel extends JPanel {
 			g.setFont(g.getFont().deriveFont(100f).deriveFont(Font.BOLD));
 			g.setColor(Color.RED);
 			g.drawString("GAME OVER", 25 + (this.width*50 - g.getFontMetrics().stringWidth("GAME OVER"))/2, 25 + (int) ((this.height*50 - g.getFontMetrics().getStringBounds("GAME OVER", g).getHeight())/2));
+		}
+		if(gui.getSweg()) {
+			g.setFont(g.getFont().deriveFont(100f).deriveFont(Font.BOLD));
+			g.setColor(Color.GREEN);
+			g.drawString("YOU WIN", 25 + (this.width*50 - g.getFontMetrics().stringWidth("YOU WIN"))/2, 25 + (int) ((this.height*50 - g.getFontMetrics().getStringBounds("YOU WIN", g).getHeight())/2));
 		}
 	}
 	/**

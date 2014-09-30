@@ -16,6 +16,8 @@ public class Gui extends JFrame implements KeyListener {
 	private RestartButton restart;
 	private boolean rekt = false;
 		public boolean getRekt() {return rekt;}
+	private boolean sweg = false;
+		public boolean getSweg() {return sweg;}
 
 	public Gui(int x, int y) {
 		super("Hivolts");
@@ -121,20 +123,12 @@ public class Gui extends JFrame implements KeyListener {
 	public void gameOver() {
 		this.rekt = true;
 		grid.repaint();
-//		JFrame overFrame = new JFrame();
-//		overFrame.setSize(200, 100);
-//		overFrame.setVisible(true);
-//		overFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//		overFrame.add(new JLabel("Game over."));
 		drawButton();
 	}
 	
 	public void win() {
-		JFrame overFrame = new JFrame();
-		overFrame.setSize(200, 100);
-		overFrame.setVisible(true);
-		overFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		overFrame.add(new JLabel("You won!"));
+		this.sweg = true;
+		grid.repaint();
 		drawButton();
 	}
 	
@@ -155,6 +149,7 @@ public class Gui extends JFrame implements KeyListener {
 		public void actionPerformed(ActionEvent arg0) {
 			grid.initAllCells();
 			rekt = false;
+			sweg = false;
 		}
 	}
 }
