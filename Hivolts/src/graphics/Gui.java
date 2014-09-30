@@ -115,11 +115,12 @@ public class Gui extends JFrame implements KeyListener {
 	}
 
 	public void gameOver() {
-		JFrame overFrame = new JFrame();
-		overFrame.setSize(200, 100);
-		overFrame.setVisible(true);
-		overFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		overFrame.add(new JLabel("Game over."));
+		grid.getRekt();
+//		JFrame overFrame = new JFrame();
+//		overFrame.setSize(200, 100);
+//		overFrame.setVisible(true);
+//		overFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		overFrame.add(new JLabel("Game over."));
 		drawButton();
 	}
 	

@@ -17,6 +17,7 @@ public class GridPanel extends JPanel {
 	private int width;
 	private Cell[][] grid = new Cell[12][12];
 		public Cell[][] getGrid() {return grid;}
+	private boolean rekt = false;
 
 	public GridPanel(int width, int height, Gui gui) {
 		this.height = height;
@@ -41,8 +42,26 @@ public class GridPanel extends JPanel {
 	
 	public void paintComponent(Graphics g) {
 		drawCells(g);
+//		if(rekt) {
+//			g.setFont(g.getFont().deriveFont(30).deriveFont(Font.BOLD));
+//			g.setColor(Color.RED);
+//			g.drawString("GAME OVER", (this.width - g.getFontMetrics().stringWidth("GAME OVER"))/2, (int) ((this.height - g.getFontMetrics().getStringBounds("GAME OVER", g).getHeight())/2));
+//		}
+		g.setFont(g.getFont().deriveFont(100f).deriveFont(Font.BOLD));
+		g.setColor(Color.RED);
+		g.drawString("GAME OVER", (this.getWidth() - g.getFontMetrics().stringWidth("GAME OVER"))/2, (int) ((this.getHeight() - g.getFontMetrics().getStringBounds("GAME OVER", g).getHeight())/2));
+		System.out.println(g.getFontMetrics().getStringBounds("GAME OVER", g) + ", " + this.getWidth() + ", " + this.getHeight());
+		System.out.println((this.getWidth() - g.getFontMetrics().stringWidth("GAME OVER"))/2 + ", " + (int) ((this.getHeight() - g.getFontMetrics().getStringBounds("GAME OVER", g).getHeight())/2));
 	}
-
+	
+//	public int getHeight() {
+//		return this.height;
+//	}
+//	
+//	public int getWidth() {
+//		return this.width;
+//	}
+	
 	private void initCells() {
 		for(int i = 0; i < width; i++) {
 			for(int j = 0; j < height; j++) {
@@ -153,5 +172,10 @@ public class GridPanel extends JPanel {
 	
 	public Cell getCell(int x, int y) {
 		return grid[x][y];
+	}
+	
+	public void getRekt() {
+		rekt = true;
+		this.repaint();
 	}
 }
