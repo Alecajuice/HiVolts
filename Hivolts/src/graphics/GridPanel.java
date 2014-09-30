@@ -13,13 +13,13 @@ import javax.swing.*;
 public class GridPanel extends JPanel {
 
 	private Gui gui;
-	private int height;
 	private int width;
+	private int height;
 	
 	//height and width -2, compensates for fence boundaries
-	private int h;
 	private int w;
-	private Cell[][] grid = new Cell[12][12];
+	private int h;
+	private Cell[][] grid;
 		public Cell[][] getGrid() {return grid;}
 
 	public GridPanel(int width, int height, Gui gui) {
@@ -29,7 +29,8 @@ public class GridPanel extends JPanel {
 		
 		this.h = height-2;
 		this.w = width-2;
-		this.setSize(super.WIDTH, super.HEIGHT);
+		
+		grid = new Cell[width][height];
 		initAllCells();
 	}
 
@@ -63,7 +64,7 @@ public class GridPanel extends JPanel {
 	
 	/**
 	 * 
-	 * @return Returns widht of game board excluding fence border
+	 * @return Returns width of game board excluding fence border
 	 */
 	public int getW() {
 		return this.w;
@@ -79,12 +80,12 @@ public class GridPanel extends JPanel {
 	private void initBorders() {
 		for(int i = 0; i < height; i++) {
 			grid[0][i] = new Fence(0, i, this);
-			grid[width-1][i] = new Fence(11, i, this);
-			
+			grid[width-1][i] = new Fence(width-1, i, this);
 		}
+		//Offset by 1 because corner
 		for(int i = 1; i < width; i++) {
 			grid[i][0] = new Fence(i, 0, this);
-			grid[i][height-1] = new Fence(i, 11, this);
+			grid[i][height-1] = new Fence(i, height-1, this);
 		}
 	}
 	private void initInsideFences() {
@@ -132,8 +133,8 @@ public class GridPanel extends JPanel {
 	}
 	
 	public void drawCells(Graphics g) {
-		for (int row = 0; row < 12; row++) {
-			for (int col = 0; col < 12; col++) {
+		for (int row = 0; row < width; row++) {
+			for (int col = 0; col < height; col++) {
 					grid[row][col].draw(25, 25, 50, 50, g);
 				
 			}

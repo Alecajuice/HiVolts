@@ -1,9 +1,7 @@
 package graphics;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+import java.awt.*;
+import java.awt.event.*;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -21,10 +19,11 @@ public class Gui extends JFrame implements KeyListener {
 
 	public Gui(int x, int y) {
 		super("Hivolts");
-		setSize(WIDTH, HEIGHT);
+		setPreferredSize(new Dimension(WIDTH, HEIGHT));
 		grid = new GridPanel(x, y, this);
 		add(grid);
 		setVisible(true);
+		pack();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		this.addKeyListener(this);
