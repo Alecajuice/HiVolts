@@ -5,13 +5,14 @@ import java.awt.event.*;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 
 //Main Gui class
 
 public class Gui extends JFrame implements KeyListener {
 	private static final int WIDTH = 700;
 	private static final int HEIGHT = 750;
+	private static int rows = 12;
+	private static int cols = 12;
 	private GridPanel grid;
 	private RestartButton restart;
 	private boolean rekt = false;
@@ -21,8 +22,11 @@ public class Gui extends JFrame implements KeyListener {
 
 	public Gui(int x, int y) {
 		super("Hivolts");
+		
+		rows = x;
+		cols = y;
 		setPreferredSize(new Dimension(WIDTH, HEIGHT));
-		grid = new GridPanel(x, y, this);
+		grid = new GridPanel(rows, cols, this);
 		add(grid);
 		setVisible(true);
 		pack();
@@ -134,10 +138,15 @@ public class Gui extends JFrame implements KeyListener {
 	
 	private void drawButton() {
 		restart = new RestartButton();
-		restart.setBounds(WIDTH/2, HEIGHT-50, 100, 36);
+		restart.setBounds(0, 0, 100, 36);
 		add(restart);
 		restart.setVisible(true);
 		restart.repaint();
+	}
+	
+	public void restart() {
+		this.dispose();
+		new Gui(rows, cols);
 	}
 	
 	private class RestartButton extends JButton implements ActionListener {
@@ -147,9 +156,7 @@ public class Gui extends JFrame implements KeyListener {
 		}
 
 		public void actionPerformed(ActionEvent arg0) {
-			grid.initAllCells();
-			rekt = false;
-			sweg = false;
+			restart();
 		}
 	}
 }
