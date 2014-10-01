@@ -26,11 +26,12 @@ public class GridPanel extends JPanel {
 	private Cell[][] grid;
 		public Cell[][] getGrid() {return grid;}
 
-	public GridPanel(int width, int height, Gui gui) {
+	public GridPanel(boolean twoPlayer, int width, int height, Gui gui) {
 		this.height = height;
 		this.width = width;
 		this.gui = gui;
 		
+		this.p2 = twoPlayer;
 		this.h = height-2;
 		this.w = width-2;
 		
@@ -47,7 +48,10 @@ public class GridPanel extends JPanel {
 		initBorders();
 		initInsideFences();
 		initEnemies();
-		initPlayer();
+		initPlayer(1);
+		if(p2) {
+			initPlayer(2);
+		}
 	}
 	
 	public void paintComponent(Graphics g) {
@@ -131,14 +135,14 @@ public class GridPanel extends JPanel {
 
 		return new Mho(x, y, grid[x][y], i);
 	}
-	private void initPlayer() {
+	private void initPlayer(int playerNum) {
 		int x =  (int) (Math.random()*(width-1));
 		int y = (int) (Math.random()*(height-1));
 		Player player = new Player(x, y, grid[x][y]);
 		if (!(grid[player.getX()][player.getY()] instanceof Fence) && !(grid[player.getX()][player.getY()].contains(Mho.class)))
 			grid[player.getX()][player.getY()].occupy(player);
 		else
-			initPlayer();
+			initPlayer(playerNum);
 	}
 	
 	public void drawCells(Graphics g) {

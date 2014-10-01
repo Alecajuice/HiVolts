@@ -13,6 +13,7 @@ public class Gui extends JFrame implements KeyListener {
 	private static final int HEIGHT = 750;
 	private static int rows = 12;
 	private static int cols = 12;
+	private boolean p2 = false;
 	private GridPanel grid;
 	private RestartButton restart;
 	private boolean rekt = false;
@@ -20,13 +21,13 @@ public class Gui extends JFrame implements KeyListener {
 	private boolean sweg = false;
 		public boolean getSweg() {return sweg;}
 
-	public Gui(int x, int y) {
+	public Gui(boolean twoPlayer, int x, int y) {
 		super("Hivolts");
-		
+		p2 = twoPlayer;
 		rows = x;
 		cols = y;
 		setPreferredSize(new Dimension(WIDTH, HEIGHT));
-		grid = new GridPanel(rows, cols, this);
+		grid = new GridPanel(twoPlayer, x, y, this);
 		add(grid);
 		setVisible(true);
 		pack();
@@ -46,7 +47,7 @@ public class Gui extends JFrame implements KeyListener {
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		if (!rekt) {
+		if (!rekt && !sweg) {
 			int c = e.getKeyCode();
 			//Uses switch case falling to do the same thing for different inputs
 			switch (c) {
@@ -146,7 +147,7 @@ public class Gui extends JFrame implements KeyListener {
 	
 	public void restart() {
 		this.dispose();
-		new Gui(rows, cols);
+		new Gui(p2, rows, cols);
 	}
 	
 	private class RestartButton extends JButton implements ActionListener {
