@@ -6,12 +6,14 @@ import entity.mob.Mho;
 import entity.mob.Player;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
 //One game grid
 public class GridPanel extends JPanel {
-
+	
 	private Gui gui;
 	private int width;
 	private int height;
@@ -140,7 +142,7 @@ public class GridPanel extends JPanel {
 	public void drawCells(Graphics g) {
 		for (int row = 0; row < width; row++) {
 			for (int col = 0; col < height; col++) {
-					grid[row][col].draw(25, 25, 50, 50, g);
+					grid[row][col].draw(25, 35, 50, 50, g);
 				
 			}
 		}
