@@ -17,6 +17,8 @@ public class GridPanel extends JPanel {
 	private Gui gui;
 	private int width;
 	private int height;
+	// 2 player game or not
+	private boolean p2;
 	
 	//height and width -2, compensates for fence boundaries
 	private int w;
@@ -162,13 +164,60 @@ public class GridPanel extends JPanel {
 		}
 		return null;
 	}
+	
+	public Player findPlayer2() {
+		if(!p2) {
+			return null;
+		}
+		else {
+			for(Cell[] c : grid) {
+				for(Cell cell : c) {
+					if (cell.contains(Player.class)) {
+						try {
+							if((Player)cell.getOccupant() == findPlayer()) {
+								continue;
+							}
+							else {
+								return (Player) cell.getOccupant();
+							}
+						} catch (Exception e) {
+							System.err.println("Player not found.");
+						}
+					}
+				}
+			}
+		}
+		return null;
+	}
 
 	public void nextTurn() {
 		boolean allDead = true;
 		for (Cell[] c : grid) {
 			for (Cell cell : c) {
 				if (cell.contains(Mho.class)) {
-					((Mho) cell.getOccupant()).ai();
+					Mho mho = (Mho) cell.getOccupant();
+					if(!p2) {
+						mho.ai(this.findPlayer());
+					}
+					//In 2 player, moves towards closer target
+					else {
+						double p1Distance = mho.distanceTo(findPlayer().getX(), findPlayer().getY());
+						double p2Distance = mho.distanceTo(findPlayer2().getX(), findPlayer2().getY());
+						if(p1Distance == p2Distance) {
+							if(Math.random() <= 0.5) {
+								mho.ai(findPlayer());
+							}
+							else {
+								mho.ai(findPlayer2());
+							}
+						}
+						else if(p1Distance < p2Distance) {
+							mho.ai(findPlayer());
+						}
+						else {
+							mho.ai(findPlayer2());
+						}
+					}
 				}
 			}
 		}

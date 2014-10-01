@@ -40,13 +40,13 @@ public class Mho extends Mob {
 		super.destroy(dx, dy);
 	}
 
-	public void ai() {
+	public void ai(Player player) {
 		if (!moved) {
 			try {
 				//Finds external data
 				Cell[][] grid = this.landlord.getGridPanel().getGrid();
-				int playerX = this.landlord.getGridPanel().findPlayer().x;
-				int playerY = this.landlord.getGridPanel().findPlayer().y;
+				int playerX = player.x;
+				int playerY = player.y;
 				
 				//Mho will have moved
 				moved = true;
@@ -88,13 +88,14 @@ public class Mho extends Mob {
 						return;
 					}
 				}
-				
 				//If you could potentially move onto an electric fence, do so
 				if(horiz.contains(Fence.class) || verti.contains(Fence.class) || diag.contains(Fence.class)) {
 					this.destroy(dx, dy);
 					return;
 				}
-			} catch (NullPointerException e) {}
+			}
+			//If player is dead, player location DNE
+			catch (NullPointerException e) {}
 		}
 		return;
 	}

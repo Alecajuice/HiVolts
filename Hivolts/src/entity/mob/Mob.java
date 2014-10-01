@@ -33,6 +33,14 @@ public abstract class Mob<T> {
 		this.landlord = landlord.getGridPanel().getCell(this.x, this.y);
 		return true;
 	}
+	
+	//Used in 2 Player to find the closer player
+	public double distanceTo(int x1, int y1) {
+		int dx = Math.abs(this.x-x1);
+		int dy = Math.abs(this.y-y1);
+		return Math.sqrt(dx^2+dy^2);
+	}
+	
 	public void destroy(int dx, int dy) {
 		this.landlord.getGridPanel().getGrid()[this.x][this.y].occupy(null);
 	}
