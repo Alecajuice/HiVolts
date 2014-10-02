@@ -9,8 +9,8 @@ import javax.swing.JFrame;
 //Main Gui class
 
 public class Gui extends JFrame implements KeyListener {
-	private static final int WIDTH = 700;
-	private static final int HEIGHT = 750;
+	private static int WIDTH;
+	private static int HEIGHT;
 	private static int rows = 12;
 	private static int cols = 12;
 	private boolean p2 = false;
@@ -24,6 +24,8 @@ public class Gui extends JFrame implements KeyListener {
 	public Gui(boolean twoPlayer, int x, int y) {
 		super("Hivolts");
 		p2 = twoPlayer;
+		WIDTH = x*50 + 100;
+		HEIGHT = y*50 + 100;
 		rows = x;
 		cols = y;
 		setPreferredSize(new Dimension(WIDTH, HEIGHT));
