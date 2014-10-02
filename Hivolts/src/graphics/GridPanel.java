@@ -17,6 +17,9 @@ public class GridPanel extends JPanel {
 	private Gui gui;
 	private int width;
 	private int height;
+	private int cellWidth = 50;
+	private int cellHeight = 50;
+	double scale;
 	// 2 player game or not
 	private boolean p2;
 	
@@ -55,6 +58,7 @@ public class GridPanel extends JPanel {
 	}
 	
 	public void paintComponent(Graphics g) {
+		setScale();
 		drawCells(g);
 		if(gui.getRekt()) {
 			g.setFont(g.getFont().deriveFont(100f).deriveFont(Font.BOLD));
@@ -72,7 +76,7 @@ public class GridPanel extends JPanel {
 	 * @return Returns height of game board excluding fence border
 	 */
 	public int getH() {
-		return this.h;
+		return this.height;
 	}
 	
 	/**
@@ -80,7 +84,7 @@ public class GridPanel extends JPanel {
 	 * @return Returns width of game board excluding fence border
 	 */
 	public int getW() {
-		return this.w;
+		return this.width;
 	}
 	
 	private void initCells() {
@@ -148,7 +152,7 @@ public class GridPanel extends JPanel {
 	public void drawCells(Graphics g) {
 		for (int row = 0; row < width; row++) {
 			for (int col = 0; col < height; col++) {
-					grid[row][col].draw(25, 35, 50, 50, g);
+					grid[row][col].draw(25, 35, cellWidth, cellHeight, g);
 				
 			}
 		}
@@ -240,5 +244,12 @@ public class GridPanel extends JPanel {
 	
 	public Cell getCell(int x, int y) {
 		return grid[x][y];
+	}
+
+	public void setScale() {
+		w = getWidth();
+		h = getHeight();
+		cellWidth = (w-100)/width;
+		cellHeight = (h-100)/height;
 	}
 }
