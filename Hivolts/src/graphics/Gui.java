@@ -21,6 +21,7 @@ public class Gui extends JFrame implements KeyListener {
 	private boolean sweg = false;
 		public boolean getSweg() {return sweg;}
 
+	//constructor, creates new Gui which contains all game elements inside
 	public Gui(boolean twoPlayer, int x, int y) {
 		super("Hivolts");
 		p2 = twoPlayer;
@@ -37,7 +38,7 @@ public class Gui extends JFrame implements KeyListener {
 		
 		this.addKeyListener(this);
 	}
-
+	//returns GridPanel
 	public GridPanel getGrid() {
 		return grid;
 	}
@@ -46,7 +47,7 @@ public class Gui extends JFrame implements KeyListener {
 	@Override
 	public void keyTyped(KeyEvent e) {
 	}
-
+	//If a key is pressed, moves players accordingly. Calls nextTurn() to make Mhos move
 	@Override
 	public void keyPressed(KeyEvent e) {
 		if (!rekt && !sweg) {
@@ -120,25 +121,24 @@ public class Gui extends JFrame implements KeyListener {
 			grid.repaint();
 		}
 	}
-
+	//Unused
 	@Override
 	public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub
-
 	}
-
+	
+	//if player wins/loses draws correct message over board, freezes game, and draws restart button
 	public void gameOver() {
 		this.rekt = true;
 		grid.repaint();
 		drawButton();
 	}
-	
 	public void win() {
 		this.sweg = true;
 		grid.repaint();
 		drawButton();
 	}
 	
+	//creates a new Restart Button
 	private void drawButton() {
 		restart = new RestartButton();
 		restart.setBounds(0, 0, 100, 36);
@@ -147,11 +147,13 @@ public class Gui extends JFrame implements KeyListener {
 		restart.repaint();
 	}
 	
+	//deletes old instance of class and creates new instance
 	public void restart() {
 		this.dispose();
 		new Gui(p2, rows, cols);
 	}
 	
+	//Restart Button
 	private class RestartButton extends JButton implements ActionListener {
 		RestartButton() {
 			super("Restart");

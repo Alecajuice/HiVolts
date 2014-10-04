@@ -13,7 +13,7 @@ import javax.swing.*;
 
 //One game grid
 public class GridPanel extends JPanel {
-	
+
 	private Gui gui;
 	private int width;
 	private int height;
@@ -22,30 +22,33 @@ public class GridPanel extends JPanel {
 	double scale;
 	// 2 player game or not
 	private boolean p2;
-	
+
 	//height and width -2, compensates for fence boundaries
 	private int w;
 	private int h;
 	private Cell[][] grid;
-		public Cell[][] getGrid() {return grid;}
+	public Cell[][] getGrid() {return grid;}
 
+	//constructor, creates grid and all cells
 	public GridPanel(boolean twoPlayer, int width, int height, Gui gui) {
 		this.height = height;
 		this.width = width;
 		this.gui = gui;
-		
+
 		this.p2 = twoPlayer;
 		this.h = height-2;
 		this.w = width-2;
-		
+
 		grid = new Cell[width][height];
 		initAllCells();
 	}
 
+	//returns Gui
 	public Gui getGui() {
 		return this.gui;
 	}
-	
+
+	//initializes everything
 	public void initAllCells() {
 		initCells();
 		initBorders();
@@ -56,37 +59,34 @@ public class GridPanel extends JPanel {
 			initPlayer(2);
 		}
 	}
-	
+
+	//draws everything
 	public void paintComponent(Graphics g) {
-		setScale();
+		setScale();		//makes the grid scale accoring to panel size
 		drawCells(g);
-		if(gui.getRekt()) {
+		if(gui.getRekt()) {		//if lose displays a GAME OVER message
 			g.setFont(g.getFont().deriveFont(100f).deriveFont(Font.BOLD));
 			g.setColor(Color.RED);
 			g.drawString("GAME OVER", 25 + (this.width*50 - g.getFontMetrics().stringWidth("GAME OVER"))/2, 25 + (int) ((this.height*50 - g.getFontMetrics().getStringBounds("GAME OVER", g).getHeight())/2));
 		}
-		if(gui.getSweg()) {
+		if(gui.getSweg()) {		//if win displays a YOU WIN message
 			g.setFont(g.getFont().deriveFont(100f).deriveFont(Font.BOLD));
 			g.setColor(Color.GREEN);
 			g.drawString("YOU WIN", 25 + (this.width*50 - g.getFontMetrics().stringWidth("YOU WIN"))/2, 25 + (int) ((this.height*50 - g.getFontMetrics().getStringBounds("YOU WIN", g).getHeight())/2));
 		}
 	}
-	/**
-	 * 
-	 * @return Returns height of game board excluding fence border
-	 */
+	
+	//Returns height of game board excluding fence border
 	public int getH() {
 		return this.height;
 	}
-	
-	/**
-	 * 
-	 * @return Returns width of game board excluding fence border
-	 */
+
+	//Returns width of game board excluding fence border
 	public int getW() {
 		return this.width;
 	}
-	
+
+	//initializes all cells
 	private void initCells() {
 		for(int i = 0; i < width; i++) {
 			for(int j = 0; j < height; j++) {
@@ -94,6 +94,7 @@ public class GridPanel extends JPanel {
 			}
 		}
 	}
+	//inits border cells with type Fence
 	private void initBorders() {
 		for(int i = 0; i < height; i++) {
 			grid[0][i] = new Fence(0, i, this);
@@ -105,6 +106,7 @@ public class GridPanel extends JPanel {
 			grid[i][height-1] = new Fence(i, height-1, this);
 		}
 	}
+	//inits 20 random cells with type Fence
 	private void initInsideFences() {
 		for(int i = 0; i < 20; i++) {
 			Fence newFence = initRandFence();
@@ -116,12 +118,14 @@ public class GridPanel extends JPanel {
 			}
 		}
 	}
+	//creates a Fence at a random location within border Fences
 	private Fence initRandFence() {
 		int x =  (int) (Math.random()*w+1);
 		int y = (int) (Math.random()*h+1);
 
 		return new Fence(x, y, this);
 	}
+	//inits 12 Mhos
 	private void initEnemies() {
 		for(int i = 0; i < 12; i++) {
 			Mho newEnemy = initRandMho(i);
@@ -133,12 +137,14 @@ public class GridPanel extends JPanel {
 			}
 		}
 	}
+	//creates a Mho at a random location within border Fences
 	private Mho initRandMho(int i) {
 		int x =  (int) (Math.random()*w+1);
 		int y = (int) (Math.random()*h+1);
 
 		return new Mho(x, y, grid[x][y], i);
 	}
+	//inits a Player at a random location (not on Fence or Mho)
 	private void initPlayer(int playerNum) {
 		int x =  (int) (Math.random()*(width-1));
 		int y = (int) (Math.random()*(height-1));
@@ -148,16 +154,16 @@ public class GridPanel extends JPanel {
 		else
 			initPlayer(playerNum);
 	}
-	
+	//draws cells
 	public void drawCells(Graphics g) {
 		for (int row = 0; row < width; row++) {
 			for (int col = 0; col < height; col++) {
-					grid[row][col].draw(25, 35, cellWidth, cellHeight, g);
-				
+				grid[row][col].draw(25, 35, cellWidth, cellHeight, g);
+
 			}
 		}
 	}
-
+	//returns the cell that holds the player. If player not found returns null
 	public Player findPlayer() {
 		for (Cell[] c : grid) {
 			for (Cell cell : c) {
@@ -172,7 +178,7 @@ public class GridPanel extends JPanel {
 		}
 		return null;
 	}
-	
+	//returns cell that holds player2. If player2 nto found returns null
 	public Player findPlayer2() {
 		if(!p2) {
 			return null;
@@ -197,7 +203,7 @@ public class GridPanel extends JPanel {
 		}
 		return null;
 	}
-
+	//calculates how Mhos should move
 	public void nextTurn() {
 		boolean allDead = true;
 		for (Cell[] c : grid) {
@@ -237,15 +243,15 @@ public class GridPanel extends JPanel {
 				}
 			}
 		}
-		if(allDead) {
+		if(allDead) {	//if all Mhos dead player wins
 			this.gui.win();
 		}
 	}
-	
+	//returns a Cell
 	public Cell getCell(int x, int y) {
 		return grid[x][y];
 	}
-
+	//sets the scale of grid and everything withing according to panel size
 	public void setScale() {
 		w = getWidth();
 		h = getHeight();

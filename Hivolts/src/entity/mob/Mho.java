@@ -6,16 +6,18 @@ import java.awt.Graphics;
 
 
 import entity.*;
-
+//Mho is of type Mob
 public class Mho extends Mob {
-
 	public boolean moved;
 	
+	//Constructor, creates a Mho
 	public Mho(int x, int y, Cell landlord, int number) {
 		super(x, y, landlord);
-		// TODO Auto-generated constructor stub
 	}
 
+	//Moves Mho
+	//If Mho moves onto the player, kills player
+	//If Mho moves onto a Fence, kills Mho
 	@Override
 	public boolean move(int dx, int dy){
 		if((this.x == 0 && dx < 0) || (this.x == this.landlord.getGridPanel().getGrid().length - 1 && dx > 0)) {
@@ -34,12 +36,14 @@ public class Mho extends Mob {
 		super.move(dx, dy);
 		return true;
 	}
-
+	
+	//Deletes this Mho
 	@Override
 	public void destroy(int dx, int dy) {
 		super.destroy(dx, dy);
 	}
 
+	//Calculates how Mho should move, depends on relative position to player
 	public void ai(Player player) {
 		if (!moved) {
 			try {
@@ -99,6 +103,7 @@ public class Mho extends Mob {
 		}
 		return;
 	}
+	//draw method taken from Conway
 	public void draw(int x_offset, int y_offset, int width, int height, Graphics g) {
 		g.setColor(Color.yellow);
 		int xleft = x_offset + (x * (width + 1));

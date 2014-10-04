@@ -12,23 +12,25 @@ public class Cell {
 	private Mob occupant = null;
 	private GridPanel grid;
 
+	//returns GridPanel
 	public GridPanel getGridPanel() {
 		return grid;
 	}
-
+	
+	//Constructor, creates cell within grid
 	public Cell(int x, int y, GridPanel grid) {
 		this.x = x;
 		this.y = y;
 		this.grid = grid;
 	}
 
+	//Returns what kind of Mob(Player, Mho) is occupying this cell
 	public Mob getOccupant() {
 		return this.occupant;
 	}
 
 	/**
 	 * Makes the cell contain a mob
-	 * 
 	 * @param tenant - a Player or Mho or null
 	 */
 	public void occupy(Mob<? extends Mob> tenant) {
@@ -47,14 +49,15 @@ public class Cell {
 		return false;
 	}
 
+	//Returns x and y
 	public int getX() {
 		return this.x;
 	}
-
 	public int getY() {
 		return this.y;
 	}
 	
+	//draw method taken from Conway
 	public void draw(int x_offset, int y_offset, int width, int height, Graphics g) {
 		g.setColor(Color.black);
 		int xleft = x_offset + 1 + (x * (width + 1));

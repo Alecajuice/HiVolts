@@ -6,13 +6,15 @@ import java.awt.Graphics;
 import entity.Cell;
 import entity.Fence;
 import graphics.GridPanel;
-
+//Player is of type Mob
 public class Player extends Mob {
+	//Constructor, creates a Player
 	public Player(int x, int y, Cell landlord) {
 		super(x, y, landlord);
-		// TODO Auto-generated constructor stub
 	}
 	
+	//Moves player
+	//If player moves onto a Mho or Fence, deletes player
 	@Override
 	public boolean move(int dx, int dy) {
 		if((this.x == 0 && dx < 0) || (this.x == this.landlord.getGridPanel().getGrid().length - 1 && dx > 0)) {
@@ -30,9 +32,7 @@ public class Player extends Mob {
 		return true;
 	}
 
-	/**
-	 * Deletes this entity
-	 */
+	//Deletes this entity
 	@Override
 	public void destroy(int dx, int dy) {
 		this.x = landlord.getX() + dx;
@@ -41,9 +41,7 @@ public class Player extends Mob {
 		super.destroy(dx, dy);
 	}
 	
-	/**
-	 * Jump to a random position
-	 */
+	//Jump to a random location
 	public void jump() {
 		Cell[][] grid = this.landlord.getGridPanel().getGrid();
 		//-2 because of fences on the sides
@@ -56,12 +54,14 @@ public class Player extends Mob {
 		System.out.println(x);
 		System.out.println(y);
 		if(grid[x][y].getOccupant() instanceof Player || grid[x][y] instanceof Fence) {
-			jump();
+			jump();		//keeps trying until random location does not contain Player or Fence
 		}
 		else {
 			move(x-getX(), y-getY());
 		}
 	}
+	
+	//draw method taken from Conway
 	public void draw(int x_offset, int y_offset, int width, int height, Graphics g) {
 		g.setColor(Color.white);
 		int xleft = x_offset + (x * (width + 1));

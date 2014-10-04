@@ -4,11 +4,11 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 import entity.*;
-
+//Anything that can move is of type Mob
 public abstract class Mob<T> {
 	protected Cell landlord;
 	int x, y;
-	
+	//Constructor, creates Mob
 	protected Mob(int x, int y, Cell landlord) {
 		this.x = x;
 		this.y = y;
@@ -41,10 +41,12 @@ public abstract class Mob<T> {
 		return Math.sqrt(dx^2+dy^2);
 	}
 	
+	//Deletes entity in this cell
 	public void destroy(int dx, int dy) {
 		this.landlord.getGridPanel().getGrid()[this.x][this.y].occupy(null);
 	}
 	
+	//Returns x and y
 	public int getX() {
 		return this.x;
 	}
