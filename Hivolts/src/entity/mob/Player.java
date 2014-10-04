@@ -51,8 +51,8 @@ public class Player extends Mob {
 		int height = this.landlord.getGridPanel().getH();
 		
 		//+1 because of the fence on the side
-		int x =  (int) (Math.random()*width+1);
-		int y = (int) (Math.random()*height+1);
+		int x =  (int) (Math.random()*width);
+		int y = (int) (Math.random()*height);
 		System.out.println(x);
 		System.out.println(y);
 		if(grid[x][y].getOccupant() instanceof Player || grid[x][y] instanceof Fence) {
