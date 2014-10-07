@@ -61,7 +61,7 @@ public class GridPanel extends JPanel {
 		}
 	}
 
-	//draws everything
+	//draws everything and scales the frame
 	public void paintComponent(Graphics g) {
 		setScale();		//makes the grid scale according to panel size
 		g.drawImage(lab, 25, 35, this.width*50, this.height*50, null);
@@ -109,7 +109,7 @@ public class GridPanel extends JPanel {
 			grid[i][height-1] = new Fence(i, height-1, this);
 		}
 	}
-	//inits 20 random cells with type Fence
+	//inits 20 random cells with type Fence, makes sure that they are in different spots
 	private void initInsideFences() {
 		for(int i = 0; i < 20; i++) {
 			Fence newFence = initRandFence();
@@ -128,7 +128,7 @@ public class GridPanel extends JPanel {
 
 		return new Fence(x, y, this);
 	}
-	//inits 12 Mhos
+	//inits 12 Mhos that are in different places from fences and other mhos
 	private void initEnemies() {
 		for(int i = 0; i < 12; i++) {
 			Mho newEnemy = initRandMho(i);
