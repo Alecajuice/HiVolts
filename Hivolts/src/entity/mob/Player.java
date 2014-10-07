@@ -17,7 +17,7 @@ import graphics.GridPanel;
 //Player is of type Mob
 public class Player extends Mob {
 	private static BufferedImage img = null;
-	
+
 	// Constructor, creates a Player
 	public Player(int x, int y, Cell landlord) {
 		super(x, y, landlord);
@@ -26,7 +26,7 @@ public class Player extends Mob {
 		} catch (IOException e) {
 		}
 	}
-	
+
 	public static BufferedImage getImage() {
 		return img;
 	}
@@ -43,7 +43,7 @@ public class Player extends Mob {
 			dy = 0;
 		}
 		Cell destination = this.landlord.getGridPanel().getGrid()[this.x + dx][this.y
-				+ dy];
+		                                                                       + dy];
 		if (destination.contains(Mho.class)) {
 			this.destroy(dx, dy);
 			return true;
@@ -76,10 +76,8 @@ public class Player extends Mob {
 		if (grid[x][y].getOccupant() instanceof Player
 				|| grid[x][y] instanceof Fence) {
 			jump(); // keeps trying until random location does not contain
-					// Player or Fence
-		} else {
-			move(x - getX(), y - getY());
-		}
+			// Player or Fence
+		} else move(x - getX(), y - getY());
 	}
 
 	// draw method taken from Conway

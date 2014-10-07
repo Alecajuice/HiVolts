@@ -44,9 +44,7 @@ public class Cell {
 	 * @return true if occupant class matches passed class
 	 */
 	public <T> boolean contains(Class<T> c) {
-		if (c.isInstance(this.occupant)) {
-			return true;
-		}
+		if (c.isInstance(this.occupant)) return true;
 		return false;
 	}
 

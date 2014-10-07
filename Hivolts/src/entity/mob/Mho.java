@@ -18,6 +18,7 @@ public class Mho extends Mob {
 	public Mho(int x, int y, Cell landlord, int number) {
 		super(x, y, landlord);
 		double rand = Math.random();
+		//images
 		if(rand<(1/numImg)) {
 			try {
 				img = ImageIO.read(new File("res/img/Aleca Tarng.png"));
@@ -77,7 +78,7 @@ public class Mho extends Mob {
 		super.move(dx, dy);
 		return true;
 	}
-	
+
 	//Deletes this Mho
 	@Override
 	public void destroy(int dx, int dy) {
@@ -92,10 +93,10 @@ public class Mho extends Mob {
 				Cell[][] grid = this.landlord.getGridPanel().getGrid();
 				int playerX = player.x;
 				int playerY = player.y;
-				
+
 				//Mho will have moved
 				moved = true;
-				
+
 				//Find the relative positions to travel 
 				int dx = (this.x < playerX) ? 1:-1;
 				int dy = (this.y < playerY) ? 1:-1;
@@ -104,7 +105,7 @@ public class Mho extends Mob {
 				Cell verti = grid[this.x][this.y+dy];
 				//Equivalent of nested if/else, checks relative x then relative y
 				Cell diag = grid[this.x+dx][this.y+dy];
-				
+
 				//Forced to move directly horizontally/vertically if Player is in line of sight
 				if(this.x==playerX && !verti.contains(Mho.class)) {
 					move(0,dy);
