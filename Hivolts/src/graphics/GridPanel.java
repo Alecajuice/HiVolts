@@ -23,6 +23,7 @@ public class GridPanel extends JPanel {
 	double scale;
 	// 2 player game or not
 	private boolean p2;
+	private boolean background = false;
 
 	//height and width -2, compensates for fence boundaries
 	private int w;
@@ -64,7 +65,10 @@ public class GridPanel extends JPanel {
 	//draws everything and scales the frame
 	public void paintComponent(Graphics g) {
 		setScale();	//makes the grid scale according to panel size
-		//g.drawImage(lab, 25, 35, (cellWidth+1)*this.width+1, (cellHeight+1)*this.height+1, null);
+		if(!background) {
+			g.drawImage(lab, 25, 35, (cellWidth+1)*this.width+1, (cellHeight+1)*this.height+1, null);
+			background = true;
+		}
 		g.setColor(Color.CYAN);
 		drawCells(g); 
 		if(gui.getRekt()) {		//if lose displays a GAME OVER message

@@ -16,7 +16,7 @@ import graphics.GridPanel;
 
 //Player is of type Mob
 public class Player extends Mob {
-	private BufferedImage img = null;
+	public static BufferedImage img = null;
 	
 	// Constructor, creates a Player
 	public Player(int x, int y, Cell landlord) {

@@ -31,7 +31,7 @@ public class Hivolts {
 		// initializes the pictures for the game
 		try {
 			Fence.img = ImageIO.read(new File("res/img/Kuszmaul.jpg"));
-			//GridPanel.lab = ImageIO.read(new File("res/img/lab.jpg"));
+			GridPanel.lab = ImageIO.read(new File("res/img/EverythingIsTyler.png"));
 		} catch (IOException e) {
 		}
 		Gui gui = new Gui(false, 12, 12, 0, 0);
