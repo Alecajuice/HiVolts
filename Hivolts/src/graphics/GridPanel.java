@@ -6,8 +6,6 @@ import entity.mob.Mho;
 import entity.mob.Player;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 
 import javax.swing.*;
@@ -20,6 +18,7 @@ public class GridPanel extends JPanel {
 	private int height;
 	private int cellWidth = 50;
 	private int cellHeight = 50;
+	//scale changes according to panel size
 	double scale;
 	// 2 player game or not
 	private boolean p2;
@@ -122,9 +121,7 @@ public class GridPanel extends JPanel {
 			if(!(grid[newFence.getX()][newFence.getY()] instanceof Fence)) {
 				grid[newFence.getX()][newFence.getY()] = newFence;
 			}
-			else{
-				i--;
-			}
+			else i--;
 		}
 	}
 	//creates a Fence at a random location within border Fences
@@ -141,9 +138,7 @@ public class GridPanel extends JPanel {
 			if(!(grid[newEnemy.getX()][newEnemy.getY()] instanceof Fence) && !(grid[newEnemy.getX()][newEnemy.getY()].contains(Mho.class))) {
 				grid[newEnemy.getX()][newEnemy.getY()].occupy(newEnemy);
 			}
-			else{
-				i--;
-			}
+			else i--;
 		}
 	}
 	//creates a Mho at a random location within border Fences
@@ -168,7 +163,6 @@ public class GridPanel extends JPanel {
 		for (int row = 0; row < width; row++) {
 			for (int col = 0; col < height; col++) {
 				grid[row][col].draw(25, 35, cellWidth, cellHeight, g);
-
 			}
 		}
 	}
@@ -189,20 +183,14 @@ public class GridPanel extends JPanel {
 	}
 	//returns cell that holds player2. If player2 nto found returns null
 	public Player findPlayer2() {
-		if(!p2) {
-			return null;
-		}
+		if(!p2) return null;
 		else {
 			for(Cell[] c : grid) {
 				for(Cell cell : c) {
 					if (cell.contains(Player.class)) {
 						try {
-							if((Player)cell.getOccupant() == findPlayer()) {
-								continue;
-							}
-							else {
-								return (Player) cell.getOccupant();
-							}
+							if((Player)cell.getOccupant() == findPlayer()) continue;
+							else return (Player) cell.getOccupant();
 						} catch (Exception e) {
 							System.err.println("Player not found.");
 						}
@@ -219,27 +207,17 @@ public class GridPanel extends JPanel {
 			for (Cell cell : c) {
 				if (cell.contains(Mho.class)) {
 					Mho mho = (Mho) cell.getOccupant();
-					if(!p2) {
-						mho.ai(this.findPlayer());
-					}
+					if(!p2) mho.ai(this.findPlayer());
 					//In 2 player, moves towards closer target
 					else {
 						double p1Distance = mho.distanceTo(findPlayer().getX(), findPlayer().getY());
 						double p2Distance = mho.distanceTo(findPlayer2().getX(), findPlayer2().getY());
 						if(p1Distance == p2Distance) {
-							if(Math.random() <= 0.5) {
-								mho.ai(findPlayer());
-							}
-							else {
-								mho.ai(findPlayer2());
-							}
+							if(Math.random() <= 0.5) mho.ai(findPlayer());
+							else mho.ai(findPlayer2());
 						}
-						else if(p1Distance < p2Distance) {
-							mho.ai(findPlayer());
-						}
-						else {
-							mho.ai(findPlayer2());
-						}
+						else if(p1Distance < p2Distance) mho.ai(findPlayer());
+						else mho.ai(findPlayer2());
 					}
 				}
 			}
@@ -252,9 +230,7 @@ public class GridPanel extends JPanel {
 				}
 			}
 		}
-		if(allDead) {	//if all Mhos dead player wins
-			this.gui.win();
-		}
+		if(allDead) this.gui.win(); //if all Mhos dead player wins 
 	}
 	//returns a Cell
 	public Cell getCell(int x, int y) {

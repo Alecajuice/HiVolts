@@ -17,25 +17,19 @@ public class Gui extends JFrame implements KeyListener {
 	private GridPanel grid;
 	private RestartButton restart;
 	private boolean rekt = false;
-
-	public boolean getRekt() {
-		return rekt;
-	}
-
+		public boolean getRekt() {return rekt;}
 	private boolean sweg = false;
+		public boolean getSweg() {return sweg;}
 
-	public boolean getSweg() {
-		return sweg;
-	}
-
-	// constructor, creates new Gui which contains all game elements inside
+	//constructor, creates new Gui which contains all game elements inside
 	public Gui(boolean twoPlayer, int x, int y, int width, int height) {
 		super("Hivolts");
 		p2 = twoPlayer;
-		if (width == 0 || height == 0) {
-			WIDTH = x * 50 + 100;
-			HEIGHT = y * 50 + 100;
-		} else {
+		if(width == 0 || height == 0) {
+			WIDTH = x*50 + 100;
+			HEIGHT = y*50 + 100;
+		}
+		else {
 			WIDTH = width;
 			HEIGHT = height;
 		}
@@ -47,11 +41,10 @@ public class Gui extends JFrame implements KeyListener {
 		setVisible(true);
 		pack();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+		
 		this.addKeyListener(this);
 	}
-
-	// returns GridPanel
+	//returns GridPanel
 	public GridPanel getGrid() {
 		return grid;
 	}
@@ -60,15 +53,12 @@ public class Gui extends JFrame implements KeyListener {
 	@Override
 	public void keyTyped(KeyEvent e) {
 	}
-
-	// If a key is pressed, moves players accordingly. Calls nextTurn() to make
-	// Mhos move
+	//If a key is pressed, moves players accordingly. Calls nextTurn() to make Mhos move
 	@Override
 	public void keyPressed(KeyEvent e) {
 		if (!rekt && !sweg) {
 			int c = e.getKeyCode();
-			// Uses switch case falling to do the same thing for different
-			// inputs
+			//Uses switch case falling to do the same thing for different inputs
 			switch (c) {
 			case KeyEvent.VK_Q:
 			case KeyEvent.VK_7:
@@ -133,34 +123,28 @@ public class Gui extends JFrame implements KeyListener {
 			case KeyEvent.VK_SPACE:
 				grid.findPlayer().jump();
 				break;
-			case KeyEvent.VK_R:
-				restart();
-				break;
 			}
 			grid.repaint();
 		}
 	}
-
-	// Unused
+	//Unused
 	@Override
 	public void keyReleased(KeyEvent e) {
 	}
-
-	// if player wins/loses draws correct message over board, freezes game, and
-	// draws restart button
+	
+	//if player wins/loses draws correct message over board, freezes game, and draws restart button
 	public void gameOver() {
 		this.rekt = true;
 		grid.repaint();
 		drawButton();
 	}
-
 	public void win() {
 		this.sweg = true;
 		grid.repaint();
 		drawButton();
 	}
-
-	// creates a new Restart Button
+	
+	//creates a new Restart Button
 	private void drawButton() {
 		restart = new RestartButton();
 		restart.setBounds(0, 0, 100, 36);
@@ -168,15 +152,15 @@ public class Gui extends JFrame implements KeyListener {
 		restart.setVisible(true);
 		restart.repaint();
 	}
-
-	// deletes old instance of class and creates new instance
+	
+	//deletes old instance of class and creates new instance
 	public void restart() {
 		this.dispose();
-		System.out.println(this.getWidth() + ", " + this.getHeight());
+		System.out.println(this.getWidth() +", " + this.getHeight());
 		new Gui(p2, rows, cols, this.getWidth(), this.getHeight());
 	}
-
-	// Restart Button
+	
+	//Restart Button
 	private class RestartButton extends JButton implements ActionListener {
 		RestartButton() {
 			super("Restart");
