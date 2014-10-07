@@ -19,7 +19,7 @@ import graphics.Gui;
  * Goals:
  * make a two player game
  */
-public class Main {
+public class Hivolts {
 	public static void main(String[] args) {
 		//Pass width and height of the game board
 		//Also passes the existence of a second player
