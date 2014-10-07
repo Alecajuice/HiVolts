@@ -66,7 +66,7 @@ public class GridPanel extends JPanel {
 	public void paintComponent(Graphics g) {
 		setScale();	//makes the grid scale according to panel size
 		if(!background) {
-			g.drawImage(lab, 25, 35, (cellWidth+1)*this.width+1, (cellHeight+1)*this.height+1, null);
+			g.drawImage(Player.getImage(), 25, 35, (cellWidth+1)*this.width+1, (cellHeight+1)*this.height+1, null);
 			background = true;
 		}
 		g.setColor(Color.CYAN);

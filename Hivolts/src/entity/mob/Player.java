@@ -16,7 +16,7 @@ import graphics.GridPanel;
 
 //Player is of type Mob
 public class Player extends Mob {
-	public static BufferedImage img = null;
+	private static BufferedImage img = null;
 	
 	// Constructor, creates a Player
 	public Player(int x, int y, Cell landlord) {
@@ -26,7 +26,10 @@ public class Player extends Mob {
 		} catch (IOException e) {
 		}
 	}
-
+	
+	public static BufferedImage getImage() {
+		return img;
+	}
 	// Moves player
 	// If player moves onto a Mho or Fence, deletes player
 	@Override
