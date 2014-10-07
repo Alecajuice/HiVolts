@@ -31,6 +31,6 @@ public class Main {
 		} catch (IOException e)
 		{
 		}
-		Gui gui = new Gui(false, 12, 12);
+		Gui gui = new Gui(false, 12, 12, 0, 0);
 	}
 }

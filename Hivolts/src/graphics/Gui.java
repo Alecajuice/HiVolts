@@ -22,11 +22,18 @@ public class Gui extends JFrame implements KeyListener {
 		public boolean getSweg() {return sweg;}
 
 	//constructor, creates new Gui which contains all game elements inside
-	public Gui(boolean twoPlayer, int x, int y) {
+	public Gui(boolean twoPlayer, int x, int y, int width, int height) {
 		super("Hivolts");
 		p2 = twoPlayer;
-		WIDTH = x*50 + 100;
-		HEIGHT = y*50 + 100;
+		if(width == 0 || height == 0) {
+			WIDTH = x*50 + 100;
+			HEIGHT = y*50 + 100;
+		}
+		else {
+			System.out.println("hi");
+			WIDTH = width;
+			HEIGHT = height;
+		}
 		rows = x;
 		cols = y;
 		setPreferredSize(new Dimension(WIDTH, HEIGHT));
@@ -150,7 +157,8 @@ public class Gui extends JFrame implements KeyListener {
 	//deletes old instance of class and creates new instance
 	public void restart() {
 		this.dispose();
-		new Gui(p2, rows, cols);
+		System.out.println(this.getWidth() +", " + this.getHeight());
+		new Gui(p2, rows, cols, this.getWidth(), this.getHeight());
 	}
 	
 	//Restart Button
