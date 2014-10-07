@@ -1,18 +1,65 @@
 package entity.mob;
 
-import java.awt.Color;
-import java.awt.Graphics;
+import java.awt.*;
+import java.awt.image.*;
+import java.io.File;
+import java.io.IOException;
 
-
+import javax.imageio.ImageIO;
 
 import entity.*;
 //Mho is of type Mob
 public class Mho extends Mob {
 	public boolean moved;
-	
+	private BufferedImage img = null;
+	//Number of potential images to make future changes easier
+	private int numImg = 6;
 	//Constructor, creates a Mho
 	public Mho(int x, int y, Cell landlord, int number) {
 		super(x, y, landlord);
+		double rand = Math.random();
+		if(rand<(1/numImg)) {
+			try {
+				img = ImageIO.read(new File("res/img/Aleca Tarng.png"));
+			} catch (IOException e) {
+				System.err.println("Alex is too busy screwing around with Web Teams");
+			}
+		}
+		else if(rand<(2/numImg)) {
+			try {
+				img = ImageIO.read(new File("res/img/Ben Cohen-Wang.jpg"));
+			} catch (IOException e) {
+				System.err.println("Ben drank the shrinking potion from Alice in Wonderland");
+			}
+		}
+		else if(rand<(3/numImg)) {
+			try {
+				img = ImageIO.read(new File("res/img/James Mho.jpg"));
+			} catch (IOException e) {
+				System.err.println("James failed (typical captain)");
+			}
+		}
+		else if(rand<(4/numImg)) {
+			try {
+				img = ImageIO.read(new File("res/img/Neelay Junnarkar.png"));
+			} catch (IOException e) {
+				System.err.println("Neelay gave up (like on every issue ever)");
+			}
+		}
+		else if(rand<(5/numImg)) {
+			try {
+				img = ImageIO.read(new File("res/img/Nihar Mitra.png"));
+			} catch (IOException e) {
+				System.err.println("Nihar didn't feel like attending");
+			}
+		}
+		else {
+			try {
+				img = ImageIO.read(new File("res/img/Tyler Packard.jpg"));
+			} catch (IOException e) {
+				System.err.println("Tyler too busy swimming in 5 star hotel");
+			}
+		}
 	}
 
 	//Moves Mho
@@ -104,10 +151,10 @@ public class Mho extends Mob {
 		return;
 	}
 	//draw method taken from Conway
-	public void draw(int x_offset, int y_offset, int width, int height, Graphics g) {
-		g.setColor(Color.yellow);
-		int xleft = x_offset + (x * (width + 1));
-		int ytop = y_offset + (y * (height + 1));
-		g.fillOval(xleft, ytop, width, height);
+	public void draw(int x_offset, int y_offset, int width, int height,
+			Graphics g) {
+		int xleft = x_offset + (x * (width + 1)) + 1;
+		int ytop = y_offset + (y * (height + 1)) + 1;
+		g.drawImage(img, xleft, ytop, width, height, null);
 	}
 }

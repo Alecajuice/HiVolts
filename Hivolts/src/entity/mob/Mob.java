@@ -4,24 +4,27 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 import entity.*;
+
 //Anything that can move is of type Mob
 public abstract class Mob<T> {
 	protected Cell landlord;
 	int x, y;
-	//Constructor, creates Mob
+
+	// Constructor, creates Mob
 	protected Mob(int x, int y, Cell landlord) {
 		this.x = x;
 		this.y = y;
 		this.landlord = landlord;
 	}
-	
+
 	/**
 	 * Moves entity based on params
-	 * @param dx - change in x coordinate
-	 * @param dy - change in y coordinate
+	 * @param dx change in x coordinate
+	 * @param dy change in y coordinate
 	 */
 	public boolean move(int dx, int dy) {
-		Cell destination = this.landlord.getGridPanel().getGrid()[this.x + dx][this.y + dy];
+		Cell destination = this.landlord.getGridPanel().getGrid()[this.x + dx][this.y
+				+ dy];
 		if (destination instanceof Fence) {
 			this.destroy(dx, dy);
 			return true;
@@ -33,23 +36,24 @@ public abstract class Mob<T> {
 		this.landlord = landlord.getGridPanel().getCell(this.x, this.y);
 		return true;
 	}
-	
-	//Used in 2 Player to find the closer player
+
+	// Used in 2 Player to find the closer player
 	public double distanceTo(int x1, int y1) {
-		int dx = Math.abs(this.x-x1);
-		int dy = Math.abs(this.y-y1);
-		return Math.sqrt(dx^2+dy^2);
+		int dx = Math.abs(this.x - x1);
+		int dy = Math.abs(this.y - y1);
+		return Math.sqrt(dx ^ 2 + dy ^ 2);
 	}
-	
-	//Deletes entity in this cell
+
+	// Deletes entity in this cell
 	public void destroy(int dx, int dy) {
 		this.landlord.getGridPanel().getGrid()[this.x][this.y].occupy(null);
 	}
-	
-	//Returns x and y
+
+	// Returns x and y
 	public int getX() {
 		return this.x;
 	}
+
 	public int getY() {
 		return this.y;
 	}

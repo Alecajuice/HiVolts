@@ -13,24 +13,34 @@ import javax.imageio.ImageIO;
 import entity.Cell;
 import entity.Fence;
 import graphics.GridPanel;
+
 //Player is of type Mob
 public class Player extends Mob {
-	//Constructor, creates a Player
+	private BufferedImage img = null;
+	
+	// Constructor, creates a Player
 	public Player(int x, int y, Cell landlord) {
 		super(x, y, landlord);
+		try {
+			img = ImageIO.read(new File("res/img/RaphiLangu.png"));
+		} catch (IOException e) {
+		}
 	}
-	
-	//Moves player
-	//If player moves onto a Mho or Fence, deletes player
+
+	// Moves player
+	// If player moves onto a Mho or Fence, deletes player
 	@Override
 	public boolean move(int dx, int dy) {
-		if((this.x == 0 && dx < 0) || (this.x == this.landlord.getGridPanel().getGrid().length - 1 && dx > 0)) {
+		if ((this.x == 0 && dx < 0)
+				|| (this.x == this.landlord.getGridPanel().getGrid().length - 1 && dx > 0)) {
 			dx = 0;
 		}
-		if((this.y == 0 && dy < 0) || (this.y == this.landlord.getGridPanel().getGrid()[0].length - 1 && dy > 0)) {
+		if ((this.y == 0 && dy < 0)
+				|| (this.y == this.landlord.getGridPanel().getGrid()[0].length - 1 && dy > 0)) {
 			dy = 0;
 		}
-		Cell destination = this.landlord.getGridPanel().getGrid()[this.x + dx][this.y + dy];
+		Cell destination = this.landlord.getGridPanel().getGrid()[this.x + dx][this.y
+				+ dy];
 		if (destination.contains(Mho.class)) {
 			this.destroy(dx, dy);
 			return true;
@@ -39,7 +49,7 @@ public class Player extends Mob {
 		return true;
 	}
 
-	//Deletes this entity
+	// Deletes this entity
 	@Override
 	public void destroy(int dx, int dy) {
 		this.x = landlord.getX() + dx;
@@ -47,39 +57,34 @@ public class Player extends Mob {
 		this.landlord.getGridPanel().getGui().gameOver();
 		super.destroy(dx, dy);
 	}
-	
-	//Jump to a random location
+
+	// Jump to a random location
 	public void jump() {
 		Cell[][] grid = this.landlord.getGridPanel().getGrid();
-		//-2 because of fences on the sides
+		// -2 because of fences on the sides
 		int width = this.landlord.getGridPanel().getW();
 		int height = this.landlord.getGridPanel().getH();
-		
-		//+1 because of the fence on the side
-		int x =  (int) (Math.random()*width);
-		int y = (int) (Math.random()*height);
+
+		// +1 because of the fence on the side
+		int x = (int) (Math.random() * width);
+		int y = (int) (Math.random() * height);
 		System.out.println(x);
 		System.out.println(y);
-		if(grid[x][y].getOccupant() instanceof Player || grid[x][y] instanceof Fence) {
-			jump();		//keeps trying until random location does not contain Player or Fence
-		}
-		else {
-			move(x-getX(), y-getY());
+		if (grid[x][y].getOccupant() instanceof Player
+				|| grid[x][y] instanceof Fence) {
+			jump(); // keeps trying until random location does not contain
+					// Player or Fence
+		} else {
+			move(x - getX(), y - getY());
 		}
 	}
-	
-	//draw method taken from Conway
-	public void draw(int x_offset, int y_offset, int width, int height, Graphics g) {
-		BufferedImage img = null;
-		try
-		{
-		    img = ImageIO.read(new File("res/img/RaphiLangu.png"));
-		} catch (IOException e)
-		{
-		}
+
+	// draw method taken from Conway
+	public void draw(int x_offset, int y_offset, int width, int height,
+			Graphics g) {
 		int xleft = x_offset + (x * (width + 1)) + 1;
 		int ytop = y_offset + (y * (height + 1)) + 1;
 		g.drawImage(img, xleft, ytop, width, height, null);
 	}
-	
+
 }
