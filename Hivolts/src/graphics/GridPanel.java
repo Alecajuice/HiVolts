@@ -63,9 +63,10 @@ public class GridPanel extends JPanel {
 
 	//draws everything and scales the frame
 	public void paintComponent(Graphics g) {
-		setScale();		//makes the grid scale according to panel size
-		g.drawImage(lab, 25, 35, (cellWidth+1)*this.width+1, (cellHeight+1)*this.height+1, null);
-		drawCells(g);
+		setScale();	//makes the grid scale according to panel size
+		//g.drawImage(lab, 25, 35, (cellWidth+1)*this.width+1, (cellHeight+1)*this.height+1, null);
+		g.setColor(Color.CYAN);
+		drawCells(g); 
 		if(gui.getRekt()) {		//if lose displays a GAME OVER message
 			g.setFont(g.getFont().deriveFont(100f).deriveFont(Font.BOLD));
 			g.setColor(Color.RED);

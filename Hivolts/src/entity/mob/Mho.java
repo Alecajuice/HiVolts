@@ -18,8 +18,6 @@ public class Mho extends Mob {
 	public Mho(int x, int y, Cell landlord, int number) {
 		super(x, y, landlord);
 		double rand = Math.random();
-		System.out.println(rand);
-		System.out.println(1/numImg);
 		if(rand<(1/numImg)) {
 			try {
 				img = ImageIO.read(new File("res/img/Aleca Tarng.png"));
