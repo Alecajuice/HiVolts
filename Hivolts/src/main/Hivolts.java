@@ -1,15 +1,5 @@
 package main;
 
-import java.io.File;
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
-
-import entity.Cell;
-import entity.Fence;
-import graphics.GridPanel;
-import graphics.Gui;
-
 /*AUTHORS*/
 //Alex Tarng, Nihar Mitra, James Ngo, Ailyn Tong
 
@@ -24,6 +14,17 @@ import graphics.Gui;
  * Goals:
  * make a two player game
  */
+
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+
+import entity.Cell;
+import entity.Fence;
+import graphics.GridPanel;
+import graphics.Gui;
+
 public class Hivolts {
 	public static void main(String[] args) {
 		// Pass width and height of the game board

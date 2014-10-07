@@ -16,10 +16,10 @@ public class Gui extends JFrame implements KeyListener {
 	private boolean p2 = false;
 	private GridPanel grid;
 	private RestartButton restart;
-	private boolean rekt = false;
-		public boolean getRekt() {return rekt;}
-	private boolean sweg = false;
-		public boolean getSweg() {return sweg;}
+	private boolean lose = false;
+		public boolean getRekt() {return lose;}
+	private boolean win = false;
+		public boolean getSweg() {return win;}
 
 	//constructor, creates new Gui which contains all game elements inside
 	public Gui(boolean twoPlayer, int x, int y, int width, int height) {
@@ -56,7 +56,7 @@ public class Gui extends JFrame implements KeyListener {
 	//If a key is pressed, moves players accordingly. Calls nextTurn() to make Mhos move
 	@Override
 	public void keyPressed(KeyEvent e) {
-		if (!rekt && !sweg) {
+		if (!lose && !win) {
 			int c = e.getKeyCode();
 			//Uses switch case falling to do the same thing for different inputs
 			switch (c) {
@@ -134,12 +134,12 @@ public class Gui extends JFrame implements KeyListener {
 	
 	//if player wins/loses draws correct message over board, freezes game, and draws restart button
 	public void gameOver() {
-		this.rekt = true;
+		this.lose = true;
 		grid.repaint();
 		drawButton();
 	}
 	public void win() {
-		this.sweg = true;
+		this.win = true;
 		grid.repaint();
 		drawButton();
 	}
@@ -166,7 +166,6 @@ public class Gui extends JFrame implements KeyListener {
 			super("Restart");
 			addActionListener(this);
 		}
-
 		public void actionPerformed(ActionEvent arg0) {
 			restart();
 		}
