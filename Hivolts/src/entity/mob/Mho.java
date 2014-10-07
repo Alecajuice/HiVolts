@@ -13,51 +13,47 @@ public class Mho extends Mob {
 	public boolean moved;
 	private BufferedImage img = null;
 	//Number of potential images to make future changes easier
-	private int numImg = 6;
+	private double numImg = 6;
 	//Constructor, creates a Mho
 	public Mho(int x, int y, Cell landlord, int number) {
 		super(x, y, landlord);
 		double rand = Math.random();
+		System.out.println(rand);
+		System.out.println(1/numImg);
 		if(rand<(1/numImg)) {
 			try {
 				img = ImageIO.read(new File("res/img/Aleca Tarng.png"));
 			} catch (IOException e) {
-				System.err.println("Alex is too busy screwing around with Web Teams");
 			}
 		}
 		else if(rand<(2/numImg)) {
 			try {
 				img = ImageIO.read(new File("res/img/Ben Cohen-Wang.jpg"));
 			} catch (IOException e) {
-				System.err.println("Ben drank the shrinking potion from Alice in Wonderland");
 			}
 		}
 		else if(rand<(3/numImg)) {
 			try {
 				img = ImageIO.read(new File("res/img/James Mho.jpg"));
 			} catch (IOException e) {
-				System.err.println("James failed (typical captain)");
 			}
 		}
 		else if(rand<(4/numImg)) {
 			try {
 				img = ImageIO.read(new File("res/img/Neelay Junnarkar.png"));
 			} catch (IOException e) {
-				System.err.println("Neelay gave up (like on every issue ever)");
 			}
 		}
 		else if(rand<(5/numImg)) {
 			try {
-				img = ImageIO.read(new File("res/img/Nihar Mitra.png"));
+				img = ImageIO.read(new File("res/img/Nihar Mitra.jpg"));
 			} catch (IOException e) {
-				System.err.println("Nihar didn't feel like attending");
 			}
 		}
 		else {
 			try {
-				img = ImageIO.read(new File("res/img/Tyler Packard.jpg"));
+				img = ImageIO.read(new File("res/img/Tyler Shielded.gif"));
 			} catch (IOException e) {
-				System.err.println("Tyler too busy swimming in 5 star hotel");
 			}
 		}
 	}
