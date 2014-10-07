@@ -17,9 +17,7 @@ public class Gui extends JFrame implements KeyListener {
 	private GridPanel grid;
 	private RestartButton restart;
 	private boolean lose = false;
-	public boolean getRekt() {return lose;}
 	private boolean win = false;
-	public boolean getSweg() {return win;}
 
 	//constructor, creates new Gui which contains all game elements inside
 	/*parameters: 
@@ -54,6 +52,14 @@ public class Gui extends JFrame implements KeyListener {
 	public GridPanel getGrid() {
 		return grid;
 	}
+	//returns lose
+	public boolean getLose() {
+		return lose;
+		}
+	//returns win
+	public boolean getWin() {
+		return win;
+		}
 
 	// Unused
 	@Override
@@ -138,12 +144,13 @@ public class Gui extends JFrame implements KeyListener {
 	public void keyReleased(KeyEvent e) {
 	}
 
-	//if player wins/loses draws correct message over board, freezes game, and draws restart button
+	//if player loses draws correct message over board, freezes game, and draws restart button
 	public void gameOver() {
 		this.lose = true;
 		grid.repaint();
 		drawButton();
 	}
+	//if player wins draws correct message over board, freezes game, and draws restart button
 	public void win() {
 		this.win = true;
 		grid.repaint();

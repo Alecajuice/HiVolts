@@ -13,21 +13,32 @@ public class Cell {
 	private Mob occupant = null;
 	private GridPanel grid;
 
-	//returns GridPanel
-	public GridPanel getGridPanel() {
-		return grid;
-	}
-	
 	//Constructor, creates cell within grid
+	/* parameters:
+	 		int row #
+	 		int col #
+	 		Gridpanel
+	 */
 	public Cell(int x, int y, GridPanel grid) {
 		this.x = x;
 		this.y = y;
 		this.grid = grid;
 	}
 
+	//returns GridPanel
+	public GridPanel getGridPanel() {
+		return grid;
+	}
 	//Returns what kind of Mob(Player, Mho) is occupying this cell
 	public Mob getOccupant() {
 		return this.occupant;
+	}
+	//Returns x and y
+	public int getX() {
+		return this.x;
+	}
+	public int getY() {
+		return this.y;
 	}
 
 	/**
@@ -37,7 +48,7 @@ public class Cell {
 	public void occupy(Mob<? extends Mob> tenant) {
 		occupant = tenant;
 	}
-	
+
 	/**
 	 * Lets you see if the cell contains a certain object
 	 * @param c class to be compared
@@ -48,19 +59,11 @@ public class Cell {
 		return false;
 	}
 
-	//Returns x and y
-	public int getX() {
-		return this.x;
-	}
-	public int getY() {
-		return this.y;
-	}
-	
 	//draw method taken from Conway
 	public void draw(int x_offset, int y_offset, int width, int height, Graphics g) {
-//		int xleft = x_offset + 1 + (x * (width + 1));
-//		int ytop = y_offset + 1 + (y * (height + 1));
-//		g.drawImage(lab, xleft, ytop, width, height, null);
+		//int xleft = x_offset + 1 + (x * (width + 1));
+		//int ytop = y_offset + 1 + (y * (height + 1));
+		//g.drawImage(lab, xleft, ytop, width, height, null);
 		if(contains(Mho.class)) {
 			((Mho)occupant).draw(x_offset, y_offset, width, height, g);
 		}

@@ -19,6 +19,11 @@ public class Player extends Mob {
 	private static BufferedImage img = null;
 
 	// Constructor, creates a Player
+	/* parameters:
+	 * int row #
+	 * int col #
+	 * Cell to occupy
+	 */
 	public Player(int x, int y, Cell landlord) {
 		super(x, y, landlord);
 		try {
@@ -27,9 +32,11 @@ public class Player extends Mob {
 		}
 	}
 
+	//returns BufferedImage img
 	public static BufferedImage getImage() {
 		return img;
 	}
+	
 	// Moves player
 	// If player moves onto a Mho or Fence, deletes player
 	@Override

@@ -11,10 +11,23 @@ public abstract class Mob<T> {
 	int x, y;
 
 	// Constructor, creates Mob
+	/* parameters:
+	 * int row #
+	 * int col #
+	 * Cell to occupy
+	 */
 	protected Mob(int x, int y, Cell landlord) {
 		this.x = x;
 		this.y = y;
 		this.landlord = landlord;
+	}
+	
+	// Returns x and y
+	public int getX() {
+		return this.x;
+	}
+	public int getY() {
+		return this.y;
 	}
 
 	/**
@@ -47,14 +60,5 @@ public abstract class Mob<T> {
 	// Deletes entity in this cell
 	public void destroy(int dx, int dy) {
 		this.landlord.getGridPanel().getGrid()[this.x][this.y].occupy(null);
-	}
-
-	// Returns x and y
-	public int getX() {
-		return this.x;
-	}
-
-	public int getY() {
-		return this.y;
 	}
 }

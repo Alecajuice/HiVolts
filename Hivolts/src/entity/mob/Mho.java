@@ -14,7 +14,14 @@ public class Mho extends Mob {
 	private BufferedImage img = null;
 	//Number of potential images to make future changes easier
 	private double numImg = 6;
+	
 	//Constructor, creates a Mho
+	/* parameters:
+	 * int row #
+	 * int col #
+	 * Cell to occupy
+	 * int Mho # (to determine which Mho picture to use)
+	 */
 	public Mho(int x, int y, Cell landlord, int number) {
 		super(x, y, landlord);
 		double rand = Math.random();
@@ -143,8 +150,9 @@ public class Mho extends Mob {
 			//If player is dead, player location DNE
 			catch (NullPointerException e) {}
 		}
-		return;
+		return;	//so Mhos only move one per turn
 	}
+	
 	//draw method taken from Conway
 	public void draw(int x_offset, int y_offset, int width, int height,
 			Graphics g) {

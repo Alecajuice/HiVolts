@@ -14,6 +14,11 @@ import javax.imageio.ImageIO;
 public class Fence extends Cell {
 	public static BufferedImage img;
 	//Constructor, creates a Fence
+	/* parameters:
+			int row #
+			int col #
+			Gridpanel
+	*/
 	public Fence(int x, int y, GridPanel grid) {
 		super(x, y, grid);
 	}

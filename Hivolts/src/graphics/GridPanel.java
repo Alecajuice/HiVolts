@@ -14,6 +14,7 @@ import javax.swing.*;
 public class GridPanel extends JPanel {
 	public static BufferedImage lab;
 	private Gui gui;
+	//width and height refers to # rows and cols
 	private int width;
 	private int height;
 	private int cellWidth = 50;
@@ -33,6 +34,11 @@ public class GridPanel extends JPanel {
 	public Cell[][] getGrid() {return grid;}
 
 	//constructor, creates grid and all cells
+	/* parameters:
+	 * boolean that determines one/two player mode
+	 * ints for # rows and cols
+	 * Gui
+	 */
 	public GridPanel(boolean twoPlayer, int width, int height, Gui gui) {
 		this.height = height;
 		this.width = width;
@@ -50,6 +56,18 @@ public class GridPanel extends JPanel {
 	public Gui getGui() {
 		return this.gui;
 	}
+	//Returns height of game board
+	public int getH() {
+		return this.height;
+	}
+	//Returns width of game boards
+	public int getW() {
+		return this.width;
+	}
+	//returns a Cell
+	public Cell getCell(int x, int y) {
+		return grid[x][y];
+	}
 
 	//initializes everything
 	public void initAllCells() {
@@ -58,42 +76,8 @@ public class GridPanel extends JPanel {
 		initInsideFences();
 		initEnemies();
 		initPlayer(1);
-		if(p2) {
-			initPlayer(2);
-		}
+		if(p2) initPlayer(2);
 	}
-
-	//draws everything and scales the frame
-	public void paintComponent(Graphics g) {
-		setScale();	//makes the grid scale according to panel size
-		if(!background) {
-			g.drawImage(Player.getImage(), 25, 35, (cellWidth+1)*this.width+1, (cellHeight+1)*this.height+1, null);
-			background = trace;
-		}
-		g.setColor(Color.CYAN);
-		drawCells(g); 
-		if(gui.getRekt()) {		//if lose displays a GAME OVER message
-			g.setFont(g.getFont().deriveFont(100f).deriveFont(Font.BOLD));
-			g.setColor(Color.RED);
-			g.drawString("GAME OVER", 25 + ((cellWidth+1)*this.width+1 - g.getFontMetrics().stringWidth("GAME OVER"))/2, 25 + (int) (((cellHeight+1)*this.height+1 - g.getFontMetrics().getStringBounds("GAME OVER", g).getHeight())/2));
-		}
-		if(gui.getSweg()) {		//if win displays a YOU WIN message
-			g.setFont(g.getFont().deriveFont(100f).deriveFont(Font.BOLD));
-			g.setColor(Color.GREEN);
-			g.drawString("YOU WIN", 25 + ((cellWidth+1)*this.width+1 - g.getFontMetrics().stringWidth("YOU WIN"))/2, 25 + (int) (((cellHeight+1)*this.height+1 - g.getFontMetrics().getStringBounds("YOU WIN", g).getHeight())/2));
-		}
-	}
-	
-	//Returns height of game board excluding fence border
-	public int getH() {
-		return this.height;
-	}
-
-	//Returns width of game board excluding fence border
-	public int getW() {
-		return this.width;
-	}
-
 	//initializes all cells
 	private void initCells() {
 		for(int i = 0; i < width; i++) {
@@ -102,7 +86,7 @@ public class GridPanel extends JPanel {
 			}
 		}
 	}
-	//inits border cells with type Fence
+	//initializes border cells with type Fence
 	private void initBorders() {
 		for(int i = 0; i < height; i++) {
 			grid[0][i] = new Fence(0, i, this);
@@ -114,7 +98,7 @@ public class GridPanel extends JPanel {
 			grid[i][height-1] = new Fence(i, height-1, this);
 		}
 	}
-	//inits 20 random cells with type Fence, makes sure that they are in different spots
+	//initializes 20 random cells with type Fence, makes sure that they are in different spots
 	private void initInsideFences() {
 		for(int i = 0; i < 20; i++) {
 			Fence newFence = initRandFence();
@@ -148,7 +132,7 @@ public class GridPanel extends JPanel {
 
 		return new Mho(x, y, grid[x][y], i);
 	}
-	//inits a Player at a random location (not on Fence or Mho)
+	//initializes a Player at a random location (not on Fence or Mho)
 	private void initPlayer(int playerNum) {
 		int x =  (int) (Math.random()*(width-1));
 		int y = (int) (Math.random()*(height-1));
@@ -158,6 +142,7 @@ public class GridPanel extends JPanel {
 		else
 			initPlayer(playerNum);
 	}
+
 	//draws cells
 	public void drawCells(Graphics g) {
 		for (int row = 0; row < width; row++) {
@@ -166,6 +151,36 @@ public class GridPanel extends JPanel {
 			}
 		}
 	}
+	//sets the scale of grid and everything withing according to panel size
+	public void setScale() {
+		w = getWidth();
+		h = getHeight();
+		cellWidth = (w-100)/width;
+		cellHeight = (h-100)/height;
+	}
+	//draws everything and scales the frame
+	public void paintComponent(Graphics g) {
+		setScale();	//makes the grid scale according to panel size
+		if(!background) {
+			g.drawImage(Player.getImage(), 25, 35, (cellWidth+1)*this.width+1, (cellHeight+1)*this.height+1, null);
+			background = trace;
+		}
+		g.setColor(Color.CYAN);
+		drawCells(g); 
+		if(gui.getLose()) {		//if lose displays a GAME OVER message
+			g.setFont(g.getFont().deriveFont(100f).deriveFont(Font.BOLD));
+			g.setColor(Color.RED);
+			g.drawString("GAME OVER", 25 + ((cellWidth+1)*this.width+1 - g.getFontMetrics().stringWidth("GAME OVER"))/2, 
+					25 + (int) (((cellHeight+1)*this.height+1 - g.getFontMetrics().getStringBounds("GAME OVER", g).getHeight())/2));
+		}
+		if(gui.getWin()) {		//if win displays a YOU WIN message
+			g.setFont(g.getFont().deriveFont(100f).deriveFont(Font.BOLD));
+			g.setColor(Color.GREEN);
+			g.drawString("YOU WIN", 25 + ((cellWidth+1)*this.width+1 - g.getFontMetrics().stringWidth("YOU WIN"))/2, 
+					25 + (int) (((cellHeight+1)*this.height+1 - g.getFontMetrics().getStringBounds("YOU WIN", g).getHeight())/2));
+		}
+	}
+
 	//returns the cell that holds the player. If player not found returns null
 	public Player findPlayer() {
 		for (Cell[] c : grid) {
@@ -181,7 +196,7 @@ public class GridPanel extends JPanel {
 		}
 		return null;
 	}
-	//returns cell that holds player2. If player2 nto found returns null
+	//returns cell that holds player2. If player2 not found returns null
 	public Player findPlayer2() {
 		if(!p2) return null;
 		else {
@@ -231,16 +246,5 @@ public class GridPanel extends JPanel {
 			}
 		}
 		if(allDead) this.gui.win(); //if all Mhos dead player wins 
-	}
-	//returns a Cell
-	public Cell getCell(int x, int y) {
-		return grid[x][y];
-	}
-	//sets the scale of grid and everything withing according to panel size
-	public void setScale() {
-		w = getWidth();
-		h = getHeight();
-		cellWidth = (w-100)/width;
-		cellHeight = (h-100)/height;
 	}
 }
