@@ -3,6 +3,7 @@ package entity;
 import graphics.GridPanel;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 
 import entity.mob.*;
 
@@ -59,10 +60,9 @@ public class Cell {
 	
 	//draw method taken from Conway
 	public void draw(int x_offset, int y_offset, int width, int height, Graphics g) {
-		g.setColor(Color.black);
-		int xleft = x_offset + 1 + (x * (width + 1));
-		int ytop = y_offset + 1 + (y * (height + 1));
-		g.fillRect(xleft, ytop, width, height);
+//		int xleft = x_offset + 1 + (x * (width + 1));
+//		int ytop = y_offset + 1 + (y * (height + 1));
+//		g.drawImage(lab, xleft, ytop, width, height, null);
 		if(contains(Mho.class)) {
 			((Mho)occupant).draw(x_offset, y_offset, width, height, g);
 		}

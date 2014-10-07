@@ -2,6 +2,13 @@ package entity.mob;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 
 import entity.Cell;
 import entity.Fence;
@@ -63,10 +70,16 @@ public class Player extends Mob {
 	
 	//draw method taken from Conway
 	public void draw(int x_offset, int y_offset, int width, int height, Graphics g) {
-		g.setColor(Color.white);
-		int xleft = x_offset + (x * (width + 1));
-		int ytop = y_offset + (y * (height + 1));
-		g.fillOval(xleft, ytop, width, height);
+		BufferedImage img = null;
+		try
+		{
+		    img = ImageIO.read(new File("res/img/RaphiLangu.png"));
+		} catch (IOException e)
+		{
+		}
+		int xleft = x_offset + (x * (width + 1)) + 1;
+		int ytop = y_offset + (y * (height + 1)) + 1;
+		g.drawImage(img, xleft, ytop, width, height, null);
 	}
 	
 }

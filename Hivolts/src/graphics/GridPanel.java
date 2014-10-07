@@ -8,12 +8,13 @@ import entity.mob.Player;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 
 import javax.swing.*;
 
 //One game grid
 public class GridPanel extends JPanel {
-
+	public static BufferedImage lab;
 	private Gui gui;
 	private int width;
 	private int height;
@@ -62,7 +63,9 @@ public class GridPanel extends JPanel {
 
 	//draws everything
 	public void paintComponent(Graphics g) {
-		setScale();		//makes the grid scale accoring to panel size
+		setScale();		//makes the grid scale according to panel size
+		g.drawImage(lab, 25, 35, this.width*50, this.height*50, null);
+		System.out.println(25 +", " + 35 + ", " + this.width*50 + ", " + this.height*50);
 		drawCells(g);
 		if(gui.getRekt()) {		//if lose displays a GAME OVER message
 			g.setFont(g.getFont().deriveFont(100f).deriveFont(Font.BOLD));
