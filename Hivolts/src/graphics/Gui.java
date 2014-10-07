@@ -30,7 +30,6 @@ public class Gui extends JFrame implements KeyListener {
 			HEIGHT = y*50 + 100;
 		}
 		else {
-			System.out.println("hi");
 			WIDTH = width;
 			HEIGHT = height;
 		}
