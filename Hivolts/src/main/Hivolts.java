@@ -15,6 +15,10 @@ import graphics.Gui;
 //This is the main class for Hivolts. The main creates a Gui where the player can move around and interact with elements in the game
 //The controls are q,w,e,a,s,d,z,x,c or the numpad. If you want to jump press j. 
 
+//You are Rafi (guy with laser eyes)
+//The Mhos are Tyler (yellow cars)
+//The Fences are Mr. Kuszmaul
+
 /*
  * Goals:
  * make a two player game
