@@ -17,11 +17,16 @@ public class Gui extends JFrame implements KeyListener {
 	private GridPanel grid;
 	private RestartButton restart;
 	private boolean lose = false;
-		public boolean getRekt() {return lose;}
+	public boolean getRekt() {return lose;}
 	private boolean win = false;
-		public boolean getSweg() {return win;}
+	public boolean getSweg() {return win;}
 
 	//constructor, creates new Gui which contains all game elements inside
+	/*parameters: 
+		boolean that determines one/two player mode
+		ints for # rows and cols 
+		ints for width and height of the Gui
+		*/
 	public Gui(boolean twoPlayer, int x, int y, int width, int height) {
 		super("Hivolts");
 		p2 = twoPlayer;
@@ -41,9 +46,10 @@ public class Gui extends JFrame implements KeyListener {
 		setVisible(true);
 		pack();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
+
 		this.addKeyListener(this);
 	}
+	
 	//returns GridPanel
 	public GridPanel getGrid() {
 		return grid;
@@ -131,7 +137,7 @@ public class Gui extends JFrame implements KeyListener {
 	@Override
 	public void keyReleased(KeyEvent e) {
 	}
-	
+
 	//if player wins/loses draws correct message over board, freezes game, and draws restart button
 	public void gameOver() {
 		this.lose = true;
@@ -143,7 +149,7 @@ public class Gui extends JFrame implements KeyListener {
 		grid.repaint();
 		drawButton();
 	}
-	
+
 	//creates a new Restart Button
 	private void drawButton() {
 		restart = new RestartButton();
@@ -152,14 +158,14 @@ public class Gui extends JFrame implements KeyListener {
 		restart.setVisible(true);
 		restart.repaint();
 	}
-	
+
 	//deletes old instance of class and creates new instance
 	public void restart() {
 		this.dispose();
 		System.out.println(this.getWidth() +", " + this.getHeight());
 		new Gui(p2, rows, cols, this.getWidth(), this.getHeight());
 	}
-	
+
 	//Restart Button
 	private class RestartButton extends JButton implements ActionListener {
 		RestartButton() {
