@@ -64,18 +64,18 @@ public class GridPanel extends JPanel {
 	//draws everything
 	public void paintComponent(Graphics g) {
 		setScale();		//makes the grid scale according to panel size
-		g.drawImage(lab, 25, 35, this.width*50, this.height*50, null);
+		g.drawImage(lab, 25, 35, (cellWidth+1)*this.width+1, (cellHeight+1)*this.height+1, null);
 		System.out.println(25 +", " + 35 + ", " + this.width*50 + ", " + this.height*50);
 		drawCells(g);
 		if(gui.getRekt()) {		//if lose displays a GAME OVER message
 			g.setFont(g.getFont().deriveFont(100f).deriveFont(Font.BOLD));
 			g.setColor(Color.RED);
-			g.drawString("GAME OVER", 25 + (this.width*50 - g.getFontMetrics().stringWidth("GAME OVER"))/2, 25 + (int) ((this.height*50 - g.getFontMetrics().getStringBounds("GAME OVER", g).getHeight())/2));
+			g.drawString("GAME OVER", 25 + ((cellWidth+1)*this.width+1 - g.getFontMetrics().stringWidth("GAME OVER"))/2, 25 + (int) (((cellHeight+1)*this.height+1 - g.getFontMetrics().getStringBounds("GAME OVER", g).getHeight())/2));
 		}
 		if(gui.getSweg()) {		//if win displays a YOU WIN message
 			g.setFont(g.getFont().deriveFont(100f).deriveFont(Font.BOLD));
 			g.setColor(Color.GREEN);
-			g.drawString("YOU WIN", 25 + (this.width*50 - g.getFontMetrics().stringWidth("YOU WIN"))/2, 25 + (int) ((this.height*50 - g.getFontMetrics().getStringBounds("YOU WIN", g).getHeight())/2));
+			g.drawString("YOU WIN", 25 + ((cellWidth+1)*this.width+1 - g.getFontMetrics().stringWidth("YOU WIN"))/2, 25 + (int) (((cellHeight+1)*this.height+1 - g.getFontMetrics().getStringBounds("YOU WIN", g).getHeight())/2));
 		}
 	}
 	
