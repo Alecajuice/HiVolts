@@ -8,8 +8,8 @@ package main;
 
 //FOR CLARIFYING PURPOSES
 //You are Rafi (guy with laser eyes)
-//The Mhos are Tyler (yellow cars)
 //The Fences are Mr. Kuszmaul
+//The Mhos are everything else
 
 /*
  * Goals:
@@ -39,3 +39,8 @@ public class Hivolts {
 		Gui gui = new Gui(false, 12, 12, 0, 0);
 	}
 }
+
+//Acknowledgments: 
+//Mr. Kuszmaul's Conway code for the draw methods
+//Introduction to Java Programming by Y. Daniel Liang to help us with generics
+//Github and friends for the images
