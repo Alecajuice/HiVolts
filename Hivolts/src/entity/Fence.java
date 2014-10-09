@@ -10,9 +10,12 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-//Fence is of type Cell
+//Fence class
+/* Fences are a special type of cell. In our game, they are Mr. Kuszmauls.
+ */
 public class Fence extends Cell {
 	public static BufferedImage img;
+	
 	//Constructor, creates a Fence
 	/* parameters:
 			int row #
