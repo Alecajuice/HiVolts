@@ -65,7 +65,9 @@ public class Gui extends JFrame implements KeyListener {
 	@Override
 	public void keyTyped(KeyEvent e) {
 	}
-	//If a key is pressed, moves players accordingly. Calls nextTurn() to make Mhos move
+	/* If a key is pressed, moves players accordingly. Calls nextTurn() to make
+	 * Mhos move
+	 */
 	@Override
 	public void keyPressed(KeyEvent e) {
 		if (!lose && !win) {
@@ -144,7 +146,9 @@ public class Gui extends JFrame implements KeyListener {
 	public void keyReleased(KeyEvent e) {
 	}
 
-	//if player loses draws correct message over board, freezes game, and draws restart button
+	 /*if player wins/loses draws correct message over board, freezes game, and
+	  *draws restart button
+	  */	
 	public void gameOver() {
 		this.lose = true;
 		grid.repaint();
