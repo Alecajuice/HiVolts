@@ -43,7 +43,8 @@ package main;
  * Z & 1 = downleft
  * X & 2 = down 
  * C & 3 = downright
- * R = Restart game
+ * R = Restart game, only works while player is still alive
+ * Restart Button = Restart game, only appears when player loses or wins.
  */
 
 /* 
