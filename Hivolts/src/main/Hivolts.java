@@ -39,15 +39,10 @@ package main;
  * D & 6 = Right
  * Z & 1 = down-left
  * X & 2 = down 
-<<<<<<< HEAD
  * C & 3 = down-right
- * R = Restart game
  * J and Spacebar = Jump
-=======
- * C & 3 = downright
  * R = Restart game, only works while player is still alive
  * Restart Button = Restart game, only appears when player loses or wins.
->>>>>>> branch 'master' of https://github.com/alecajuice/Hivolts.git
  */
 
 /* 
