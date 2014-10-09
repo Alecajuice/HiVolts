@@ -91,13 +91,21 @@ public class Mho extends Mob {
 		return true;
 	}
 
-	//Deletes this Mho
-	@Override
+	
+	/*
+	 * This method takes a X and Y integer as parameters
+	 * It then calls the super.Destroy method located in Mob that
+	 * destroys a Mho at the location specified by X and Y
+	 */
 	public void destroy(int dx, int dy) {
 		super.destroy(dx, dy);
 	}
 
-	//Calculates how Mho should move, depends on relative position to player
+	/*
+	 * This method takes the Player as a parameter
+	 * It takes the position from the player and
+	 * calculates how this instance of Mho should move 
+	 */
 	public void ai(Player player) {
 		if (!moved) {
 			try {
@@ -158,7 +166,10 @@ public class Mho extends Mob {
 		return;	//so Mhos only move one per turn
 	}
 	
-	//draw method taken from Conway
+	/*
+	 * This method takes the offsets of the gui, the width and height of the gui, and a Graphics object in order to draw things
+	 * This is code taken from Conway's game of Life that is edited for drawing external images
+	 */
 	public void draw(int x_offset, int y_offset, int width, int height,
 			Graphics g) {
 		int xleft = x_offset + (x * (width + 1)) + 1;

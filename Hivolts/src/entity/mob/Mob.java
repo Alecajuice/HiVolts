@@ -5,15 +5,20 @@ import java.awt.Graphics;
 
 import entity.*;
 
-//Anything that can move is of type Mob
+
 public abstract class Mob<T> {
+	/*
+	 * This Mob class is the basis for our mobs such as the Player and Mho
+	 * it gives basic functions such as moving and destroying to all other mobs and allows
+	 */
 	protected Cell landlord;
 	int x, y;
+	
 
-	// Constructor, creates Mob
-	/* parameters:
-	 * int row #
-	 * int col #
+	/* Constructor, creates Mob 
+	 * parameters:
+	 * Takes a X and Y coordinate for drawing purposes
+	 * Takes a Cell called landlord so it may access its neighbors
 	 * Cell to occupy
 	 */
 	protected Mob(int x, int y, Cell landlord) {
@@ -30,10 +35,7 @@ public abstract class Mob<T> {
 		return this.y;
 	}
 
-	/**
-	 * Moves entity based on params
-	 * @param dx change in x coordinate
-	 * @param dy change in y coordinate
+	/*
 	 */
 	public boolean move(int dx, int dy) {
 		Cell destination = this.landlord.getGridPanel().getGrid()[this.x + dx][this.y
