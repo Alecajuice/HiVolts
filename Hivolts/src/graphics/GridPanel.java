@@ -1,3 +1,12 @@
+
+//GridPanel class
+/* All elements of the grid are defined, initialized, and drawn here.
+ * Elements of the grid are:
+ * 		width, height, scale of grid
+ * 		# rows and cols
+ * 		Cells 
+ */
+
 package graphics;
 
 import entity.Cell;

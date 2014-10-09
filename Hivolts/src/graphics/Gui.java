@@ -1,12 +1,17 @@
+
+//Gui class
+/* The grid and restart button are initialized here, along with the win/lose system.
+ * The typing mechanic (KeyListener) is also defined here.
+ */
+
 package graphics;
 
+//imports
 import java.awt.*;
 import java.awt.event.*;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
-
-//Main Gui class
 
 public class Gui extends JFrame implements KeyListener {
 	private static int WIDTH;
@@ -134,6 +139,9 @@ public class Gui extends JFrame implements KeyListener {
 			case KeyEvent.VK_NUMPAD0:
 			case KeyEvent.VK_SPACE:
 				grid.findPlayer().jump();
+				break;
+			case KeyEvent.VK_R:
+				restart();
 				break;
 			}
 			grid.repaint();
