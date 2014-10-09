@@ -126,7 +126,7 @@ public class GridPanel extends JPanel {
 	//inits 12 Mhos that are in different places from fences and other mhos
 	private void initEnemies() {
 		for(int i = 0; i < 12; i++) {
-			Mho newEnemy = initRandMho(i);
+			Mho newEnemy = initRandMho();
 			if(!(grid[newEnemy.getX()][newEnemy.getY()] instanceof Fence) && !(grid[newEnemy.getX()][newEnemy.getY()].contains(Mho.class))) {
 				grid[newEnemy.getX()][newEnemy.getY()].occupy(newEnemy);
 			}
@@ -134,11 +134,11 @@ public class GridPanel extends JPanel {
 		}
 	}
 	//creates a Mho at a random location within border Fences
-	private Mho initRandMho(int i) {
+	private Mho initRandMho() {
 		int x =  (int) (Math.random()*w+1);
 		int y = (int) (Math.random()*h+1);
 
-		return new Mho(x, y, grid[x][y], i);
+		return new Mho(x, y, grid[x][y]);
 	}
 	//initializes a Player at a random location (not on Fence or Mho)
 	private void initPlayer(int playerNum) {
