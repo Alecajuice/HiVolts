@@ -73,8 +73,8 @@ public class Gui extends JFrame implements KeyListener {
 	 */
 	@Override
 	public void keyPressed(KeyEvent e) {
+		int c = e.getKeyCode();
 		if (!lose && !win) {
-			int c = e.getKeyCode();
 			//Uses switch case falling to do the same thing for different inputs
 			switch (c) {
 			case KeyEvent.VK_Q:
@@ -145,6 +145,9 @@ public class Gui extends JFrame implements KeyListener {
 				break;
 			}
 			grid.repaint();
+		}
+		if(c == KeyEvent.VK_R) {
+			restart();
 		}
 	}
 	//Unused

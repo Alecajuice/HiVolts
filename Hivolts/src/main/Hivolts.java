@@ -1,10 +1,7 @@
 package main;
 
 /*AUTHORS*/
-
 //Alex Tarng, Nihar Mitra, James Ngo, Ailyn Tong
-
-
 
 //FOR CLARIFYING PURPOSES
 //You are Rafi (guy with laser eyes, not the background though)
@@ -14,7 +11,7 @@ package main;
 /*
  * Goals:
  * Make a two player game
- * Add Main Menu
+ * Add Main Menu and Statistics
  */
 
 /*
@@ -23,35 +20,49 @@ package main;
  *   Framework and Inheritance hierarchy with Cells
  *   Finished Initializing mhos and cells in correct places
  *  After check in:
- *   Finished moving 
+ *   Finished player movement
  *   Finished Mho AI
- *   Finished basic drawing based upon original game and Conway code\
+ *   Finished basic drawing based upon original game and Conway code
  *  Final touches:
  *   Implemented Images
  *   Fixed Images and painting
- *   
  */
 
 /*
  * Controls:
- * Q & 7 = upleft
+ * Numpad is supported.
+ * Q & 7 = up-left
  * W & 8 = up
- * E & 9 = upright
+ * E & 9 = up-right
  * A & 4 = left
  * S & 5 = Sit
  * D & 6 = Right
- * Z & 1 = downleft
+ * Z & 1 = down-left
  * X & 2 = down 
+<<<<<<< HEAD
+ * C & 3 = down-right
+ * R = Restart game
+ * J and Spacebar = Jump
+=======
  * C & 3 = downright
  * R = Restart game, only works while player is still alive
  * Restart Button = Restart game, only appears when player loses or wins.
+>>>>>>> branch 'master' of https://github.com/alecajuice/Hivolts.git
  */
 
 /* 
  * Acknowledgments: 
  * Mr. Kuszmaul's Conway code for the draw methods
  *Introduction to Java Programming by Y. Daniel Liang to help us with generics
- *Github and friends for the images
+ *These pictures are used with the permissions of:
+ *Neelay Junnarkar
+ *Tyler Packard
+ *Alex Tarng
+ *Nihar Mitra
+ *James Ngo
+ *Ben Cohen-Wang
+ *Rafi Long
+ *We do not own the contents of any of the profile pictures
  */
 import java.io.File;
 import java.io.IOException;
