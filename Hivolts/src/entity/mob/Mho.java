@@ -8,21 +8,25 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 import entity.*;
-//Mho is of type Mob
 public class Mho extends Mob {
+	/*
+	 * Mho class:
+	 *  The Mho class defines the behaviors of all mhos in the game such as the AI and drawing.
+	 *  It extends from Mob, which makes it compatible with our cells and gives it basic functions of all mobs. 
+	 */
+	
 	public boolean moved;
 	private BufferedImage img = null;
 	//Number of potential images to make future changes easier
 	private double numImg = 6;
 	
-	//Constructor, creates a Mho
-	/* parameters:
-	 * int row #
-	 * int col #
-	 * Cell to occupy
-	 * int Mho # (to determine which Mho picture to use)
+	/* Constructor, creates a Mho instance
+	 * parameters:
+	 * Takes two ints called x and y to specify where to draw the Mho
+	 * Takes a Cell called landlord which references the cell that contains it, so it can access surrounding Mhos
+	 * 
 	 */
-	public Mho(int x, int y, Cell landlord, int number) {
+	public Mho(int x, int y, Cell landlord) {
 		super(x, y, landlord);
 		double rand = Math.random();
 		//Randomly selects which image to represent the Mho

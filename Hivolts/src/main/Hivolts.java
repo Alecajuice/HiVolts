@@ -63,12 +63,12 @@ import graphics.GridPanel;
 import graphics.Gui;
 
 public class Hivolts {
+	/*
+	 * Main class:
+	 * This is the main class for Hivolts. The main creates a Gui where the player can move around and interact with elements in the game.
+	 * It also imports pictures for the game elements in the try and catch.
+	 */
 	public static void main(String[] args) {
-		/*
-		 * Main class:
-		 * This is the main class for Hivolts. The main creates a Gui where the player can move around and interact with elements in the game.
-		 * It also imports pictures for the game elements in the try and catch.
-		 */
 		try {
 			Fence.img = ImageIO.read(new File("res/img/Kuszmaul.jpg"));
 			GridPanel.lab = ImageIO.read(new File("res/img/EverythingIsTyler.png"));
