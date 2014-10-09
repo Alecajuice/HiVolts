@@ -1,21 +1,57 @@
 package main;
 
 /*AUTHORS*/
+
 //Alex Tarng, Nihar Mitra, James Ngo, Ailyn Tong
 
-//This is the main class for Hivolts. The main creates a Gui where the player can move around and interact with elements in the game
-//The controls are q,w,e,a,s,d,z,x,c or the numpad. If you want to jump press j. 
+
 
 //FOR CLARIFYING PURPOSES
-//You are Rafi (guy with laser eyes)
+//You are Rafi (guy with laser eyes, not the background though)
 //The Fences are Mr. Kuszmaul
 //The Mhos are everything else
 
 /*
  * Goals:
- * make a two player game
+ * Make a two player game
+ * Add Main Menu
  */
 
+/*
+ * Timeline:
+ * 	First few days:
+ *   Framework and Inheritance hierarchy with Cells
+ *   Finished Initializing mhos and cells in correct places
+ *  After check in:
+ *   Finished moving 
+ *   Finished Mho AI
+ *   Finished basic drawing based upon original game and Conway code\
+ *  Final touches:
+ *   Implemented Images
+ *   Fixed Images and painting
+ *   
+ */
+
+/*
+ * Controls:
+ * Q & 7 = upleft
+ * W & 8 = up
+ * E & 9 = upright
+ * A & 4 = left
+ * S & 5 = Sit
+ * D & 6 = Right
+ * Z & 1 = downleft
+ * X & 2 = down 
+ * C & 3 = downright
+ * R = Restart game
+ */
+
+/* 
+ * Acknowledgments: 
+ * Mr. Kuszmaul's Conway code for the draw methods
+ *Introduction to Java Programming by Y. Daniel Liang to help us with generics
+ *Github and friends for the images
+ */
 import java.io.File;
 import java.io.IOException;
 
@@ -28,9 +64,11 @@ import graphics.Gui;
 
 public class Hivolts {
 	public static void main(String[] args) {
-		// Pass width and height of the game board
-		// Also passes the existence of a second player
-		// initializes the pictures for the game
+		/*
+		 * Main class:
+		 * This is the main class for Hivolts. The main creates a Gui where the player can move around and interact with elements in the game.
+		 * It also imports pictures for the game elements in the try and catch.
+		 */
 		try {
 			Fence.img = ImageIO.read(new File("res/img/Kuszmaul.jpg"));
 			GridPanel.lab = ImageIO.read(new File("res/img/EverythingIsTyler.png"));
@@ -40,7 +78,4 @@ public class Hivolts {
 	}
 }
 
-//Acknowledgments: 
-//Mr. Kuszmaul's Conway code for the draw methods
-//Introduction to Java Programming by Y. Daniel Liang to help us with generics
-//Github and friends for the images
+
