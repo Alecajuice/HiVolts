@@ -71,7 +71,7 @@ public class Player extends Mob {
 		super.destroy(dx, dy);
 	}
 
-	// Jump to a random location
+	// Jump to a random location                                                                                                                                                              
 	public void jump() {
 		Cell[][] grid = this.landlord.getGridPanel().getGrid();
 		// -2 because of fences on the sides
