@@ -1,9 +1,3 @@
-
-//Gui class
-/* The grid and restart button are initialized here, along with the win/lose system.
- * The typing mechanic (KeyListener) is also defined here.
- */
-
 package graphics;
 
 //imports
@@ -13,6 +7,10 @@ import java.awt.event.*;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
+//Gui class
+/* The grid and restart button are initialized here, along with the win/lose system.
+* The typing mechanic (KeyListener) is also defined here.
+*/
 public class Gui extends JFrame implements KeyListener {
 	private static int WIDTH;
 	private static int HEIGHT;

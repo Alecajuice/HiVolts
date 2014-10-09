@@ -1,12 +1,3 @@
-
-//GridPanel class
-/* All elements of the grid are defined, initialized, and drawn here.
- * Elements of the grid are:
- * 		width, height, scale of grid
- * 		# rows and cols
- * 		Cells 
- */
-
 package graphics;
 
 import entity.Cell;
@@ -19,7 +10,15 @@ import java.awt.image.BufferedImage;
 
 import javax.swing.*;
 
-//One game grid
+//GridPanel class
+/* All elements of the grid are defined, initialized, and drawn here.
+ * Elements of the grid are:
+ * 		width, height, scale of grid
+ * 		# rows and cols
+ * 		Cells and Fences
+ * 		Entities (player, Mhos)
+ * Also calls Mho ai mechanism
+ */
 public class GridPanel extends JPanel {
 	public static BufferedImage lab;
 	private Gui gui;
