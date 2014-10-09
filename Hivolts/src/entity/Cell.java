@@ -10,7 +10,9 @@ import entity.mob.*;
 public class Cell {
 	protected int x, y;
 	protected Color color = Color.black;
+	//Occupants are the mobile entities that move across cells
 	private Mob occupant = null;
+	//Keeps a reference to grid in order to allow other classes to access the grid
 	private GridPanel grid;
 
 	//Constructor, creates cell within grid
@@ -58,7 +60,7 @@ public class Cell {
 		if (c.isInstance(this.occupant)) return true;
 		return false;
 	}
-
+	
 	//draw method taken from Conway
 	public void draw(int x_offset, int y_offset, int width, int height, Graphics g) {
 		//int xleft = x_offset + 1 + (x * (width + 1));

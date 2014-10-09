@@ -25,7 +25,7 @@ public class Mho extends Mob {
 	public Mho(int x, int y, Cell landlord, int number) {
 		super(x, y, landlord);
 		double rand = Math.random();
-		//images
+		//Randomly selects which image to represent the Mho
 		if(rand<(1/numImg)) {
 			try {
 				img = ImageIO.read(new File("res/img/Aleca Tarng.png"));
@@ -64,9 +64,10 @@ public class Mho extends Mob {
 		}
 	}
 
-	//Moves Mho
-	//If Mho moves onto the player, kills player
-	//If Mho moves onto a Fence, kills Mho
+	/*Moves Mho
+	 *If Mho moves onto the player, kills player
+	 *If Mho moves onto a Fence, kills Mho
+	*/
 	@Override
 	public boolean move(int dx, int dy){
 		if((this.x == 0 && dx < 0) || (this.x == this.landlord.getGridPanel().getGrid().length - 1 && dx > 0)) {

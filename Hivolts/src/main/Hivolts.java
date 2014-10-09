@@ -1,21 +1,5 @@
 package main;
 
-/*AUTHORS*/
-//Alex Tarng, Nihar Mitra, James Ngo, Ailyn Tong
-
-//This is the main class for Hivolts. The main creates a Gui where the player can move around and interact with elements in the game
-//The controls are q,w,e,a,s,d,z,x,c or the numpad. If you want to jump press j. 
-
-//FOR CLARIFYING PURPOSES
-//You are Rafi (guy with laser eyes)
-//The Fences are Mr. Kuszmaul
-//The Mhos are everything else
-
-/*
- * Goals:
- * make a two player game
- */
-
 import java.io.File;
 import java.io.IOException;
 
@@ -25,6 +9,22 @@ import entity.Cell;
 import entity.Fence;
 import graphics.GridPanel;
 import graphics.Gui;
+
+/*AUTHORS*/
+/* Alex Tarng, Nihar Mitra, James Ngo, Ailyn Tong
+
+This is the main class for Hivolts. The main creates a Gui where the player can move around and interact with elements in the game
+The controls are q,w,e,a,s,d,z,x,c or the numpad. If you want to jump press j or spacebar. 
+
+You are Rafi (guy with laser eyes)
+The Mhos are Tyler (yellow cars)
+The Fences are Mr. Kuszmaul
+
+/*
+ * Goals:
+ * make a two player game
+ * Some of the two player code has been inserted but is incomplete
+ */
 
 public class Hivolts {
 	public static void main(String[] args) {
