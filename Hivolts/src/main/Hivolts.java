@@ -41,8 +41,7 @@ package main;
  * X & 2 = down 
  * C & 3 = down-right
  * J and Spacebar = Jump
- * R = Restart game, only works while player is still alive
- * Restart Button = Restart game, only appears when player loses or wins.
+ * R and Restart = Restart game
  */
 
 /* 
