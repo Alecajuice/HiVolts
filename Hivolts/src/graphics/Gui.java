@@ -179,7 +179,6 @@ public class Gui extends JFrame implements KeyListener {
 	//deletes old instance of class and creates new instance
 	public void restart() {
 		this.dispose();
-		System.out.println(this.getWidth() +", " + this.getHeight());
 		new Gui(p2, rows, cols, this.getWidth(), this.getHeight());
 	}
 
