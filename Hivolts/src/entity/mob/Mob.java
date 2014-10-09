@@ -35,7 +35,8 @@ public abstract class Mob<T> {
 		return this.y;
 	}
 
-	/*
+	/* This method moves the instane of mob to a different cell
+	 * It takes delta x and y as its parameters
 	 */
 	public boolean move(int dx, int dy) {
 		Cell destination = this.landlord.getGridPanel().getGrid()[this.x + dx][this.y
@@ -52,14 +53,20 @@ public abstract class Mob<T> {
 		return true;
 	}
 
-	// Used in 2 Player to find the closer player
+	/* This method takes the coordinates of the other player as
+	 * a parameter and returns the distance between the two players
+	 * Only used in multiplayer, unimplemented
+	 */
 	public double distanceTo(int x1, int y1) {
 		int dx = Math.abs(this.x - x1);
 		int dy = Math.abs(this.y - y1);
 		return Math.sqrt(dx ^ 2 + dy ^ 2);
 	}
 
-	// Deletes entity in this cell
+	/* Takes dx and dy which is used in mob and player
+	 * Destroys the current instance of mob by
+	 * changing the value in its landlord to null
+	 */
 	public void destroy(int dx, int dy) {
 		this.landlord.getGridPanel().getGrid()[this.x][this.y].occupy(null);
 	}

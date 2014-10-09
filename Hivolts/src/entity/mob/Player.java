@@ -14,15 +14,19 @@ import entity.Cell;
 import entity.Fence;
 import graphics.GridPanel;
 
-//Player is of type Mob
 public class Player extends Mob {
+	
+	/* Player class:
+	 * defines the behaviors of the player in our Hivolts game, such as moving, drawing, and jumping
+	 * it extends Mob, which allows it to be compatible with our cells.
+	 */
+	
 	private static BufferedImage img = null;
-
-	// Constructor, creates a Player
-	/* parameters:
-	 * int row #
-	 * int col #
-	 * Cell to occupy
+	
+	/* Constructor, creates a Player
+	 * parameters:
+	 * x and y coordinate for drawing purposes and cell management
+	 * Cell named landlord so that the player may access the gui and its surrounding elements
 	 */
 	public Player(int x, int y, Cell landlord) {
 		super(x, y, landlord);
@@ -60,7 +64,6 @@ public class Player extends Mob {
 	}
 
 	// Deletes this entity
-	@Override
 	public void destroy(int dx, int dy) {
 		this.x = landlord.getX() + dx;
 		this.y = landlord.getY() + dy;
@@ -86,8 +89,10 @@ public class Player extends Mob {
 			// Player or Fence
 		} else move(x - getX(), y - getY());
 	}
-
-	// draw method taken from Conway
+	
+	/* draw method taken from Conway that is modified to draw images.
+	 * Takes the gui offset and dimensions as well as a Graphics object in order to draw
+	 */
 	public void draw(int x_offset, int y_offset, int width, int height,
 			Graphics g) {
 		int xleft = x_offset + (x * (width + 1)) + 1;

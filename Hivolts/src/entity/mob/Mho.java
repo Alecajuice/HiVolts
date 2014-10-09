@@ -93,9 +93,10 @@ public class Mho extends Mob {
 
 	
 	/*
-	 * This method takes a X and Y integer as parameters
+	 * This method takes a dX and dY integer as parameters
 	 * It then calls the super.Destroy method located in Mob that
-	 * destroys a Mho at the location specified by X and Y
+	 * destroys a Mho at the location specified location relative 
+	 * to the current location of the cell
 	 */
 	public void destroy(int dx, int dy) {
 		super.destroy(dx, dy);
