@@ -1,6 +1,7 @@
 package main;
 
 /*AUTHORS*/
+
 //Alex Tarng, Nihar Mitra, James Ngo, Ailyn Tong
 
 //This is the main class for Hivolts. The main creates a Gui where the player can move around and interact with elements in the game
@@ -89,7 +90,13 @@ package main;
  *We do not own the contents of any of the profile pictures
  */
 
+/*
+ * Importing Images things: all images go in a folder called img which is located in another folder called
+ * res which is in the project
+ */
+
 import java.io.File;
+
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
