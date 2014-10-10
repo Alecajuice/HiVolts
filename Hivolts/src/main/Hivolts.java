@@ -12,23 +12,8 @@ package main;
 
 /*
  * Goals:
-<<<<<<< HEAD
  * Make a two player game
  * Add Main Menu and Statistics
- */
-
-/*
- * Timeline:
- * 	First few days:
- *   Framework and Inheritance hierarchy with Cells
- *   Finished Initializing mhos and cells in correct places
- *  After check in:
- *   Finished player movement
- *   Finished Mho AI
- *   Finished basic drawing based upon original game and Conway code
- *  Final touches:
- *   Implemented Images
- *   Fixed Images and painting
  */
 
 /*
@@ -45,6 +30,48 @@ package main;
  * C & 3 = down-right
  * J and Spacebar = Jump
  * R and Restart = Restart game
+ */
+
+/* 
+ * Decisions made:
+ * Instead of using an array to store all the various elements of the grid, we decided to use a method
+ * 		in which each element of the grid was an entity
+ * The hierarchy of Entity is as such:
+ * 		Cells: represent each grid space, have x, y and instance variable of what is contained by the cell
+ * 		Fences extend Cell: represent electric fences, destroy all mobs that enter
+ * 		Mob: an abstract class for mobile entities that are in a grid but not a stationary cell. Has an
+ * 			instance variable that points to the container cell.
+ * 		Mho extends Mob: represents the Mhos
+ * 		Player extends Mob: represents the player
+ */
+
+/*
+ * Timeline:
+ * 	First few days:
+ *   Framework and Inheritance hierarchy with Cells
+ *   Finished Initializing mhos and cells in correct places
+ *  After check in:
+ *   Finished player movement
+ *   Finished Mho AI
+ *   Finished basic drawing based upon original game and Conway code
+ *  Final touches:
+ *   Implemented Images
+ *   Fixed Images and painting
+ *   
+ *  Lots of debugging happened throughout; with each new change there were new bugs to solve
+ */
+
+/*
+ * Problems encountered with code:
+ * Player dying randomly
+ * Mhos would search for player postmortem
+ * Repaint not happening after each movement; Mhos and players would leave behind images
+ */
+
+/*
+ * Problems encountered outside of code:
+ * Difficulties using git, mostly merge errors
+ * Communication problems, not talking about what we were going to do
  */
 
 /* 
