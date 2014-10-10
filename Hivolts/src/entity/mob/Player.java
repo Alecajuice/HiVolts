@@ -59,7 +59,8 @@ public class Player extends Mob {
 		return true;
 	}
 
-	// Deletes this entity
+	// Deletes entity that is dx and dy away
+	// from the current position of the player
 	public void destroy(int dx, int dy) {
 		this.x = landlord.getX() + dx;
 		this.y = landlord.getY() + dy;
@@ -67,7 +68,7 @@ public class Player extends Mob {
 		super.destroy(dx, dy);
 	}
 
-	// Jump to a random location                                                                                                                                                              
+	// Jump to a random location that is not occupied by a fence                                                                                                                                                            
 	public void jump() {
 		Cell[][] grid = this.landlord.getGridPanel().getGrid();
 		// -2 because of fences on the sides

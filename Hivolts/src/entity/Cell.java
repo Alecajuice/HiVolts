@@ -8,6 +8,10 @@ import java.awt.image.BufferedImage;
 import entity.mob.*;
 
 public class Cell {
+	/* Cell class: Is the class that contains player elements and are positioned around the 
+	 * board. They have an occupant that they paint inside them based on the occupant type, which is always a mob, but
+	 * can also be a Mho or Player
+	 */
 	protected int x, y;
 	protected Color color = Color.black;
 	//Occupants are the mobile entities that move across cells
