@@ -159,7 +159,7 @@ public class GridPanel extends JPanel {
 			}
 		}
 	}
-	//sets the scale of grid and everything withing according to panel size
+	//sets the scale of grid and everything within according to panel size
 	public void setScale() {
 		w = getWidth();
 		h = getHeight();
