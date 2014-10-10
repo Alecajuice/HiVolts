@@ -2,13 +2,8 @@ package entity;
 
 import graphics.GridPanel;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
 
 //Fence class
 /* Fences are a special type of cell. In our game, they are Mr. Kuszmauls.
