@@ -3,12 +3,8 @@ package main;
 /*AUTHORS*/
 //Alex Tarng, Nihar Mitra, James Ngo, Ailyn Tong
 
-<<<<<<< HEAD
-=======
 //This is the main class for Hivolts. The main creates a Gui where the player can move around and interact with elements in the game
-//The controls are q,w,e,a,s,d,z,x,c or the numpad. If you want to jump press j. 
 
->>>>>>> parent of c99b310... added documentation
 //FOR CLARIFYING PURPOSES
 //You are Rafi (guy with laser eyes)
 //The Fences are Mr. Kuszmaul
@@ -65,11 +61,7 @@ package main;
  *Rafi Long
  *We do not own the contents of any of the profile pictures
  */
-=======
- * make a two player game
- */
 
->>>>>>> parent of c99b310... added documentation
 import java.io.File;
 import java.io.IOException;
 
@@ -87,12 +79,9 @@ public class Hivolts {
 	 * It also imports pictures for the game elements in the try and catch.
 	 */
 	public static void main(String[] args) {
-<<<<<<< HEAD
-=======
 		// Pass width and height of the game board
 		// Also passes the existence of a second player
 		// initializes the pictures for the game
->>>>>>> parent of c99b310... added documentation
 		try {
 			Fence.img = ImageIO.read(new File("res/img/Kuszmaul.jpg"));
 			GridPanel.lab = ImageIO.read(new File("res/img/EverythingIsTyler.png"));
