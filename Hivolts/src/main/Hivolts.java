@@ -80,13 +80,14 @@ package main;
  * Mr. Kuszmaul's Conway code for the draw methods
  *Introduction to Java Programming by Y. Daniel Liang to help us with generics
  *These pictures are used with the permissions of:
- *Neelay Junnarkar
- *Tyler Packard
- *Alex Tarng
- *Nihar Mitra
- *James Ngo
- *Ben Cohen-Wang
- *Rafi Long
+ * Neelay Junnarkar - "We would especially like to thank Neelay Junnarkar for his guidance in spirit and also his 
+ *  fantastic Porridge Man  which single-handedly improved the quality of our program from sub-par to exceptional"
+ * Tyler Packard
+ * Alex Tarng
+ * Nihar Mitra
+ * James Ngo
+ * Ben Cohen-Wang
+ * Rafi Long
  *We do not own the contents of any of the profile pictures
  */
 
